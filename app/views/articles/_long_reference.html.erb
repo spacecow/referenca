@@ -1,0 +1,20 @@
+<li>
+  <% unless no==nil %>
+    <strong><%= no %>.</strong>
+  <% end %>
+  <i><%= "\"#{note}\"" %></i> - 
+  <span id="authors"><% article.authors.each do |author| %>
+    <%= link_to(author.straight_name,author)+', ' %>
+  <% end %></span>
+  <i><%= article.title %></i>.
+  <%= attribute(article.journal, "JOURNAL") %>,
+  <%= "vol. #{article.volume}, " unless article.volume_empty? %>
+  <%= "no. #{article.no}, " unless article.no_empty? %>
+  pp. <%= "#{attribute(article.start_page,
+  'START-PAGE')}-#{attribute(article.end_page, 'END-PAGE')}," %>
+  <%= "(#{article.year})" %>
+  <%= link_to(image_tag("pdf.jpeg"), article.pdf.url) unless article.no_pdf? %>
+  <%= link_to t(:show), article %>
+  <%= link_to t(:edit), edit_article_path(article, :back => request.fullpath
+) %>
+</li>

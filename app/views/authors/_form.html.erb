@@ -1,0 +1,8 @@
+<div class="form"><%= semantic_form_for @author do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :middle_names %>
+  <%= f.input :last_name %>
+  <%= hidden_field_tag :article_id, params[:article_id] %>
+  <%= f.submit :class => :submit %>
+  <%= yield :link %>
+<% end %></div>

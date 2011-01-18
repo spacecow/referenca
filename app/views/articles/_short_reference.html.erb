@@ -1,0 +1,10 @@
+<% authors = "" %>
+<% article.authors.each do |author| %>
+  <% if author == ex %>
+    <% authors += "<span class=\"exception\">"+author.straight_name+"</span>, " %>
+  <% else %>
+    <% authors += link_to( author.straight_name, author)+", " %>
+  <% end %>
+<% end %>
+<span id="authors"><%= raw authors.sub(/,/, " (#{article.year})") %></span>
+<i><%= article.title %></i>

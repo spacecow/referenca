@@ -1,0 +1,61 @@
+@import "compass/css3/border-radius"
+@import "compass/css3/gradient"
+
+$global_bg: #4B7399
+$link_fg: $global_bg
+$main_bg: #fff
+
+div#site_nav
+  float: left
+  border: 1px solid black
+  padding: 2px 5px
+  +border-radius(10px)
+  +linear-gradient(color-stops(white, #ccc))
+  margin-bottom: 5px
+  a
+    font-size: 100%
+
+div#container
+  border: 2px solid black
+  +border-radius(10px)
+  +linear-gradient(color-stops(white, #ccc))
+
+a, span#links
+  text-decoration: none
+  color: $link_fg
+  text-shadow: 1px 1px 1px #fff
+  padding: 0 1px 0 1px
+  font-size: 85%
+  &:hover
+    color: $main_bg
+    text-shadow: 1px 1px 1px $global_bg
+    padding: 0 1px 0 1p
+span#authors
+  a
+    font-size: 100%
+  span.exception
+    color: #4B7399
+    text-shadow: 1px 1px 1px black
+p#author
+  a
+    font-size: 100%
+p#bottom_links
+  margin-top: 10px
+
+h1
+  font-size: 200%
+  text-shadow: 1px 1px 1px #000
+form.formtastic, ul
+  li
+    list-style-type: none
+ol
+  padding-left: 20px
+  font-weight: bold
+  li  
+    div
+      font-weight: normal
+
+table
+  tr
+    &:hover
+      background: white

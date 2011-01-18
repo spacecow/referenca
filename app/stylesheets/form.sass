@@ -1,0 +1,56 @@
+@import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
+@import "compass/css3/gradient"
+
+$label_width: 150px
+$label_right_margin: 10px
+$label_total_width: $label_width + $label_right_margin
+
+div.clear
+  clear: both
+  height: 0
+  overflow: hidden
+
+div.form
+  +border-radius(10px)
+  border: 2px solid #777
+  padding: 10px
+  +box-shadow(#777,5px,5px,5px)  
+  +linear-gradient(color-stops(white, #4B7399 33%, white), left)
+
+form.formtastic
+  li
+    img
+      margin: 3px 0 0 $label_total_width+3px
+    label
+      float: left
+      text-align: right
+      width: $label_width
+      margin-right: $label_right_margin
+    textarea
+      width: 550px
+      height: 200px
+    textarea.reference
+      height: 50px
+  input.submit
+    margin: 5px 0 0 $label_total_width
+  li.string
+    input.number
+      width: 100px
+    input
+      width: 550px
+  li.numeric
+    input
+      width: 100px
+  li#remove_author
+    margin-left: 110px
+  li#article_paper_input
+    label
+      input
+        float: left
+        position: absolute
+        margin-left: 38px
+  li.error
+    +linear-gradient(color-stops(white, #f00 33%, white), left)
+    p.inline-errors
+      margin-left: $label_total_width

@@ -1,0 +1,24 @@
+<% title @author.straight_name %>
+
+<div class="form">
+<% unless @articles.empty? %>
+<div id="articles">
+  <strong>Articles:</strong>
+  <ol>
+  <% @articles.each do |article| %>
+    <li><div><%= render "articles/short_reference", :article => article, :ex => @author %>
+    <span id="links">
+      <%= link_to(image_tag("pdf.jpeg"), article.pdf.url) unless article.no_pdf? %>
+      <%= link_to "Show", article %>
+      <%= link_to "Edit", edit_article_path(article, :back=>request.fullpath) %>
+    </span></div></li>
+  <% end %>    
+  </ol>
+</div>
+<% end %>
+
+<p id="bottom_links">
+  <%= link_to "Edit", edit_author_path(@author) %> |
+  <%= link_to "Destroy", @author, :confirm => 'Are you sure?', :method => :delete %>
+</p>
+</div>

@@ -1,0 +1,7 @@
+--- 
+becea8: !ruby/object:Dooby::Task 
+  todo: "be able to #delete #authors :done"
+a86821: !ruby/object:Dooby::Task 
+  todo: make sure not onke the pdf filename is correct but also that a file with that name is saved correctly :done
+c2c828: !ruby/object:Dooby::Task 
+  todo: View Authors and View Articles should be displayed on the top

@@ -1,0 +1,95 @@
+/* line 8, ../../app/stylesheets/default.sass */
+div#site_nav {
+  float: left;
+  border: 1px solid black;
+  padding: 2px 5px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #ffffff), color-stop(100%, #cccccc));
+  background-image: -moz-linear-gradient(top, #ffffff 0%, #cccccc 100%);
+  background-image: linear-gradient(top, #ffffff 0%, #cccccc 100%);
+  margin-bottom: 5px;
+}
+/* line 15, ../../app/stylesheets/default.sass */
+div#site_nav a {
+  font-size: 100%;
+}
+
+/* line 18, ../../app/stylesheets/default.sass */
+div#container {
+  border: 2px solid black;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #ffffff), color-stop(100%, #cccccc));
+  background-image: -moz-linear-gradient(top, #ffffff 0%, #cccccc 100%);
+  background-image: linear-gradient(top, #ffffff 0%, #cccccc 100%);
+}
+
+/* line 23, ../../app/stylesheets/default.sass */
+a, span#links {
+  text-decoration: none;
+  color: #4b7399;
+  text-shadow: 1px 1px 1px white;
+  padding: 0 1px 0 1px;
+  font-size: 85%;
+}
+/* line 29, ../../app/stylesheets/default.sass */
+a:hover, span#links:hover {
+  color: white;
+  text-shadow: 1px 1px 1px #4b7399;
+  padding: 0 1px 0 1p;
+}
+
+/* line 34, ../../app/stylesheets/default.sass */
+span#authors a {
+  font-size: 100%;
+}
+/* line 36, ../../app/stylesheets/default.sass */
+span#authors span.exception {
+  color: #4b7399;
+  text-shadow: 1px 1px 1px black;
+}
+
+/* line 40, ../../app/stylesheets/default.sass */
+p#author a {
+  font-size: 100%;
+}
+
+/* line 42, ../../app/stylesheets/default.sass */
+p#bottom_links {
+  margin-top: 10px;
+}
+
+/* line 45, ../../app/stylesheets/default.sass */
+h1 {
+  font-size: 200%;
+  text-shadow: 1px 1px 1px black;
+}
+
+/* line 49, ../../app/stylesheets/default.sass */
+form.formtastic li, ul li {
+  list-style-type: none;
+}
+
+/* line 51, ../../app/stylesheets/default.sass */
+ol {
+  padding-left: 20px;
+  font-weight: bold;
+}
+/* line 55, ../../app/stylesheets/default.sass */
+ol li div {
+  font-weight: normal;
+}
+
+/* line 60, ../../app/stylesheets/default.sass */
+table tr:hover {
+  background: white;
+}

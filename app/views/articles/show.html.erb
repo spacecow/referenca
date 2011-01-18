@@ -1,0 +1,67 @@
+<div class="form"><% title @article.title %>
+<p id="author">
+  <strong>Author:</strong>
+  <% @article.authors.each do |author| %>
+    <% if author == @article.authors.last  %>
+      <%= link_to author.straight_name, author %>
+    <% else %>
+      <%= link_to author.straight_name, author %>, 
+    <% end %>
+  <% end %>
+</p>
+<p>
+  <strong>Journal:</strong>
+  <%= @article.journal %>
+</p>
+<p>
+  <strong>Volume:</strong>
+  <%= @article.volume %>
+</p>
+<p>
+  <strong>Pages:</strong>
+  <%= @article.start_page %>-<%= @article.end_page %>
+</p>
+<p>
+  <strong>PDF:</strong>
+  <% if @article.no_pdf? %>
+    No
+  <% else %>
+  <%= link_to(image_tag("pdf.jpeg"), @article.pdf.url) %>
+  <% end %>
+</p>
+<p>
+  <strong>Print:</strong>
+  <%= @article.paper ? "Yes" : "No" %>
+</p>
+
+<% unless @references.empty? %>
+<br />
+<div id="references">
+  <strong>References:</strong>
+  <ul>
+  <% @references.each do |reference| %>
+    <%= render "long_reference", :article =>
+    reference.referenced_article, :no => reference.no, :note => reference.note %>
+  <% end  %>
+  </ul>
+</div>
+<% end %>
+
+<% unless @references_from.empty? %>
+<br />
+<div id="referenced_from">
+  <strong>Referenced from:</strong>
+  <ul>
+  <% @references_from.each do |reference| %>
+    <%= render "long_reference", :article =>
+    reference.article, :no => nil, :note => reference.note %>
+  <% end  %>
+  </ul>
+</div>
+<% end %>
+
+<p id="bottom_links">
+  <%= link_to "Edit", edit_article_path(@article) %> |
+  <%= link_to "Destroy", @article, :confirm => 'Are you sure?', :method => :delete %>
+</p>
+</div>

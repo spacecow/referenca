@@ -1,0 +1,7 @@
+<% title "New Article" %>
+
+<% content_for :link do %>
+<p><%= link_to "Back to List", articles_path %></p>
+<% end %>
+
+<%= render 'form' %>

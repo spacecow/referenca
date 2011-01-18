@@ -1,0 +1,82 @@
+/* line 9, ../../app/stylesheets/form.sass */
+div.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 14, ../../app/stylesheets/form.sass */
+div.form {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  border: 2px solid #777777;
+  padding: 10px;
+  -moz-box-shadow: #777777 5px 5px 5px 0;
+  -webkit-box-shadow: #777777 5px 5px 5px 0;
+  -o-box-shadow: #777777 5px 5px 5px 0;
+  box-shadow: #777777 5px 5px 5px 0;
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(0%, #ffffff), color-stop(33%, #4b7399), color-stop(100%, #ffffff));
+  background-image: -moz-linear-gradient(left, #ffffff 0%, #4b7399 33%, #ffffff 100%);
+  background-image: linear-gradient(left, #ffffff 0%, #4b7399 33%, #ffffff 100%);
+}
+
+/* line 23, ../../app/stylesheets/form.sass */
+form.formtastic li img {
+  margin: 3px 0 0 163px;
+}
+/* line 25, ../../app/stylesheets/form.sass */
+form.formtastic li label {
+  float: left;
+  text-align: right;
+  width: 150px;
+  margin-right: 10px;
+}
+/* line 30, ../../app/stylesheets/form.sass */
+form.formtastic li textarea {
+  width: 550px;
+  height: 200px;
+}
+/* line 33, ../../app/stylesheets/form.sass */
+form.formtastic li textarea.reference {
+  height: 50px;
+}
+/* line 35, ../../app/stylesheets/form.sass */
+form.formtastic input.submit {
+  margin: 5px 0 0 160px;
+}
+/* line 38, ../../app/stylesheets/form.sass */
+form.formtastic li.string input.number {
+  width: 100px;
+}
+/* line 40, ../../app/stylesheets/form.sass */
+form.formtastic li.string input {
+  width: 550px;
+}
+/* line 43, ../../app/stylesheets/form.sass */
+form.formtastic li.numeric input {
+  width: 100px;
+}
+/* line 45, ../../app/stylesheets/form.sass */
+form.formtastic li#remove_author {
+  margin-left: 110px;
+}
+/* line 49, ../../app/stylesheets/form.sass */
+form.formtastic li#article_paper_input label input {
+  float: left;
+  position: absolute;
+  margin-left: 38px;
+}
+/* line 53, ../../app/stylesheets/form.sass */
+form.formtastic li.error {
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(0%, #ffffff), color-stop(33%, #ff0000), color-stop(100%, #ffffff));
+  background-image: -moz-linear-gradient(left, #ffffff 0%, #ff0000 33%, #ffffff 100%);
+  background-image: linear-gradient(left, #ffffff 0%, #ff0000 33%, #ffffff 100%);
+}
+/* line 55, ../../app/stylesheets/form.sass */
+form.formtastic li.error p.inline-errors {
+  margin-left: 160px;
+}

@@ -1,0 +1,31 @@
+<% title "Articles" %>
+<div class="form">
+
+<%= form_tag articles_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= select_tag :sort, options_for_select([['Title','title'],['Author',['first_name','middle_names','last_name']],['Year','year']], @sort) %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<br />
+
+<table>
+  <% @articles.each_with_index do |article,i| %>
+    <tr>
+      <td id="authors">
+        <strong><%= i+1 %>.</strong>
+        <%= render "short_reference", :article => article, :ex => nil %>
+      <td/>
+      <td><%= link_to(image_tag("pdf.jpeg"), article.pdf.url) unless article.no_pdf? %></td>
+      <td><%= link_to "Show", article %></td>
+      <td><%= link_to "Edit", edit_article_path(article) %></td>
+      <td><%= link_to "Destroy", article, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<%= will_paginate @articles %>
+
+<p id="bottom_links"><%= link_to "New Article", new_article_path %></p>
+</div>

@@ -1,0 +1,50 @@
+<div class="form"><%= semantic_form_for @article, :html => { :multipart => true } do |f| %>
+  <%= hidden_field_tag :back, params[:back] %>
+  <%= f.input :title %>
+  <%= f.semantic_fields_for :authorships do |ref| %>
+    <%= ref.input :author_id, :label => "Author", :as => :select,
+    :collection => @authors %>
+    <li id="remove_author">
+      <%= ref.check_box :_destroy %>
+      <%= ref.label :_destroy, "Remove Author" %>
+    </li>
+    <div class="clear"></div>
+  <% end %>  
+  <%= f.input :summarize %>  
+  <%= f.input :journal %>
+  <%= f.input :year, :input_html => {:class => :number} %>
+  <%= f.input :volume, :input_html => {:class => :number} %>
+  <%= f.input :no, :input_html => {:class => :number} %>
+  <%= f.input :start_page, :input_html => {:class => :number} %>
+  <%= f.input :end_page, :input_html => {:class => :number} %>
+  <li>
+  <% if @article.pdf? %>
+    <%= image_tag "pdf.jpeg" %>
+    <%= @article.pdf_name %>
+  <% end %>
+  </li>
+  <%= f.input :pdf, :as => :file %>
+  <%= f.hidden_field :pdf_cache %>
+  <%= f.input :paper, :label => t(:print) %>
+  <div class="clear"></div>
+  <%= f.semantic_fields_for :references do |ref| %>
+    <%= ref.input :referenced_article_id, :label => "Reference",
+  :as => :select, :collection => @articles %>
+    <%= ref.input :note, :input_html => { :class => :reference } %>
+    <%= ref.input :no %>
+  <% end %>
+  <%= f.submit :class => :submit %>
+<% end %>
+<%= yield :link %>
+</div>
+<br/>
+
+<h1>Create Author</h1>
+<div class="form">
+<%= semantic_form_for @author do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :middle_names %>
+  <%= f.input :last_name %>
+  <%= hidden_field_tag :article_id, @article.new_record? ? "nil" : @article.id %>
+  <%= f.submit :class => :submit %>
+<% end %></div>
