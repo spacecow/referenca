@@ -16,6 +16,13 @@ role :app, "sao.firsec.riec.tohoku.ac.jp"
 role :web, "sao.firsec.riec.tohoku.ac.jp"
 role :db,  "sao.firsec.riec.tohoku.ac.jp", :primary => true
 
+set :rake, "~/.rvm/rubies/ruby-1.9.2-head/bin/rake"
+set :default_environment, { 
+  'PATH' => "/home/deploy/.rvm/rubies/ruby-1.9.2-head/bin:/home/deploy/.rvm/gems/ruby-1.9.2-head/bin:/home/deploy/.rvm/bin:$PATH",
+  'RUBY_VERSION' => 'ruby 1.9.2',
+  'GEM_HOME' => '/home/deploy/.rvm/gems/ruby-1.9.2-head',
+  'GEM_PATH' => '/home/deploy/.rvm/gems/ruby-1.9.2-head' 
+}
 
 
 # If you are using Passenger mod_rails uncomment this:
@@ -30,6 +37,7 @@ namespace :deploy do
   end
   task :symlink_shared do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"    
   end
 end
 
