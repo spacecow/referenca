@@ -89,7 +89,12 @@ ol li div {
   font-weight: normal;
 }
 
-/* line 60, ../../app/stylesheets/default.sass */
+/* line 58, ../../app/stylesheets/default.sass */
+ul li:hover {
+  background: white;
+}
+
+/* line 63, ../../app/stylesheets/default.sass */
 table tr:hover {
   background: white;
 }

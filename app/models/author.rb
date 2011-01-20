@@ -19,5 +19,5 @@ class Author < ActiveRecord::Base
     name
   end
 
-  def to_s; reversed_name end
+#  def to_s; reversed_name end
 end

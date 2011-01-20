@@ -45,6 +45,12 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Successfully updated article."
       redirect_to redirect(params[:back], @article)
     else
+      unless @article.errors['authorships.author_id'].empty?
+        @article.errors['authorships.author_id'][0] =
+          @article.authorships.
+          map{|e| e.errors.empty? ? nil : Author.find(e.author_id).straight_name}.
+          compact.join(', ') + " has already been taken"
+      end
       load_articles
       create_empty_reference if @article.errors["references.referenced_article_id"].empty?
       init_form
@@ -86,7 +92,7 @@ class ArticlesController < ApplicationController
         map{|e| [e.reference, e.id]}
     end
     def load_author; @author = Author.new end
-    def load_authors; @authors = Author.order('last_name ASC') end
+    def load_authors; @authors = Author.order('last_name ASC').map{|e| [e.reversed_name, e.id]} end
     def redirect(option1,option2)
       return option2 if option1.nil?
       option1.empty? ? option2 : option1

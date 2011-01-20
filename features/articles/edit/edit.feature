@@ -10,9 +10,18 @@ And I press "Update Article"
 Then 1 authorships should exist
 
 @change
-Scenario: When chaining an author, the previous author should be deleted
+Scenario: When changing an author, the previous author should be deleted
 Given an author: "lifter" exists with first_name: "Shop", last_name: "Lifter"
 When I go to that article's edit page
 And I select "Lifter, Shop" from "Author"
 And I press "Update Article"
 Then 1 authorships should exist with article: that article, author: author "lifter"
+
+@twice
+Scenario: An author cannot be chosen twice
+When I go to that article's edit page
+And I fill in "Title" with ""
+And I select "Dover, Ben" as second author
+And I press "Update Article"
+Then an authorship should exist with article: that article, author: author "ben"
+And 1 authorships should exist

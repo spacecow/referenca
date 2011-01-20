@@ -1,15 +1,15 @@
-<div class="form"><%= semantic_form_for @article, :html => { :multipart => true } do |f| %>
+<div class="form"><%= semantic_form_for @article, :html => {
+  :multipart => true } do |f| %>
   <%= hidden_field_tag :back, params[:back] %>
   <%= f.input :title %>
+  <li id="article_author_input" class="error">
+    <p class="inline-errors"><%= @article.errors['authorships.author_id'].first
+    %></p>
+  </li>
   <%= f.semantic_fields_for :authorships do |ref| %>
-    <%= ref.input :author_id, :label => "Author", :as => :select,
-    :collection => @authors %>
-    <li id="remove_author">
-      <%= ref.check_box :_destroy %>
-      <%= ref.label :_destroy, "Remove Author" %>
-    </li>
-    <div class="clear"></div>
-  <% end %>  
+    <%= render 'authorship_fields', :f => ref %>
+  <% end %>
+  <li><%= link_to_add_fields "Add Author", f, :authorships %></li>
   <%= f.input :summarize %>  
   <%= f.input :journal %>
   <%= f.input :year, :input_html => {:class => :number} %>

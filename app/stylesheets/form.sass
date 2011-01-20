@@ -5,6 +5,8 @@
 $label_width: 150px
 $label_right_margin: 10px
 $label_total_width: $label_width + $label_right_margin
+$default_field_width: 550px
+$numeric_field_width: 100px
 
 div.clear
   clear: both
@@ -18,39 +20,43 @@ div.form
   +box-shadow(#777,5px,5px,5px)  
   +linear-gradient(color-stops(white, #4B7399 33%, white), left)
 
+@mixin label-attrib
+  float: left
+  text-align: right
+  width: $label_width
+  margin-right: $label_right_margin
+
 form.formtastic
   li
+    a
+      margin-left: $label_total_width
     img
       margin: 3px 0 0 $label_total_width+3px
-    label
-      float: left
-      text-align: right
-      width: $label_width
-      margin-right: $label_right_margin
+    label:nth-child(1)
+      +label-attrib
     textarea
-      width: 550px
+      width: $default_field_width
       height: 200px
     textarea.reference
       height: 50px
-  input.submit
-    margin: 5px 0 0 $label_total_width
   li.string
     input.number
-      width: 100px
+      width: $numeric_field_width
     input
-      width: 550px
+      width: $default_field_width
   li.numeric
     input
-      width: 100px
-  li#remove_author
-    margin-left: 110px
-  li#article_paper_input
-    label
-      input
-        float: left
-        position: absolute
-        margin-left: 38px
+      width: $numeric_field_width
   li.error
     +linear-gradient(color-stops(white, #f00 33%, white), left)
     p.inline-errors
       margin-left: $label_total_width
+  li#article_paper_input
+    label
+      +label-attrib
+      input
+        float: left
+        position: absolute
+        margin-left: 38px
+  input.submit
+    margin: 5px 0 0 $label_total_width

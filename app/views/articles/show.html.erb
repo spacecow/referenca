@@ -1,13 +1,11 @@
 <div class="form"><% title @article.title %>
 <p id="author">
   <strong>Author:</strong>
-  <% @article.authors.each do |author| %>
-    <% if author == @article.authors.last  %>
-      <%= link_to author.straight_name, author %>
-    <% else %>
-      <%= link_to author.straight_name, author %>, 
-    <% end %>
+  <% authors = "" %>
+  <% @article.authorships.map(&:author).each do |author| %>
+    <% authors += link_to(author.straight_name, author)+", " %>
   <% end %>
+  <%= raw authors.sub(/, $/,'') %>
 </p>
 <p>
   <strong>Journal:</strong>

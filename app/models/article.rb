@@ -29,7 +29,7 @@ class Article < ActiveRecord::Base
   end
   
   def authors_for_short_reference
-    ret = authors.map(&:last_name).join(' and ')
+    ret = authorships.map(&:author).map(&:last_name).join(' and ')
     if authors.size == 3
       ret.sub!(" and",",") if authors.size == 3
     elsif authors.size >=3

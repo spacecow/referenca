@@ -1,5 +1,5 @@
 <% authors = "" %>
-<% article.authors.each do |author| %>
+<% article.authorships.map(&:author).each do |author| %>
   <% if author == ex %>
     <% authors += "<span class=\"exception\">"+author.straight_name+"</span>, " %>
   <% else %>

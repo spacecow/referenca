@@ -7,3 +7,16 @@ end
 Then /^"([^"]*)" should be selected for "([^"]*)"$/ do |value, field|
   field_labeled(field).native.search(".//option[@selected = 'selected']").inner_html.should == value
 end
+
+Then /^I should see an (\w+) (\w+) error "([^"]*)"$/ do |mdl,attr,txt|
+  with_scope("li##{mdl}_#{attr}_input p.inline-errors") do
+    page.text.should eq txt
+  end
+end
+
+Then /^I should see no (\w+) (\w+) error$/ do |mdl,attr|
+  with_scope("li##{mdl}_#{attr}_input p.inline-errors") do
+    page.text.should eq ""
+  end
+end
+

@@ -3,8 +3,17 @@ When /^I select "([^"]*)" as (second) reference$/ do |text,order|
 end
 
 Then /^I should see a (\w*) reference$/ do |order|
-  page.should have_css("select##{select_id(zero_no order)}")
+  page.should have_css("#{select_field order}")
 end
+
+Then /^I should see a (\w+) reference with no: (\d+)$/ do |order,no|
+  with_scope("#{li_field(order,'no')}") do
+    find_field("No").value.should eq no
+  end
+end
+
+
+
 Then /^I should see no (\w*) reference$/ do |order|
   page.should have_no_css("select##{select_id(zero_no order)}")
 end
@@ -16,9 +25,10 @@ Then /^I should see a "([^"]*)" error "([^"]*)" on the (\w+) reference$/ do |fie
 end
 
 
+def select_field(i); "select##{select_id(zero_no i)}" end
 def select_id(i); "article_references_attributes_#{i}_referenced_article_id" end
 def li_field(i,field); "li##{li_id(i,field)}" end
-def li_id(i,field); "article_references_attributes_#{i}_#{field}_input" end
+def li_id(i,field); "article_references_attributes_#{zero_no i}_#{field}_input" end
 def error_field; "p.#{error_id}" end
 def error_id; "inline-errors" end
 def error_path(i,field); "#{li_field(i,field)} #{error_field}" end
