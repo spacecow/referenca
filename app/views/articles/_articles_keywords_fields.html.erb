@@ -1,0 +1,6 @@
+<li>
+  <%= f.label :keyword_id, "Keyword" %>
+  <%= f.select :keyword_id, @keywords, :include_blank => true %>
+  <%= f.check_box :_destroy %>
+  <%= f.label :_destroy, "Remove Keyword" %>
+</li>

@@ -2,6 +2,29 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  del: "Del"
+  delete: "Delete"
   edit: "Edit"
   print: "Print"
   show: "Show"
+
+  article: "Article"
+  author: "Author"
+  keyword: "Keyword"
+
+  label:
+    add: "Add %{obj}"
+    create: "Create %{obj}"
+    edit: "Edit %{obj}"
+    list: "List %{obj}"
+    new: "New %{obj}"
+    show: "Show %{obj}"
+    update: "Update %{obj}"
+
+  message:
+    sure?: "Are you sure?"
+
+  success:
+    created: "Successfully created %{obj}."
+    deleted: "Successfully deleted %{obj}."
+    updated: "Successfully updated %{obj}."

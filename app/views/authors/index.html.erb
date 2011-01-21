@@ -1,19 +1,16 @@
-<% title "Authors" %>
+<% title pl(:author) %>
 
 <div class="form">
 <table>
-  <tr>
-    <th>Name</th>
-  </tr>
   <% for author in @authors %>
     <tr>
       <td><%= author.straight_name %></td>
-      <td><%= link_to "Show", author %></td>
-      <td><%= link_to "Edit", edit_author_path(author) %></td>
-      <td><%= link_to "Destroy", author, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to t(:show), author %></td>
+      <td><%= link_to t(:edit), edit_author_path(author) %></td>
+      <td><%= link_to t(:del), author, :confirm => sure?, :method => :delete %></td>
     </tr>
   <% end %>
 </table>
-<p id="bottom_links"><%= link_to "New Author", new_author_path %></p>
+<div id="bottom_links"><%= link_to new(:author), new_author_path %></div>
 </div>
 

@@ -8,6 +8,10 @@ Factory.define :author do |f|
   f.sequence(:last_name){|n| "Default last name #{n}"}  
 end
 
+Factory.define :keyword do |f|
+  f.name "Default keyword"
+end
+
 Factory.define :reference do |f|
   f.sequence(:no){|n| n}
 end

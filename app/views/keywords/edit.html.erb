@@ -1,0 +1,10 @@
+<% title edit(:keyword) %>
+
+<% content_for :link do %>
+<div id="bottom_links">
+  <%= link_to t(:show), @keyword %>
+  <%= link_to t(:delete), @keyword, :confirm => sure?, :method => :delete %>
+</div>
+<% end %>
+
+<%= render 'form', :article_page => false %>

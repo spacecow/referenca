@@ -7,7 +7,11 @@ class Article < ActiveRecord::Base
   has_many :authors, :through => :authorships
   accepts_nested_attributes_for :authorships, :reject_if => lambda {|a| a[:author_id].blank?}, :allow_destroy => true
 
-  attr_accessible :title, :authorships_attributes, :references_attributes, :summarize, :journal, :volume, :start_page, :end_page, :pdf, :paper, :year, :no, :pdf_cache
+  has_many :articles_keywords, :dependent => :destroy
+  has_many :keywords, :through => :articles_keywords
+  accepts_nested_attributes_for :articles_keywords, :reject_if => lambda {|a| a[:keyword_id].blank?}, :allow_destroy => true  
+  
+  attr_accessible :title, :authorships_attributes, :references_attributes, :articles_keywords_attributes, :summarize, :journal, :volume, :start_page, :end_page, :pdf, :paper, :year, :no, :pdf_cache
   attr_accessor :author_cache
   
   mount_uploader :pdf, PdfUploader

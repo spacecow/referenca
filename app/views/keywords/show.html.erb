@@ -1,0 +1,23 @@
+<% title @keyword.name %>
+
+<div class="form">
+<% unless @articles.empty? %>
+<div id="articles">
+  <strong>Articles:</strong>
+  <ol>
+  <% @articles.each do |article| %>
+  <li>
+    <div>
+      <%= render "articles/long_reference", :article => article, :no => nil, :note => "bajs" %>
+    </div>
+  </li>
+  <% end %>    
+  </ol>
+</div>
+<% end %>
+
+<div id="bottom_links">
+  <%= link_to "Edit", edit_keyword_path(@keyword) %> |
+  <%= link_to "Destroy", @keyword, :confirm => sure?, :method => :delete %>
+</div>
+</div>

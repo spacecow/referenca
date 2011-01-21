@@ -20,6 +20,7 @@
       <div id="site_nav">
         <%= link_to "View Articles", articles_path %>
         <%= link_to "View Authors", authors_path %>
+        <%= link_to "View Keywords", keywords_path %>
       </div>
       <div class="clear"></div>
       <%= content_tag :h1, yield(:title) if show_title? %>

@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
+  include InitArticleForm
+  
   def index
-    @articles = Article.search(params[:search],params[:sort]). #reference_order
-      sort{|x,y| x.first_author == y.first_author ? y.year <=> x.year : x.first_author <=> y.first_author}.paginate(:per_page=>5,:page => params[:page])
+    @articles = Article.search(params[:search],params[:sort]).all. #reference_order
+      sort_by_author_first_name_then_year.paginate(:per_page=>5,:page => params[:page])
     @sort = params[:sort]
   end
 
@@ -13,6 +15,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @keyword = Keyword.new
     init_form(3)
   end
 
@@ -30,9 +33,8 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
-    load_articles
-    create_empty_reference
-    init_form
+    @keyword = Keyword.new
+    init_rendered_form
   end
 
   def update
@@ -76,23 +78,6 @@ class ArticlesController < ApplicationController
       end
       authors.sub(/, /," (#{@article.year}) ").chop.sub(/,$/,'').gsub(/[,\s]/,'_')
     end
-    def create_empty_authorship(no=1); no.times{@article.authorships.build} end
-    def create_empty_reference(no=1); no.times{@article.references.build} end
-    def init_form(no=1)
-      load_author
-      load_authors
-      create_empty_authorship(no)
-    end
-    def load_articles
-      references = @article.referenced_articles
-      @articles = Article.all.
-        reject{|e| e==@article}.
-#        reject{|e| references.include? e}.
-        sort{|x,y| x.first_author == y.first_author ? y.year <=> x.year : x.first_author <=> y.first_author}.
-        map{|e| [e.reference, e.id]}
-    end
-    def load_author; @author = Author.new end
-    def load_authors; @authors = Author.order('last_name ASC').map{|e| [e.reversed_name, e.id]} end
     def redirect(option1,option2)
       return option2 if option1.nil?
       option1.empty? ? option2 : option1

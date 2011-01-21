@@ -1,40 +1,40 @@
 Feature:
 Background:
 Given an author: "lifter" exists with first_name: "Shop", last_name: "Lifter"
+And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 And an article exists with year: "2001"
 
-Scenario: An authors articles should be shown
-Given an authorship exists with author: author "lifter", article: that article
+Scenario Outline: If no articles are connected, no articles should be shown
+Given author "<author>" is one of that article's authors
 When I go to author "lifter"'s page
-Then I should see an "Articles" section
-
-Scenario: If an author have no articles, no articles should be shown
-When I go to author "lifter"'s page
-Then I should see no "Articles" section
+Then I should see <article> "Articles" section
+Examples:
+| author  | article |
+| lifter  | an      |
+| dover   | no      |
 
 Scenario: Links to co-authors
-Given an authorship exists with author: author "lifter", article: that article
-And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
-And an authorship exists with author: author "dover", article: that article
+Given author "lifter" is one of that article's authors
+And author "dover" is one of that article's authors
 When I go to author "lifter"'s page
 And I follow "Ben Dover"
 Then I should be on the author "dover"'s page
 
 Scenario: The authors own name should not be a link, instead marked
-Given an authorship exists with author: author "lifter", article: that article
+Given author "lifter" is one of that article's authors
 When I go to author "lifter"'s page
 Then I should see "Shop Lifter" within "span.exception"
 
 Scenario: Should be displayed in order after YEAR
-Given an authorship exists with author: author "lifter", article: that article
+Given author "lifter" is one of that article's authors
 And an article exists with year: "2003"
-And an authorship exists with author: author "lifter", article: that article
+And author "lifter" is one of that article's authors
 When I go to author "lifter"'s page
 Then I should see "2003" listed first
 And I should see "2001" listed second
 
 Scenario: After editing an article, one should return to the author page
-Given an authorship exists with author: author "lifter", article: that article
+Given author "lifter" is one of that article's authors
 When I go to author "lifter"'s page
 And I follow "Edit" within the first listing
 And I press "Update Article"

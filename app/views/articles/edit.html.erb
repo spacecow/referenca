@@ -1,9 +1,7 @@
-<% title "Edit Article" %>
+<% title edit(:article) %>
 
-<% content_for :link do %>
-<p>
-  <%= link_to "Show", @article %>
-</p>
+<% content_for :article_links do %>
+  <div id="bottom_links"><%= link_to "Show", @article %></div>
 <% end %>
 
-<%= render 'form' %>
+<%= render 'articles/form' %>

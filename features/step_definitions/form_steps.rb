@@ -20,3 +20,9 @@ Then /^I should see no (\w+) (\w+) error$/ do |mdl,attr|
   end
 end
 
+When /^I check the (\w+) "([^"]*)"$/ do |order,lbl|
+  mdl = "authorships" if lbl == "Remove Author"
+  mdl = "articles_keywords" if lbl == "Remove Keyword"
+  When %(I check "article_#{mdl}_attributes_#{zero_no order}__destroy")
+end
+

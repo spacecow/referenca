@@ -10,3 +10,7 @@ end
 Then /^I should see no (\w*) row$/ do |order|
   page.should have_no_css("tr:nth-child(#{no order})")
 end
+
+When /^I follow "([^"]*)" within the (\w+) table row$/ do |link,order|
+  When %(I follow "#{link}" within "table tr:nth-child(#{no order})")
+end

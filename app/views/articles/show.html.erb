@@ -38,8 +38,13 @@
   <strong>References:</strong>
   <ul>
   <% @references.each do |reference| %>
-    <%= render "long_reference", :article =>
-    reference.referenced_article, :no => reference.no, :note => reference.note %>
+    <li>
+      <strong><%= reference.no %>.</strong>
+      <i><%= "\"#{reference.note}\"" %></i> - 
+      <%= render "long_reference", :article =>
+      reference.referenced_article, :no => reference.no, :note =>
+      reference.note %>
+    </li>
   <% end  %>
   </ul>
 </div>

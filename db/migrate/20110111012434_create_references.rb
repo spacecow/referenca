@@ -3,7 +3,7 @@ class CreateReferences < ActiveRecord::Migration
     create_table :references do |t|
       t.integer :article_id
       t.integer :referenced_article_id
-
+      
       t.timestamps
     end
   end

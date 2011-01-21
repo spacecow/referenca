@@ -7,10 +7,13 @@
     %></p>
   </li>
   <%= f.semantic_fields_for :authorships do |ref| %>
-    <%= render 'authorship_fields', :f => ref %>
+    <%= render 'articles/authorship_fields', :f => ref %>
   <% end %>
   <li><%= link_to_add_fields "Add Author", f, :authorships %></li>
   <%= f.input :summarize %>  
+  <%= f.semantic_fields_for :articles_keywords do |ref| %>
+    <%= render 'articles/articles_keywords_fields', :f => ref %>
+  <% end %>
   <%= f.input :journal %>
   <%= f.input :year, :input_html => {:class => :number} %>
   <%= f.input :volume, :input_html => {:class => :number} %>
@@ -35,10 +38,16 @@
   <% end %>
   <%= f.submit :class => :submit %>
 <% end %>
-<%= yield :link %>
+<%= yield :article_links %>
 </div>
 <br/>
 
+<a name="keyword"></a>
+<h1>Create Keyword</h1>
+<%= render "keywords/form", :article_page => true %>
+<br />
+
+<a name="author"></a>
 <h1>Create Author</h1>
 <div class="form">
 <%= semantic_form_for @author do |f| %>
@@ -48,3 +57,11 @@
   <%= hidden_field_tag :article_id, @article.new_record? ? "nil" : @article.id %>
   <%= f.submit :class => :submit %>
 <% end %></div>
+
+<script>
+<% if !@keyword.errors.empty? %>
+  window.location = window.location.href + "#keyword";
+<% elsif !@author.errors.empty? %>
+  window.location = window.location.href + "#author";
+<% end %>
+</script>

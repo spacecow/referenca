@@ -1,0 +1,6 @@
+<tr>
+  <td><%= keyword.name %></td>
+  <td><%= link_to t(:show), keyword %></td>
+  <td><%= link_to t(:edit), edit_keyword_path(keyword) %></td>
+  <td><%= link_to t(:del), keyword, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
