@@ -23,7 +23,7 @@ module InitArticleForm
         map{|e| [e.reference, e.id]}
     end
     def load_keywords
-      @keywords = Keyword.all.
+      @keywords = Keyword.order('name asc').
         map{|e| [e.name, e.id]}
     end
     def load_author; @author = Author.new end

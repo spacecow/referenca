@@ -59,7 +59,7 @@ span#authors span.exception {
 }
 
 /* line 40, ../../app/stylesheets/default.sass */
-p#author a {
+p#author a, p#keywords a {
   font-size: 100%;
 }
 
@@ -97,4 +97,8 @@ ul li:hover {
 /* line 63, ../../app/stylesheets/default.sass */
 table tr:hover {
   background: white;
+}
+/* line 65, ../../app/stylesheets/default.sass */
+table tr td {
+  padding: 0px 2px;
 }

@@ -1,7 +1,8 @@
 Feature:
+Background:
+Given a keyword "ann" exists with name: "ANN"
 
 Scenario Outline: If no keyword is selected, no links should be created
-Given a keyword exists with name: "ANN"
 When I go to the new article page
 And I fill in "Title" with "Some title"
 And I fill in "Year" with "1899"
@@ -16,7 +17,6 @@ Examples:
 
 Scenario Outline: Delete a keyword relation
 Given an article exists
-And a keyword "ann" exists with name: "ANN"
 And a keyword "agent" exists with name: "agent programming"
 And that article is one of keyword "ann" & keyword "agent"'s articles
 When I go to that article's edit page
@@ -28,3 +28,11 @@ Examples:
 | order  | existing |
 | first  | agent    |
 | second | ann      |
+
+Scenario: The same keyword cannot be added twice
+Given an article exists
+And that article is one of keyword "ann"'s articles
+When I go to that article's edit page
+And I select "ANN" as second keyword
+And I press "Update Article"
+Then I should see an article keyword error "ANN has already been taken" 

@@ -8,12 +8,24 @@
   <%= raw authors.sub(/, $/,'') %>
 </p>
 <p>
+  <strong>Summary:</strong>
+  <%= @article.summarize %>
+</p>
+<p id="keywords">
+  <strong>Keywords:</strong>
+  <%= raw @article.keywords.map{|e| link_to e.name, e}.join(', ') %>
+</p>
+<p>
   <strong>Journal:</strong>
   <%= @article.journal %>
 </p>
 <p>
   <strong>Volume:</strong>
   <%= @article.volume %>
+</p>
+<p>
+  <strong>No:</strong>
+  <%= @article.no %>
 </p>
 <p>
   <strong>Pages:</strong>
@@ -63,8 +75,8 @@
 </div>
 <% end %>
 
-<p id="bottom_links">
+<div id="bottom_links">
   <%= link_to "Edit", edit_article_path(@article) %> |
   <%= link_to "Destroy", @article, :confirm => 'Are you sure?', :method => :delete %>
-</p>
+</div>
 </div>

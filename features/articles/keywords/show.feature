@@ -1,8 +1,9 @@
 Feature:
+Background:
+Given an article exists
+And a keyword "ann" exists with name: "ANN"
 
 Scenario Outline: Keywords should be loaded after rendering error page
-Given an article exists
-And a keyword exists with name: "ANN"
 When I go to <path> page
 And I fill in "<lbl>" with ""
 And I press "<button>"
@@ -15,4 +16,9 @@ Examples:
 | that article's edit | Name       | Create Keyword |
 | the new article     | Title      | Create Article |
 | that article's edit | Title      | Update Article |
+
+Scenario: Keywords should be ordered alphabetically
+Given a keyword exists with name: "agent programming"
+When I go to the new article page
+Then "Keyword" should have options "BLANK, agent programming, ANN"
 

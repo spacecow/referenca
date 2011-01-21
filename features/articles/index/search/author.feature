@@ -38,8 +38,9 @@ When I select "<sort>" from "sort"
 And I press "Search"
 Then "<sort>" should be selected for "sort"
 Examples:
-| sort   |
-| Title  |
-| Year   |
-| Author |
+| sort    |
+| Title   |
+| Year    |
+| Author  |
+| Keyword |
 

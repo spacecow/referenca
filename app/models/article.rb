@@ -61,6 +61,8 @@ class Article < ActiveRecord::Base
         sorts = sort[2..-3].split('", "')
         search_string = sorts.map{|e| "authors.#{e} LIKE ?"}.join(' or ')
         where(search_string, *sorts.size.times.map{|e| "%#{search}%"}).includes(:authors)
+      elsif sort == "keywords.name"
+        where("#{sort} LIKE ?", "%#{search}%").includes(:keywords)
       else
         where("#{sort} LIKE ?", "%#{search}%")
       end

@@ -53,6 +53,12 @@ class ArticlesController < ApplicationController
           map{|e| e.errors.empty? ? nil : Author.find(e.author_id).straight_name}.
           compact.join(', ') + " has already been taken"
       end
+      unless @article.errors['articles_keywords.keyword_id'].empty?
+        @article.errors['articles_keywords.keyword_id'][0] =
+          @article.articles_keywords.
+          map{|e| e.errors.empty? ? nil : Keyword.find(e.keyword_id).name}.
+          compact.join(', ') + " has already been taken"
+      end      
       load_articles
       create_empty_reference if @article.errors["references.referenced_article_id"].empty?
       init_form

@@ -3,17 +3,20 @@
   <%= hidden_field_tag :back, params[:back] %>
   <%= f.input :title %>
   <li id="article_author_input" class="error">
-    <p class="inline-errors"><%= @article.errors['authorships.author_id'].first
-    %></p>
+    <p class="inline-errors"><%= @article.errors['authorships.author_id'].first %></p>
   </li>
   <%= f.semantic_fields_for :authorships do |ref| %>
     <%= render 'articles/authorship_fields', :f => ref %>
   <% end %>
   <li><%= link_to_add_fields "Add Author", f, :authorships %></li>
-  <%= f.input :summarize %>  
+  <%= f.input :summarize %>
+  <li id="article_keyword_input" class="error">
+    <p class="inline-errors"><%= @article.errors['articles_keywords.keyword_id'].first %></p>
+  </li>
   <%= f.semantic_fields_for :articles_keywords do |ref| %>
-    <%= render 'articles/articles_keywords_fields', :f => ref %>
+    <%= render 'articles/articles_keyword_fields', :f => ref %>
   <% end %>
+  <li><%= link_to_add_fields "Add Keyword", f, :articles_keywords %></li>
   <%= f.input :journal %>
   <%= f.input :year, :input_html => {:class => :number} %>
   <%= f.input :volume, :input_html => {:class => :number} %>
