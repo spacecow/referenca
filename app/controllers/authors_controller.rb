@@ -1,13 +1,15 @@
 class AuthorsController < ApplicationController
   include InitArticleForm
 
+  load_and_authorize_resource
+  
   def index
     @authors = Author.all
   end
 
   def show
     @author = Author.includes({:articles => :authors}).find(params[:id])
-    @articles = @author.articles.order("year desc")
+    @articles = @author.articles.order("year desc").public_or_privately_owned(current_user)
   end
 
   def new

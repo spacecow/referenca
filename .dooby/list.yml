@@ -13,3 +13,5 @@ d4348f: !ruby/object:Dooby::Task
   todo: default focus on first existing field
 2ff61d: !ruby/object:Dooby::Task 
   todo: relation checking when deleting
+b2b3fb: !ruby/object:Dooby::Task 
+  todo: only user with ownership can make the article private

@@ -8,7 +8,8 @@ When I go to the authors page
 Then I should see "Dover" within the first table row
 And I should see "Lifter" within the second table row
 
-Scenario Outline: Links within an author
+Scenario Outline: Links within an author for a user
+Given I am logged in as "admin"
 When I go to the authors page
 And I follow "<link>" within the first table row
 Then I should be on the <page> page
@@ -19,7 +20,15 @@ Examples:
 | Edit          | author's edit  |  1 |
 | Del           | authors        |  0 |
 
-Scenario: Links on the bottom of the page
+Scenario: Links for a guest
+When I go to the authors page
+Then I should see a link "Show" within the first table row
+But I should see no link "Edit" within the first table row
+And I should see no link "Del" within the first table row
+And I should see no link "New Author" at the bottom of the page
+
+Scenario: Links on the bottom of the page for a user
+Given I am logged in as "admin"
 When I go to the authors page
 And I follow "New Author" at the bottom of the page
 Then I should be on the new author page

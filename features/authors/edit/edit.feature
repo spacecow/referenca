@@ -1,6 +1,7 @@
 Feature:
 Background:
 Given an author: "dover" exists with first_name: "Ben", last_name: "Dover"
+And I am logged in as "admin"
 
 Scenario: Edit a keyword
 When I go to that author's edit page

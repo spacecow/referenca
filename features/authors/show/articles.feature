@@ -40,3 +40,35 @@ When I go to author "lifter"'s page
 And I follow "Edit" within the first listing
 And I press "Update Article"
 Then I should be on author "lifter"'s page
+
+Scenario: A guest only have read access to authors
+Given author "lifter" is one of that article's authors
+When I go to author "lifter"'s page
+Then I should see a link "Show" within the first listing
+But I should see no link "Edit" within the first listing
+
+Scenario Outline: Links within an article for a user
+Given author "lifter" is one of that article's authors
+And I am logged in as "admin"
+When I go to author "lifter"'s page
+And I follow "<link>" within the first listing
+Then I should be on <redirect> page
+Examples:
+| link | redirect            |
+| Show | that article's      |
+| Edit | that article's edit |
+
+@private
+Scenario Outline: Articles that are private cannot be seen by other ppl
+Given an article exists with private: true, title: "A secret title", year: "2002"
+And author "lifter" is one of that article's authors
+And a user "secret" exists
+And a user "normal" exists
+And user "secret" is one of that article's users
+And I am logged in as user "<username>"
+When I go to author "lifter"'s page
+Then I should <secret_view> "A secret title" within the first listing
+Examples:
+| username | secret_view |
+| secret   | see         |
+| normal   | not see     |

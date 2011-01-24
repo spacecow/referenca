@@ -4,9 +4,11 @@ class Ability
   def initialize(user)
     can [:new,:create,:destroy], Session
     can :read, Article
-
+    can :read, Author
+    
     if user
       can [:create,:update,:destroy], Article
+      can [:create,:update,:destroy], Author
     end
     # Define abilities for the passed in user here. For example:
     #

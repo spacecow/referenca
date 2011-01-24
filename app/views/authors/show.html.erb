@@ -9,16 +9,18 @@
     <li><div><%= render "articles/short_reference", :article => article, :ex => @author %>
     <span id="links">
       <%= link_to(image_tag("pdf.jpeg"), article.pdf.url) unless article.no_pdf? %>
-      <%= link_to "Show", article %>
-      <%= link_to "Edit", edit_article_path(article, :back=>request.fullpath) %>
+      <%= link_to t(:show), article %>
+      <%= link_to t(:edit), edit_article_path(article, :back=>request.fullpath) if can? :edit, article %>
     </span></div></li>
   <% end %>    
   </ol>
 </div>
 <% end %>
 
-<p id="bottom_links">
-  <%= link_to "Edit", edit_author_path(@author) %> |
-  <%= link_to "Destroy", @author, :confirm => 'Are you sure?', :method => :delete %>
-</p>
+<div id="bottom_links">
+  <%= link_to t(:edit), edit_author_path(@author) if can? :edit, @author %> 
+  <% if can? :destroy, @author %>
+    | <%= link_to t(:delete), @author, :confirm => 'Are you sure?', :method => :delete %>
+  <% end %>
+</div>
 </div>

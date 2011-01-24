@@ -49,6 +49,7 @@ And I should see "2001" listed second
 
 Scenario: After editing an article, one should return to the author page
 Given a keyword "ann" is one of article "2001"'s keywords
+And I am logged in as "admin"
 When I go to keyword "ann"'s page
 And I follow "Edit" within the first listing
 And I press "Update Article"

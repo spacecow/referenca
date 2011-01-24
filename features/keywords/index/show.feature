@@ -5,8 +5,8 @@ Given a keyword exists with name: "ANN"
 Scenario: Keywords should be displayed in alhabetical order
 Given a keyword exists with name: "agent programming"
 When I go to the keywords page
-Then the table's first row should contain "ANN"
-And the table's second row should contain "agent programming"
+Then I should see "ANN" within the first table row
+And I should see "agent programming" within the second table row
 
 Scenario Outline: Links within a keyword
 When I go to the keywords page
