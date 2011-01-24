@@ -1,4 +1,7 @@
 Feature:
+Background:
+Given I am logged in as "admin"
+
 Scenario Outline: If error, redirection to either new or edit page
 Given an article exists
 When I go to <path> page

@@ -1,6 +1,7 @@
 Feature:
 Background:
 Given an article exists
+And I am logged in as "admin"
 And an author: "ben" exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with article: that article, author: author "ben"
 

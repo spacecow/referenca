@@ -5,8 +5,8 @@ Given an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 Scenario: Author should be displayed in alhabetical order
 Given an author: "lifter" exists with first_name: "Shop", last_name: "Lifter"
 When I go to the authors page
-Then the table's first row should contain "Dover"
-And the table's second row should contain "Lifter"
+Then I should see "Dover" within the first table row
+And I should see "Lifter" within the second table row
 
 Scenario Outline: Links within an author
 When I go to the authors page

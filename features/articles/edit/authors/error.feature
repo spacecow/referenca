@@ -1,6 +1,7 @@
 Feature:
 Background:
 Given an article exists
+And I am logged in as "admin"
 When I go to that article's edit page
 And I press "Create Author"
 

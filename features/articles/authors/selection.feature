@@ -2,6 +2,7 @@ Feature:
 
 Scenario Outline: Delete an authorship
 Given an article exists
+And I am logged in as "admin"
 And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 And an author: "lifter" exists with first_name: "Shop", last_name: "Lifter"
 And that article is one of author "dover" & author "lifter"'s articles

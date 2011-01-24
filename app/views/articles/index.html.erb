@@ -1,4 +1,4 @@
-<% title "Articles" %>
+<% title pl(:article) %>
 <div class="form">
 
 <%= form_tag articles_path, :method => 'get' do %>
@@ -18,14 +18,14 @@
         <%= render "short_reference", :article => article, :ex => nil %>
       <td/>
       <td><%= link_to(image_tag("pdf.jpeg"), article.pdf.url) unless article.no_pdf? %></td>
-      <td><%= link_to "Show", article %></td>
-      <td><%= link_to "Edit", edit_article_path(article) %></td>
-      <td><%= link_to "Destroy", article, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to t(:show), article %></td>
+      <td><%= link_to t(:edit), edit_article_path(article) if can? :edit, article%></td>
+      <td><%= link_to t(:del), article, :confirm => 'Are you sure?', :method => :delete if can? :destroy, article %></td>
     </tr>
   <% end %>
 </table>
 <br />
 <%= will_paginate @articles %>
 
-<p id="bottom_links"><%= link_to "New Article", new_article_path %></p>
+<div id="bottom_links"><%= link_to new(:article), new_article_path if can? :new, Article%></div>
 </div>

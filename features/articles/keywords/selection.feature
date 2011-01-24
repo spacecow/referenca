@@ -1,6 +1,7 @@
 Feature:
 Background:
 Given a keyword "ann" exists with name: "ANN"
+And I am logged in as "admin"
 
 Scenario Outline: If no keyword is selected, no links should be created
 When I go to the new article page

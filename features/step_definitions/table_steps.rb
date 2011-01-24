@@ -1,7 +1,9 @@
-Then /^the table's (\w+) row should contain "([^"]*)"$/ do |order,text|
-  with_scope("table tr:nth-child(#{no order})") do
-    page.should have_content(text)
-  end
+Then /^I should see "([^"]*)" within the (\w+) table row$/ do |txt,order|
+  page.should have_css("table tr:nth-child(#{no order})", :text => txt)
+end
+
+Then /^I should not see "([^"]*)" within the (\w+) table row$/ do |txt,order|
+  page.should have_no_css("table tr:nth-child(#{no order})", :text => txt)
 end
 
 Then /^I should see a (\w*) row$/ do |order|
@@ -13,4 +15,12 @@ end
 
 When /^I follow "([^"]*)" within the (\w+) table row$/ do |link,order|
   When %(I follow "#{link}" within "table tr:nth-child(#{no order})")
+end
+
+Then /^I should see a link "([^"]*)" within the (\w+) table row$/ do |txt,order|
+  page.should have_css("tr:nth-child(#{no order}) a", :text => txt)
+end
+
+Then /^I should see no link "([^"]*)" within the (\w+) table row$/ do |txt,order|
+  page.should have_no_css("tr:nth-child(#{no order}) a", :text => txt)
 end

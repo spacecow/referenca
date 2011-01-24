@@ -1,4 +1,7 @@
 Feature:
+Background:
+Given a user exists
+And I am logged in as that user
 
 Scenario: Create a user on the fly
 When I go to the new article page

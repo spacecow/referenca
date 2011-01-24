@@ -1,5 +1,7 @@
 Feature:
 Background:
+Given a user exists
+And I am logged in as that user
 
 Scenario: Default view of the new article page
 When I go to the new article page

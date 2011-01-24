@@ -2,6 +2,7 @@ Feature:
 
 Scenario Outline: Keywords should be loaded after rendering error page
 Given an article exists
+And I am logged in as "admin"
 And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 When I go to <path> page
 And I fill in "<lbl>" with ""

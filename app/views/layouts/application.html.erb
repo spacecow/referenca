@@ -22,6 +22,13 @@
         <%= link_to "View Authors", authors_path %>
         <%= link_to "View Keywords", keywords_path %>
       </div>
+      <div id="user_nav">
+        <% if current_user %>
+        Welcome <%= current_user.username %>. Not you? <%= link_to "Log out", logout_path %>
+        <% else %>
+        <%= link_to "Sign up", signup_path %> or <%= link_to "log in", login_path %>.
+        <% end %>
+      </div>
       <div class="clear"></div>
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>

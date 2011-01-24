@@ -3,6 +3,12 @@ Referenca::Application.routes.draw do
   resources :articles
   resources :references
   resources :keywords
+  resources :sessions
+  resources :users
+  
+  match 'signup' => 'users#new', :as => :signup
+  match 'logout' => 'sessions#destroy', :as => :logout
+  match 'login' => 'sessions#new', :as => :login
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

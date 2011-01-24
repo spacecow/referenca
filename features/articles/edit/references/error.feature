@@ -5,6 +5,7 @@ And an article "reference" exists with year: "2000", title: "Sexy"
 And an author exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with article: article "reference", author: that author
 And a reference exists with article: article "main", referenced_article: article "reference"
+And I am logged in as "admin"
 
 Scenario: If a reference has an error, an extra should not be creaded by update
 When I go to article: "main"'s edit page

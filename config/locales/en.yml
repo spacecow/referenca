@@ -2,11 +2,15 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  a_new_user: "A new user"
   del: "Del"
   delete: "Delete"
   edit: "Edit"
   print: "Print"
+  private: "Private"
   show: "Show"
+  sign_in: "Sign in"
+  sign_up: "Sign up"
 
   article: "Article"
   author: "Author"

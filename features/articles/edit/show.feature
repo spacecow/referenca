@@ -5,6 +5,7 @@ Given an article exists
 Scenario Outline: Authors should be sorted in alphabetical order
 Given an author exists with first_name: "Shop", last_name: "Lifter"
 And an author exists with first_name: "Ben", last_name: "Dover"
+And I am logged in as "admin"
 When I go to that article's edit page
 And <command1>
 And <command2>

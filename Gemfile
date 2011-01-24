@@ -12,6 +12,8 @@ gem 'carrierwave'
 gem 'compass', ">= 0.10.6"
 gem 'will_paginate', '3.0.pre2'
 gem 'jquery-rails'
+gem "bcrypt-ruby", :require => "bcrypt"
+gem "cancan"
 #:git => 'git://github.com/chriseppstein/compass.git'
 
 group :development do

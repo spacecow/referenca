@@ -1,5 +1,7 @@
 Feature:
 Background:
+Given a user exist
+And I am logged in as that user
 When I go to the new article page
 And I press "Create Author"
 

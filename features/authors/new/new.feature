@@ -20,6 +20,7 @@ And I press "Create Author"
 Then I should see "New Author" as title
 
 Scenario Outline: Neither first name nor last name can be blank
+Given I am logged in as "admin"
 When I go to the new article page
 And I fill in "<lbl>" with ""
 And I press "Create Author"

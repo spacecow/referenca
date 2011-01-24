@@ -1,6 +1,7 @@
 Feature:
 Background:
 Given an author: "dover" exists with first_name: "Ben", last_name: "Dover"
+And I am logged in as "admin"
 
 @pdf
 Scenario Outline: The article should create a pdf file only if a pdf file is attached

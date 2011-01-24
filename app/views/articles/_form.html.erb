@@ -33,6 +33,8 @@
   <%= f.hidden_field :pdf_cache %>
   <%= f.input :paper, :label => t(:print) %>
   <div class="clear"></div>
+  <%= f.input :private, :label => t(:private) %>
+  <div class="clear"></div>
   <%= f.semantic_fields_for :references do |ref| %>
     <%= ref.input :referenced_article_id, :label => "Reference",
   :as => :select, :collection => @articles %>

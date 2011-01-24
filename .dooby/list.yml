@@ -5,3 +5,11 @@ a86821: !ruby/object:Dooby::Task
   todo: make sure not onke the pdf filename is correct but also that a file with that name is saved correctly :done
 c2c828: !ruby/object:Dooby::Task 
   todo: View Authors and View Articles should be displayed on the top
+"040550": !ruby/object:Dooby::Task 
+  todo: "styled #flash"
+"962769": !ruby/object:Dooby::Task 
+  todo: ordered keywords in alphabetical order on their index page
+d4348f: !ruby/object:Dooby::Task 
+  todo: default focus on first existing field
+2ff61d: !ruby/object:Dooby::Task 
+  todo: relation checking when deleting

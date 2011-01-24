@@ -1,9 +1,13 @@
 class ArticlesController < ApplicationController
   include InitArticleForm
+
+  load_and_authorize_resource
   
   def index
     @articles = Article.search(params[:search],params[:sort]).all. #reference_order
-      sort_by_author_first_name_then_year.paginate(:per_page=>5,:page => params[:page])
+      sort_by_author_first_name_then_year.
+      public_or_privately_owned(current_user).
+      paginate(:per_page=>5,:page => params[:page])
     @sort = params[:sort]
   end
 
@@ -23,6 +27,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(params[:article])
     @article.author_cache = author_cache(params[:article][:authorships_attributes])
     if @article.save
+      @article.users << current_user
       flash[:notice] = "Successfully created article."
       redirect_to @article
     else

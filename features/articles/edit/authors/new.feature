@@ -2,6 +2,7 @@ Feature:
 
 Scenario: Create a user on the fly
 Given an article exists
+And I am logged in as "admin"
 When I go to that article's edit page
 And I fill in "First name" with "Peter"
 And I fill in "Middle names" with "T. Oscar"

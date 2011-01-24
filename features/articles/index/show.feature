@@ -8,8 +8,8 @@ And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with author: author "dover", article: article "1"
 And an authorship exists with author: author "lifter", article: article "2"
 When I go to the articles page
-Then the table's first row should contain "Dover"
-And the table's second row should contain "Lifter"
+Then I should see "Dover" within the first table row
+And I should see "Lifter" within the second table row
 
 Scenario: Articles should be displayed in order after author, then YEAR
 Given an article "1" exists with year: "2007"
@@ -18,8 +18,8 @@ And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with author: author "dover", article: article "1"
 And an authorship exists with author: author "dover", article: article "2"
 When I go to the articles page
-Then the table's first row should contain "2010"
-And the table's second row should contain "2007"
+Then I should see "2010" within the first table row
+And I should see "2007" within the second table row
 
 Scenario Outline: Author links on the articles index page
 Given an article exists
@@ -34,3 +34,47 @@ Examples:
 | link        | author |
 | Ben Dover   | dover  |
 | Shop Lifter | lifter |
+
+Scenario: A guest only have read access to articles
+Given an article exists
+When I go to the articles page
+Then I should see a link "Show" within the first table row
+But I should see no link "Edit" within the first table row
+And I should see no link "Del" within the first table row
+And I should see no link "New Article" at the bottom of the page
+
+Scenario Outline: Links within an article for a user
+Given an article exists
+And a user exists
+And I am logged in as that user
+When I go to the articles page
+And I follow "<link>" within the first table row
+Then I should be on <redirect> page
+And <no> articles should exist
+Examples:
+| link | redirect            | no |
+| Show | that article's      |  1 |
+| Edit | that article's edit |  1 |
+| Del  | the articles        |  0 |
+
+Scenario: Links at the bottom of the page for user
+Given an article exists
+And a user exists
+And I am logged in as that user
+When I go to the articles page
+And I follow "New Article" at the bottom of the page
+Then I should be on the new article page
+
+@private
+Scenario Outline: Articles that are private cannot be seen by other ppl
+Given an article exists with private: true, title: "A secret title"
+And a user "secret" exists
+And a user "normal" exists
+And user "secret" is one of that article's users
+And I am logged in as user "<username>"
+When I go to the articles page
+Then I should <secret_view> "A secret title" within the first table row
+Examples:
+| username | secret_view |
+| secret   | see         |
+| normal   | not see     |

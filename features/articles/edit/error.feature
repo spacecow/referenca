@@ -1,6 +1,7 @@
 Feature:
 Background:
 Given an article exists
+And I am logged in as "admin"
 
 Scenario: A user cannot be chosen two times
 And an author: "dover" exists with first_name: "Ben", last_name: "Dover"

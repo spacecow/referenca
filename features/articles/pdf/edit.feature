@@ -3,6 +3,7 @@ Background:
 Given an article exists with title: "A cool title", year: "2001"
 And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with author: author "dover", article: that article
+And I am logged in as "admin"
 
 @no_pdf
 Scenario Outline: The article should create a pdf file only if a pdf file is attached

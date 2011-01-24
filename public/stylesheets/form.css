@@ -83,7 +83,20 @@ form.formtastic li#article_paper_input label input {
   position: absolute;
   margin-left: 38px;
 }
-/* line 61, ../../app/stylesheets/form.sass */
+/* line 62, ../../app/stylesheets/form.sass */
+form.formtastic li#article_private_input label {
+  float: left;
+  text-align: right;
+  width: 150px;
+  margin-right: 10px;
+}
+/* line 64, ../../app/stylesheets/form.sass */
+form.formtastic li#article_private_input label input {
+  float: left;
+  position: absolute;
+  margin-left: 53px;
+}
+/* line 68, ../../app/stylesheets/form.sass */
 form.formtastic input.submit {
   margin: 5px 0 0 160px;
 }

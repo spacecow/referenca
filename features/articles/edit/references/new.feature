@@ -4,6 +4,7 @@ Given an article "main" exists with year: "2001"
 And an article "reference" exists with title: "Reference 1"
 And an author "dover" exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with article: article "reference", author: author "dover"
+And I am logged in as "admin"
 
 Scenario: Reference an article
 When I go to article: "main"'s edit page

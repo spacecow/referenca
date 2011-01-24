@@ -1,6 +1,7 @@
 Feature:
 Background:
 Given an article "main" exists with title: "Main article"
+And I am logged in as "admin"
 
 Scenario Outline: An article cannot reference itself
 When I go to article: "main"'s edit page

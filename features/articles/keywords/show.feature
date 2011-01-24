@@ -2,6 +2,7 @@ Feature:
 Background:
 Given an article exists
 And a keyword "ann" exists with name: "ANN"
+And I am logged in as "admin"
 
 Scenario Outline: Keywords should be loaded after rendering error page
 When I go to <path> page
