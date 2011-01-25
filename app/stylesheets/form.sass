@@ -53,17 +53,19 @@ form.formtastic
       margin-left: $label_total_width
   li#article_paper_input
     label
-      +label-attrib
+      float: left
+      text-align: right
+      width: $label_width+27px
       input
-        float: left
-        position: absolute
-        margin-left: 38px
+        margin-left: $label_right_margin
+        float: right
   li#article_private_input
     label
-      +label-attrib
-      input
-        float: left
-        position: absolute
-        margin-left: 53px
+      float: left
+      text-align: right
+      width: $label_width+27px
+      input      
+        margin-left: $label_right_margin
+        float: right
   input.submit
     margin: 5px 0 0 $label_total_width

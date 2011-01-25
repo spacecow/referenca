@@ -3,7 +3,7 @@
 <div class="form">
 <% unless @articles.empty? %>
 <div id="articles">
-  <strong>Articles:</strong>
+  <strong><%= pl(:article) %>:</strong>
   <ol>
   <% @articles.each do |article| %>
     <li><div><%= render "articles/short_reference", :article => article, :ex => @author %>

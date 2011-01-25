@@ -1,6 +1,6 @@
 <li>
-  <%= f.label :author_id, "Author" %>
+  <%= f.label :author_id, t(:author) %>
   <%= f.select :author_id, @authors, :include_blank => true %>
   <%= f.check_box :_destroy %>
-  <%= f.label :_destroy, "Remove Author" %>
+  <%= f.label :_destroy, remove(:author) %>
 </li>

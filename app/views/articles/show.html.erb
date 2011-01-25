@@ -1,6 +1,6 @@
 <div class="form"><% title @article.title %>
 <p id="author">
-  <strong>Author:</strong>
+  <strong><%= t(:author) %>:</strong>
   <% authors = "" %>
   <% @article.authorships.map(&:author).each do |author| %>
     <% authors += link_to(author.straight_name, author)+", " %>
@@ -8,31 +8,31 @@
   <%= raw authors.sub(/, $/,'') %>
 </p>
 <p>
-  <strong>Summary:</strong>
+  <strong><%= t('formtastic.labels.summarize') %>:</strong>
   <%= @article.summarize %>
 </p>
 <p id="keywords">
-  <strong>Keywords:</strong>
+  <strong><%= pl(:keyword) %>:</strong>
   <%= raw @article.keywords.map{|e| link_to e.name, e}.join(', ') %>
 </p>
 <p>
-  <strong>Journal:</strong>
+  <strong><%= t('formtastic.labels.journal') %>:</strong>
   <%= @article.journal %>
 </p>
 <p>
-  <strong>Volume:</strong>
+  <strong><%= t('formtastic.labels.volume') %>:</strong>
   <%= @article.volume %>
 </p>
 <p>
-  <strong>No:</strong>
+  <strong><%= t('formtastic.labels.number') %>:</strong>
   <%= @article.no %>
 </p>
 <p>
-  <strong>Pages:</strong>
+  <strong><%= t(:pages) %>:</strong>
   <%= @article.start_page %>-<%= @article.end_page %>
 </p>
 <p>
-  <strong>PDF:</strong>
+  <strong><%= t('formtastic.labels.pdf') %>:</strong>
   <% if @article.no_pdf? %>
     No
   <% else %>
@@ -40,14 +40,14 @@
   <% end %>
 </p>
 <p>
-  <strong>Print:</strong>
+  <strong><%= t(:print) %>:</strong>
   <%= @article.paper ? "Yes" : "No" %>
 </p>
 
 <% unless @references.empty? %>
 <br />
 <div id="references">
-  <strong>References:</strong>
+  <strong><%= pl(:references) %>:</strong>
   <ul>
   <% @references.each do |reference| %>
     <li>
@@ -65,7 +65,7 @@
 <% unless @references_from.empty? %>
 <br />
 <div id="referenced_from">
-  <strong>Referenced from:</strong>
+  <strong><%= t(:referenced_from) %>:</strong>
   <ul>
   <% @references_from.each do |reference| %>
     <%= render "long_reference", :article =>
@@ -76,7 +76,7 @@
 <% end %>
 
 <div id="bottom_links">
-  <%= link_to "Edit", edit_article_path(@article) %> |
-  <%= link_to "Destroy", @article, :confirm => 'Are you sure?', :method => :delete %>
+  <%= link_to t(:edit), edit_article_path(@article) %> |
+  <%= link_to t(:delete), @article, :confirm => 'Are you sure?', :method => :delete %>
 </div>
 </div>

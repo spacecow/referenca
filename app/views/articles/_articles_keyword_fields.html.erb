@@ -1,6 +1,6 @@
 <li>
-  <%= f.label :keyword_id, "Keyword" %>
+  <%= f.label :keyword_id, t(:keyword) %>
   <%= f.select :keyword_id, @keywords, :include_blank => true %>
   <%= f.check_box :_destroy %>
-  <%= f.label :_destroy, "Remove Keyword" %>
+  <%= f.label :_destroy, remove(:keyword) %>
 </li>

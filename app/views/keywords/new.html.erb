@@ -1,7 +1,3 @@
 <% title "New Keyword" %>
 
-<% content_for :link do %>
-<p><%= link_to "Back to List", authors_path %></p>
-<% end  %>
-
-<%= render 'form', :article_page => false %>
+<%= render 'form', :article_page => false, :button_label => create(:keyword) %>

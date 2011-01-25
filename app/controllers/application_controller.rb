@@ -6,19 +6,29 @@ class ApplicationController < ActionController::Base
     redirect_to login_url
   end
 
-  
-  helper_method :current_user
+  before_filter :set_language
+  helper_method :current_user, :english?
   
   def created(s); success(:created,s) end
   def deleted(s); success(:deleted,s) end
   def d(s); t(s).downcase end
+  def english?; session[:language] == 'en' end
   def success(action,mdl); t("success.#{action}",:obj=>d(mdl)) end
   def updated(s); success(:updated,s) end
 
+  def toggle_language
+    session[:language] = (session[:language] == 'en' ? 'ja' : 'en')
+    redirect_to :back
+  end
+  
   private
 
     def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+
+    def set_language
+      I18n.locale = session[:language]
     end
 end
 

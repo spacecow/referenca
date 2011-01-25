@@ -6,6 +6,7 @@ en:
   del: "Del"
   delete: "Delete"
   edit: "Edit"
+  pages: "Pages"
   print: "Print"
   private: "Private"
   show: "Show"
@@ -15,6 +16,7 @@ en:
   article: "Article"
   author: "Author"
   keyword: "Keyword"
+  reference: "Reference"
 
   label:
     add: "Add %{obj}"
@@ -22,8 +24,10 @@ en:
     edit: "Edit %{obj}"
     list: "List %{obj}"
     new: "New %{obj}"
+    remove: "Remove %{obj}"
     show: "Show %{obj}"
     update: "Update %{obj}"
+    view: "View %{obj}"
 
   message:
     sure?: "Are you sure?"
@@ -32,3 +36,11 @@ en:
     created: "Successfully created %{obj}."
     deleted: "Successfully deleted %{obj}."
     updated: "Successfully updated %{obj}."
+
+  formtastic:
+    labels:
+      journal: "Journal"
+      number: "Number"
+      pdf: "PDF"
+      summarize: "Summary"
+      volume: "Volume"

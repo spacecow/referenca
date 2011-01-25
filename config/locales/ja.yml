@@ -1,0 +1,45 @@
+ja:
+  del: "削除"
+  delete: "削除"
+  edit: "編集"
+  show: "情報"
+
+  article: "論文"
+  author: "著者"
+  keyword: "キーワード"
+  pages: "ページ"
+  print: "プリント"
+  private: "プライベート"
+  reference: "参考"
+
+  label:
+    add: "%{obj}追加"
+    create: "%{obj}創造"
+    edit: "%{obj}編集"
+    new: "新しい%{obj}"
+    remove: "%{obj}を外す"
+    update: "%{obj}更新"
+    view: "すべての%{obj}"
+
+  message:
+    sure?: "本当に削除してよろしいですか"
+
+  formtastic:
+    labels:
+      author: "著者"
+      end_page: "最終ページ"
+      first_name: "名"
+      journal: "ジャーナル"
+      keyword_name: "キーワード名"
+      last_name: "姓"
+      note: "メモ"
+      middle_names: "ミドルネーム"
+      number: "号"
+      pdf: "PDF"
+      start_page: "開始ページ"
+      summarize: "要約"
+      title: "タイトル"
+      volume: "巻"
+      year: "出版年"
+    actions:
+      update: "%{}更新"

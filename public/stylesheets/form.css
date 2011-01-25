@@ -74,29 +74,25 @@ form.formtastic li.error p.inline-errors {
 form.formtastic li#article_paper_input label {
   float: left;
   text-align: right;
-  width: 150px;
-  margin-right: 10px;
+  width: 177px;
 }
-/* line 57, ../../app/stylesheets/form.sass */
+/* line 59, ../../app/stylesheets/form.sass */
 form.formtastic li#article_paper_input label input {
-  float: left;
-  position: absolute;
-  margin-left: 38px;
+  margin-left: 10px;
+  float: right;
 }
-/* line 62, ../../app/stylesheets/form.sass */
+/* line 63, ../../app/stylesheets/form.sass */
 form.formtastic li#article_private_input label {
   float: left;
   text-align: right;
-  width: 150px;
-  margin-right: 10px;
+  width: 177px;
 }
-/* line 64, ../../app/stylesheets/form.sass */
+/* line 67, ../../app/stylesheets/form.sass */
 form.formtastic li#article_private_input label input {
-  float: left;
-  position: absolute;
-  margin-left: 53px;
+  margin-left: 10px;
+  float: right;
 }
-/* line 68, ../../app/stylesheets/form.sass */
+/* line 70, ../../app/stylesheets/form.sass */
 form.formtastic input.submit {
   margin: 5px 0 0 160px;
 }

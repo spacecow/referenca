@@ -18,9 +18,10 @@
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
       <div id="site_nav">
-        <%= link_to "View Articles", articles_path %>
-        <%= link_to "View Authors", authors_path %>
-        <%= link_to "View Keywords", keywords_path %>
+        <%= link_to view(:article), articles_path %>
+        | <%= link_to view(:author), authors_path %>
+        | <%= link_to view(:keyword), keywords_path %>
+        | <%= link_to english? ? "日本ご" : "English", toggle_language_path %>
       </div>
       <div id="user_nav">
         <% if current_user %>

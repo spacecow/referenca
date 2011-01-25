@@ -1,10 +1,10 @@
-<% title "Edit Author" %>
+<% title edit(:author) %>
 
 <% content_for :link do %>
 <div id="bottom_links">
-  <%= link_to "Show", @author %>
-  <%= link_to "Delete", @author, :confirm => sure?, :method => :delete %>
+  <%= link_to t(:show), @author %>
+  <%= link_to t(:delete), @author, :confirm => sure?, :method => :delete %>
 </div>
 <% end %>
 
-<%= render 'form' %>
+<%= render 'form', :article_page => false, :button_label => update(:author) %>

@@ -1,9 +1,8 @@
 <div class="form">
 <%= semantic_form_for @keyword do |f| %>
-  <%= f.input :name %>
-  <%= f.submit :class => :submit %>
-  <%= hidden_field_tag :article_id, @article.new_record? ? "nil" :
-  @article.id if article_page %>
+  <%= f.input :name, :label => :keyword_name %>
+  <%= hidden_field_tag :article_id, @article.new_record? ? "nil" : @article.id if article_page %>
+  <%= f.submit button_label, :class => :submit %>
   <%= yield :link %>
 <% end %>
 </div>

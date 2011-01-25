@@ -1,7 +1,3 @@
 <% title "New Author" %>
 
-<% content_for :link do %>
-<p><%= link_to "Back to List", authors_path %></p>
-<% end  %>
-
-<%= render 'form' %>
+<%= render 'form', :article_page => false, :button_label => create(:author) %>
