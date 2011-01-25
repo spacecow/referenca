@@ -1,9 +1,12 @@
 class KeywordsController < ApplicationController
   include InitArticleForm
 
+  load_and_authorize_resource
+  
   def show
     @keyword = Keyword.includes(:articles).find(params[:id])
-    @articles = @keyword.articles.sort_by_author_first_name_then_year
+    @articles = @keyword.articles.public_or_privately_owned(current_user).
+      sort_by_author_first_name_then_year
   end
   
   def index

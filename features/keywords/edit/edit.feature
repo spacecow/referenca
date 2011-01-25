@@ -1,6 +1,7 @@
 Feature:
 Background:
 Given a keyword exists with name: "ANN"
+And I am logged in as "admin"
 
 Scenario: Edit a keyword
 When I go to that keyword's edit page

@@ -15,3 +15,11 @@ d4348f: !ruby/object:Dooby::Task
   todo: relation checking when deleting
 b2b3fb: !ruby/object:Dooby::Task 
   todo: only user with ownership can make the article private
+efcf43: !ruby/object:Dooby::Task 
+  todo: cannot go to an article's how page if it is private and you dont have the ownership
+77ecf0: !ruby/object:Dooby::Task 
+  todo: no of article listing consistent
+5da6fe: !ruby/object:Dooby::Task 
+  todo: internationalize
+5a0af1: !ruby/object:Dooby::Task 
+  todo: rspec

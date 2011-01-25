@@ -41,11 +41,19 @@ And I follow "Edit" within the first listing
 And I press "Update Article"
 Then I should be on author "lifter"'s page
 
-Scenario: A guest only have read access to authors
+Scenario: A guest only have read access to articles
 Given author "lifter" is one of that article's authors
 When I go to author "lifter"'s page
 Then I should see a link "Show" within the first listing
 But I should see no link "Edit" within the first listing
+And I should see no link "Del" within the first listing
+
+Scenario: A user cannot delete an article on the show author page
+Given author "lifter" is one of that article's authors
+And I am logged in as "admin"
+When I go to author "lifter"'s page
+Then I should see a link "Show" within the first listing
+But I should see no link "Del" within the first listing
 
 Scenario Outline: Links within an article for a user
 Given author "lifter" is one of that article's authors

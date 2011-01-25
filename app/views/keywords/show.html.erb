@@ -3,7 +3,7 @@
 <div class="form">
 <% unless @articles.empty? %>
 <div id="articles">
-  <strong>Articles:</strong>
+  <strong><%= pl(:article) %>:</strong>
   <ol>
   <% @articles.each do |article| %>
   <li>
@@ -17,7 +17,9 @@
 <% end %>
 
 <div id="bottom_links">
-  <%= link_to "Edit", edit_keyword_path(@keyword) %> |
-  <%= link_to "Destroy", @keyword, :confirm => sure?, :method => :delete %>
+  <%= link_to t(:edit), edit_keyword_path(@keyword) if can? :edit, @keyword %> 
+  <% if can? :destroy, @keyword %>
+    | <%= link_to t(:delete), @keyword, :confirm => sure?, :method => :delete %>
+  <% end %>
 </div>
 </div>

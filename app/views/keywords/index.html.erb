@@ -5,7 +5,7 @@
   <%= render @keywords %>
 </table>
 
-<div id="bottom_links"><%= link_to new(:keyword), new_keyword_path %></div>
+<div id="bottom_links"><%= link_to new(:keyword), new_keyword_path if can? :new, Keyword %></div>
 
 </div>
 

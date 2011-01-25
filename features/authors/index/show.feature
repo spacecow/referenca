@@ -2,7 +2,7 @@ Feature:
 Background:
 Given an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 
-Scenario: Author should be displayed in alhabetical order
+Scenario: Authors should be displayed in alhabetical order
 Given an author: "lifter" exists with first_name: "Shop", last_name: "Lifter"
 When I go to the authors page
 Then I should see "Dover" within the first table row

@@ -8,7 +8,8 @@ When I go to the keywords page
 Then I should see "ANN" within the first table row
 And I should see "agent programming" within the second table row
 
-Scenario Outline: Links within a keyword
+Scenario Outline: Links within a keyword for a user
+Given I am logged in as "admin"
 When I go to the keywords page
 And I follow "<link>" within the first table row
 Then I should be on the <page> page
@@ -19,7 +20,15 @@ Examples:
 | Edit          | keyword's edit |  1 |
 | Del           | keywords       |  0 |
 
-Scenario: Links on the bottom of the page
+Scenario: Links for a guest
+When I go to the keywords page
+Then I should see a link "Show" within the first table row
+But I should see no link "Edit" within the first table row
+And I should see no link "Del" within the first table row
+And I should see no link "New Keyword" at the bottom of the page
+
+Scenario: Links on the bottom of the page for a user
+Given I am logged in as "admin"
 When I go to the keywords page
 And I follow "New Keyword" at the bottom of the page
 Then I should be on the new keyword page

@@ -1,4 +1,6 @@
 Feature:
+Background:
+Given I am logged in as "admin"
 
 Scenario: If error, rendering of new keyword page
 When I go to the new keyword page

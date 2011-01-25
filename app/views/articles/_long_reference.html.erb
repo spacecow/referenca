@@ -10,6 +10,5 @@ pp. <%= "#{attribute(article.start_page,
 <%= "(#{article.year})" %>
 <%= link_to(image_tag("pdf.jpeg"), article.pdf.url) unless article.no_pdf? %>
 <%= link_to t(:show), article %>
-<%= link_to t(:edit), edit_article_path(article, :back => request.fullpath
-) %>
+<%= link_to t(:edit), edit_article_path(article, :back => request.fullpath ) if can? :edit, article %>
 
