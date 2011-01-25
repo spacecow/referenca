@@ -3,10 +3,10 @@ Background:
 Given an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 
 Scenario: Authors should be displayed in alhabetical order
-Given an author: "lifter" exists with first_name: "Shop", last_name: "Lifter"
+Given an author: "lifter" exists with first_name: "Shop", last_name: "Bifter"
 When I go to the authors page
-Then I should see "Dover" within the first table row
-And I should see "Lifter" within the second table row
+Then I should see "Bifter" within the first table row
+And I should see "Dover" within the second table row
 
 Scenario Outline: Links within an author for a user
 Given I am logged in as "admin"

@@ -10,7 +10,7 @@ class KeywordsController < ApplicationController
   end
   
   def index
-    @keywords = Keyword.order('name desc')
+    @keywords = Keyword.order('name asc')
   end
 
   def new

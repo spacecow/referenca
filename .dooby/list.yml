@@ -19,7 +19,5 @@ efcf43: !ruby/object:Dooby::Task
   todo: cannot go to an article's how page if it is private and you dont have the ownership
 77ecf0: !ruby/object:Dooby::Task 
   todo: no of article listing consistent
-5da6fe: !ruby/object:Dooby::Task 
-  todo: internationalize
-5a0af1: !ruby/object:Dooby::Task 
-  todo: rspec
+09618a: !ruby/object:Dooby::Task 
+  todo: internationalize rspec
