@@ -11,6 +11,7 @@ set :application, "referenca"
 set :deploy_to, "/var/www/apps/#{application}"
 set :user, "deploy"
 set :admin_runner, "deploy"
+set :port, 2335
   
 role :app, "sao.firsec.riec.tohoku.ac.jp"
 role :web, "sao.firsec.riec.tohoku.ac.jp"
