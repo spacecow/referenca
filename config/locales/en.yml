@@ -46,8 +46,8 @@ en:
 
   formtastic:
     labels:
+      issue: "Issue"
       journal: "Journal"
-      number: "No"
       password: "Password"
       pdf: "PDF"
       summarize: "Summary"

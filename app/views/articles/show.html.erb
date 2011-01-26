@@ -24,7 +24,7 @@
   <%= @article.volume %>
 </p>
 <p>
-  <strong><%= t('formtastic.labels.number') %>:</strong>
+  <strong><%= t('formtastic.labels.issue') %>:</strong>
   <%= @article.no %>
 </p>
 <p>
@@ -47,15 +47,13 @@
 <% unless @references.empty? %>
 <br />
 <div id="references">
-  <strong><%= pl(:references) %>:</strong>
+  <strong><%= pl(:reference) %>:</strong>
   <ul>
   <% @references.each do |reference| %>
     <li>
       <strong><%= reference.no %>.</strong>
       <i><%= "\"#{reference.note}\"" %></i> - 
-      <%= render "long_reference", :article =>
-      reference.referenced_article, :no => reference.no, :note =>
-      reference.note %>
+      <%= render "long_reference", :article => reference.referenced_article %>
     </li>
   <% end  %>
   </ul>
@@ -68,8 +66,11 @@
   <strong><%= t(:referenced_from) %>:</strong>
   <ul>
   <% @references_from.each do |reference| %>
-    <%= render "long_reference", :article =>
-    reference.article, :no => nil, :note => reference.note %>
+  <li>
+    <strong><%= reference.no %>.</strong>
+    <i><%= "\"#{reference.note}\"" %></i> - 
+    <%= render "long_reference", :article => reference.article %>
+  </li>
   <% end  %>
   </ul>
 </div>

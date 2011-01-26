@@ -16,7 +16,7 @@ And I should see "Summary: Not very interesting."
 And I should see "Keywords: ANN, agent programming"
 And I should see "Journal: IEICE"
 And I should see "Volume: 5"
-And I should see "No: 2"
+And I should see "Issue: 2"
 And I should see "Pages: 100-120"
 
 Scenario Outline: Links from the artice show page
