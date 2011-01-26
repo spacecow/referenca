@@ -22,6 +22,7 @@ en:
   author: "Author"
   keyword: "Keyword"
   reference: "Reference"
+  referenced_from: "Referenced from"
 
   label:
     add: "Add %{obj}"

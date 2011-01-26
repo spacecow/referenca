@@ -14,6 +14,7 @@ ja:
   print: "プリント"
   private: "プライベート"
   reference: "参考"
+  referenced_from: "参考される"
   sign_in: "ログイン"
   sign_up: "登録"
   search: "検索"
