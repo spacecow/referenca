@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
     @articles = Article.search(params[:search],params[:sort]).all. #reference_order
       sort_by_author_first_name_then_year.
       public_or_privately_owned(current_user).
-      paginate(:per_page=>5,:page => params[:page])
+      paginate(:per_page=>25,:page => params[:page])
     @sort = params[:sort]
   end
 
