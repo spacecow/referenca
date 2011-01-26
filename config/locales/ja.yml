@@ -7,10 +7,17 @@ ja:
   article: "論文"
   author: "著者"
   keyword: "キーワード"
+  log_in: "ログイン"
+  log_out: "ログアウト"
+  or: "か"
   pages: "ページ"
   print: "プリント"
   private: "プライベート"
   reference: "参考"
+  sign_in: "ログイン"
+  sign_up: "登録"
+  search: "検索"
+  username_or_email_address: "ユーザー名かメール"
 
   label:
     add: "%{obj}追加"
@@ -22,11 +29,14 @@ ja:
     view: "すべての%{obj}"
 
   message:
+    not_you?: "違います？"
     sure?: "本当に削除してよろしいですか"
+    welcome: "ようこそ%{user}。"
 
   formtastic:
     labels:
       author: "著者"
+      email: "メール"
       end_page: "最終ページ"
       first_name: "名"
       journal: "ジャーナル"
@@ -35,10 +45,13 @@ ja:
       note: "メモ"
       middle_names: "ミドルネーム"
       number: "号"
+      password: "パスワード"
+      password_confirmation: "パスワード確認"
       pdf: "PDF"
       start_page: "開始ページ"
       summarize: "要約"
       title: "タイトル"
+      username: "ユーザー名"
       volume: "巻"
       year: "出版年"
     actions:

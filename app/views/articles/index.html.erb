@@ -4,8 +4,8 @@
 <%= form_tag articles_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
-    <%= select_tag :sort, options_for_select([['Title','title'],['Author',['first_name','middle_names','last_name']],['Year','year'],['Keyword','keywords.name']], @sort) %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= select_tag :sort, options_for_select([[t('formtastic.labels.title'),'title'],[t(:author),['first_name','middle_names','last_name']],[t('formtastic.labels.year'),'year'],[t(:keyword),'keywords.name']], @sort) %>
+    <%= submit_tag t(:search), :name => nil %>
   </p>
 <% end %>
 <br />

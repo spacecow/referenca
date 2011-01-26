@@ -1,3 +1,4 @@
+
 Feature:
 Background:
 Given an article exists with title: "Default title", summarize: "Not very interesting.", journal: "IEICE", volume: 5, no: 2, start_page: 100, end_page: 120

@@ -15,5 +15,5 @@ Then an article should exist
 And a file named: "Ben_Dover_(2001)_-_A_cool_title.pdf" <file> exist for that article
 Examples:
 | extra                                          | file       |
-| I attach the file "features/yeah.pdf" to "Pdf" | should     |
+| I attach the file "features/yeah.pdf" to "PDF" | should     |
 | I do nothing                                   | should not |

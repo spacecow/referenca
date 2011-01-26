@@ -7,6 +7,7 @@ $label_right_margin: 10px
 $label_total_width: $label_width + $label_right_margin
 $default_field_width: 550px
 $numeric_field_width: 100px
+$short_field_width: 194px
 
 div.clear
   clear: both
@@ -26,7 +27,7 @@ div.form
   width: $label_width
   margin-right: $label_right_margin
 
-form.formtastic
+form
   li
     a
       margin-left: $label_total_width
@@ -42,6 +43,8 @@ form.formtastic
   li.string
     input.number
       width: $numeric_field_width
+    input.short
+      width: $short_field_width
     input
       width: $default_field_width
   li.numeric
@@ -67,5 +70,7 @@ form.formtastic
       input      
         margin-left: $label_right_margin
         float: right
+
+form
   input.submit
     margin: 5px 0 0 $label_total_width
