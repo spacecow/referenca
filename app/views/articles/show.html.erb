@@ -31,12 +31,12 @@
   <strong><%= t(:pages) %>:</strong>
   <%= @article.start_page %>-<%= @article.end_page %>
 </p>
-<p>
+<p id="file">
   <strong><%= t('formtastic.labels.pdf') %>:</strong>
-  <% if @article.no_pdf? %>
+  <% if @article.no_file? %>
     No
   <% else %>
-  <%= link_to(image_tag("pdf.jpeg"), @article.pdf.url) %>
+  <%= link_to(fetch_image(@article.pdf.url), @article.pdf.url) %>
   <% end %>
 </p>
 <p>
@@ -53,7 +53,7 @@
     <li>
       <strong><%= reference.no %>.</strong>
       <i><%= "\"#{reference.note}\"" %></i> - 
-      <%= render "long_reference", :article => reference.referenced_article %>
+      <%= render "long_reference", :article => reference.referenced_article, :ex => nil %>
     </li>
   <% end  %>
   </ul>
@@ -69,7 +69,7 @@
   <li>
     <strong><%= reference.no %>.</strong>
     <i><%= "\"#{reference.note}\"" %></i> - 
-    <%= render "long_reference", :article => reference.article %>
+    <%= render "long_reference", :article => reference.article, :ex => nil %>
   </li>
   <% end  %>
   </ul>

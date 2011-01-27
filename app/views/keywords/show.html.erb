@@ -6,11 +6,7 @@
   <strong><%= pl(:article) %>:</strong>
   <ol>
   <% @articles.each do |article| %>
-  <li>
-    <div>
-      <%= render "articles/long_reference", :article => article, :no => nil, :note => "bajs" %>
-    </div>
-  </li>
+  <li><div><%= render "articles/long_reference", :article => article, :ex => nil %></div></li>
   <% end %>    
   </ol>
 </div>

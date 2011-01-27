@@ -23,9 +23,9 @@
   <%= f.input :no, :label => :issue, :input_html => {:class => :number} %>
   <%= f.input :start_page, :input_html => {:class => :number} %>
   <%= f.input :end_page, :input_html => {:class => :number} %>
-  <li>
+  <li id="file">
   <% if @article.pdf? %>
-    <%= image_tag "pdf.jpeg" %>
+    <%= fetch_image(@article.pdf.url) %>
     <%= @article.pdf_name %>
   <% end %>
   </li>

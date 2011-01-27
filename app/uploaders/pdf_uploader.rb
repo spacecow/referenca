@@ -36,7 +36,7 @@ class PdfUploader < CarrierWave::Uploader::Base
   #Add a white list of extensions which are allowed to be uploaded.
   #For images you might use something like this:
   def extension_white_list
-    %w(pdf)
+    %w(pdf chm)
   end
 
   # Override the filename of the uploaded files:
@@ -44,7 +44,8 @@ class PdfUploader < CarrierWave::Uploader::Base
     #"something.jpg" if original_filename
     unless model.pdf.url.nil?
       if !model.pdf.url.blank?
-        "#{model.author_cache}_-_#{model.title.gsub(/\s+/,'_')}"+".pdf"
+        ext = original_filename.split('.').last
+        "#{model.author_cache}_-_#{model.title.gsub(/\s+/,'_')}"+".#{ext}"
       end
     end
   end

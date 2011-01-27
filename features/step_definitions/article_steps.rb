@@ -27,3 +27,13 @@ Then /^a file named: "([^"]*)" should not exist for #{capture_model}$/ do |file,
     true.should be_true
   end
 end
+
+Given /^I have uploaded "([^"]*)" to #{capture_model}$/ do |file,mdl|
+  Given %(I go to #{mdl}'s edit page)
+  And %(I attach the file "#{file}" to "PDF")
+  And %(I press "Update Article")
+end
+
+Given /^I have uploaded a (\w+) file to #{capture_model}$/ do |ext,mdl|
+  Given %(I have uploaded "features/yeah.#{ext}" to #{mdl})
+end

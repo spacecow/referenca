@@ -1,5 +1,17 @@
 Feature:
 
+@file
+Scenario Outline: Show image file
+Given an article exist
+And I am logged in as "admin"
+And I have uploaded a <ext> file to that article
+When I go to the articles page
+Then I should see a <ext> image within the first table row
+Examples:
+| ext |
+| pdf |
+| chm |
+
 Scenario: Articles should be displayed in order after AUTHOR
 Given an article "2" exists
 And an article "1" exists

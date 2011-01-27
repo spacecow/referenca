@@ -3,12 +3,8 @@ becea8: !ruby/object:Dooby::Task
   todo: "be able to #delete #authors :done"
 a86821: !ruby/object:Dooby::Task 
   todo: make sure not onke the pdf filename is correct but also that a file with that name is saved correctly :done
-c2c828: !ruby/object:Dooby::Task 
-  todo: View Authors and View Articles should be displayed on the top
 "040550": !ruby/object:Dooby::Task 
   todo: "styled #flash"
-"962769": !ruby/object:Dooby::Task 
-  todo: ordered keywords in alphabetical order on their index page
 d4348f: !ruby/object:Dooby::Task 
   todo: default focus on first existing field
 2ff61d: !ruby/object:Dooby::Task 
@@ -19,7 +15,13 @@ efcf43: !ruby/object:Dooby::Task
   todo: cannot go to an article's how page if it is private and you dont have the ownership
 77ecf0: !ruby/object:Dooby::Task 
   todo: no of article listing consistent
-48ee14: !ruby/object:Dooby::Task 
-  todo: internationalize signup/signin+search
 9e96ca: !ruby/object:Dooby::Task 
   todo: test routing with rspec
+beee4e: !ruby/object:Dooby::Task 
+  todo: image in article listing for author and keyword index :done
+47c11f: !ruby/object:Dooby::Task 
+  todo: internationalize signup/signin+search :done
+d6d4e8: !ruby/object:Dooby::Task 
+  todo: ordered keywords in alphabetical order on their index page :done
+"889101": !ruby/object:Dooby::Task 
+  todo: View Authors and View Articles should be displayed on the top :done

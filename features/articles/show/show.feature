@@ -1,7 +1,7 @@
 
 Feature:
 Background:
-Given an article exists with title: "Default title", summarize: "Not very interesting.", journal: "IEICE", volume: 5, no: 2, start_page: 100, end_page: 120
+Given an article "main" exists with title: "Default title", summarize: "Not very interesting.", journal: "IEICE", volume: 5, no: 2, start_page: 100, end_page: 120
 And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 And the article is one of author "dover"'s articles
 And a keyword "ann" exists with name: "ANN"
@@ -18,6 +18,33 @@ And I should see "Journal: IEICE"
 And I should see "Volume: 5"
 And I should see "Issue: 2"
 And I should see "Pages: 100-120"
+
+@file
+Scenario Outline: Show image file
+Given I am logged in as "admin"
+And I have uploaded a <ext> file to that article
+When I go to that article's page
+Then I should see a <ext> image within the file subsection
+Examples:
+| ext |
+| pdf |
+| chm |
+
+@file @references
+Scenario Outline: Show image file in references
+Given I am logged in as "admin"
+And I have uploaded a <ext> file to that article
+And an article "reference" exists
+Given a reference exists with article: article "<first>", referenced_article: article "<second>"
+When I go to article "reference"'s page
+Then I should see a <ext> image within the first listing
+Examples:
+| ext | first     | second    |
+| pdf | main      | reference |
+| chm | main      | reference |
+| pdf | reference | main      |
+| chm | reference | main      |
+
 
 Scenario Outline: Links from the artice show page
 When I go to that article's page

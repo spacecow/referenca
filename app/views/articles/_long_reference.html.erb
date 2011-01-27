@@ -1,6 +1,12 @@
-<span id="authors"><% article.authors.each do |author| %>
-  <%= link_to(author.straight_name,author)+', ' %>
-  <% end %></span>
+<% authors = "" %>
+<% article.authors.each do |author| %>
+  <% if author == ex %>
+    <% authors += "<span class=\"exception\">"+author.straight_name+"</span>, " %>
+  <% else %>
+    <% authors += link_to( author.straight_name, author)+", " %>
+  <% end %>
+<% end %>
+<span id="authors"><%= raw authors.sub(/,/, " (#{article.year})") %></span></span>
 <i><%= article.title %></i>.
 <%= attribute(article.journal, "JOURNAL") %>,
 <%= "vol. #{article.volume}, " unless article.volume_empty? %>
@@ -8,7 +14,6 @@
 pp. <%= "#{attribute(article.start_page,
          'START-PAGE')}-#{attribute(article.end_page, 'END-PAGE')}," %>
 <%= "(#{article.year})" %>
-<%= link_to(image_tag("pdf.jpeg"), article.pdf.url) unless article.no_pdf? %>
+<%= link_to(fetch_image(article.pdf.url), article.pdf.url) unless article.no_file? %>
 <%= link_to t(:show), article %>
 <%= link_to t(:edit), edit_article_path(article, :back => request.fullpath ) if can? :edit, article %>
-

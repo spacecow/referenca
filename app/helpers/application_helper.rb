@@ -13,6 +13,10 @@ module ApplicationHelper
   def d(s); t(s).downcase end
   def dp(s); d(s).pluralize end
   def edit(s); t2(:edit,s) end
+  def fetch_image(path)
+    ext = path.split('.').last
+    image_tag("#{ext}.jpeg", :height => "20")
+  end
   def lbl(s); chain(:label,s) end
   def list_dp(s); tdp2(:list,s) end
   def list_p(s); tp2(:list,s) end

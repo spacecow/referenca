@@ -52,7 +52,7 @@ class Article < ActiveRecord::Base
   end
 
   def no_empty?; no.nil? || no.empty? end  
-  def no_pdf?; pdf.url.nil? end
+  def no_file?; pdf.url.nil? end
 
   def reference; "#{authors_for_short_reference} (#{year}) - #{title}".truncate(60) end
 

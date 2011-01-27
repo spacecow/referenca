@@ -6,13 +6,12 @@
   <strong><%= pl(:article) %>:</strong>
   <ol>
   <% @articles.each do |article| %>
-    <li><div><%= render "articles/short_reference", :article => article, :ex => @author %>
-    <span id="links">
-      <%= link_to(image_tag("pdf.jpeg"), article.pdf.url) unless article.no_pdf? %>
-      <%= link_to t(:show), article %>
-      <%= link_to t(:edit), edit_article_path(article, :back=>request.fullpath) if can? :edit, article %>
-    </span></div></li>
-  <% end %>    
+  <li>
+    <div>
+      <%= render "articles/long_reference", :article => article, :ex => @author %>
+    </div>
+  </li>
+  <% end %>
   </ol>
 </div>
 <% end %>
