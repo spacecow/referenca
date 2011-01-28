@@ -33,7 +33,7 @@
   <%= f.hidden_field :pdf_cache %>
   <%= f.input :paper, :label => t(:print) %>
   <div class="clear"></div>
-  <%= f.input :group, :collection => Group.all, :label => t(:private) %>
+  <%= f.input :group, :collection => Group.where('memberships.user_id' => current_user.id).includes(:memberships), :label => t(:private) %>
   <div class="clear"></div>
   <%= f.semantic_fields_for :references do |ref| %>
     <%= ref.input :referenced_article_id, :label => t(:reference),

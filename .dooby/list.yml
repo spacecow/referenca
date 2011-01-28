@@ -27,9 +27,11 @@ d6d4e8: !ruby/object:Dooby::Task
   todo: being able to delete references
 6d0bf9: !ruby/object:Dooby::Task 
   todo: private articles should not be visible in references :done
-1923e3: !ruby/object:Dooby::Task 
-  todo: cannot go to an article's show page if it is private and you dont have the ownership :doing
 "314204": !ruby/object:Dooby::Task 
   todo: a private title can exists double
 034bb4: !ruby/object:Dooby::Task 
   todo: username and groupname clash
+7f1295: !ruby/object:Dooby::Task 
+  todo: cannot go to an article's show page if it is private and you dont have the ownership :done
+9ec9cb: !ruby/object:Dooby::Task 
+  todo: you can only choose your own groups when making an article private :doing

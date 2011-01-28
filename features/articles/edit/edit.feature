@@ -5,15 +5,6 @@ And I am logged in as "admin"
 And an author: "ben" exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with article: that article, author: author "ben"
 
-@private
-Scenario: Making an article private to a group
-When I go to that article's edit page
-And I select "admin" from "Private"
-And I press "Update Article"
-Then a group should exist
-And 1 groups should exist
-And an article should exist with group: that group
-
 Scenario: When editing an article, the no of authors should not double
 When I go to that article's edit page
 And I press "Update Article"
