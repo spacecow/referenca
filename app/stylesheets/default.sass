@@ -1,5 +1,6 @@
 @import "compass/css3/border-radius"
 @import "compass/css3/gradient"
+@import "fancy-buttons"
 
 $global_bg: #4B7399
 $link_fg: $global_bg
@@ -16,6 +17,13 @@ $notice_light: #4CC417
   padding: 5px
   +border-radius($corner)
   +linear-gradient(color-stops($light, $dark))
+
+@mixin black-gradient
+  color: white
+  font-weight: bold
+  padding: 5px
+  +border-radius(10px)
+  +linear-gradient(color-stops(gray, black))
 
 div#site_nav
   float: left
@@ -92,3 +100,8 @@ table
       background: white
     td
       padding: 0px 2px
+
+input.submit
+  +fancy-button(#333, 15px)
+
+

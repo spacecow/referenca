@@ -1,4 +1,28 @@
-/* line 20, ../../app/stylesheets/default.sass */
+/* incase an inverted custom gradient isn't specified */
+/* line 177, ../../../../../.rvm/gems/ruby-1.9.2-head/gems/fancy-buttons-1.0.6/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class, input.submit {
+  font-family: "Lucida Grande", Lucida, Arial, sans-serif;
+  background: url('/images/button_bg.png?1296206894') repeat-x bottom left;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: solid;
+  font-weight: bold;
+}
+/* line 165, ../../../../../.rvm/gems/ruby-1.9.2-head/gems/fancy-buttons-1.0.6/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class::-moz-focus-inner, input.submit::-moz-focus-inner {
+  border: none;
+  padding: 0;
+}
+/* line 168, ../../../../../.rvm/gems/ruby-1.9.2-head/gems/fancy-buttons-1.0.6/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class:focus, input.submit:focus {
+  outline: none;
+}
+
+/* line 28, ../../app/stylesheets/default.sass */
 div#site_nav {
   float: left;
   border: 1px solid black;
@@ -14,12 +38,12 @@ div#site_nav {
   background-image: linear-gradient(top, #ffffff 0%, #cccccc 100%);
   margin-bottom: 5px;
 }
-/* line 27, ../../app/stylesheets/default.sass */
+/* line 35, ../../app/stylesheets/default.sass */
 div#site_nav a {
   font-size: 100%;
 }
 
-/* line 30, ../../app/stylesheets/default.sass */
+/* line 38, ../../app/stylesheets/default.sass */
 div#flash_notice {
   float: left;
   margin-bottom: 5px;
@@ -39,7 +63,7 @@ div#flash_notice {
   background-image: linear-gradient(top, #4cc417 0%, #339966 100%);
 }
 
-/* line 36, ../../app/stylesheets/default.sass */
+/* line 44, ../../app/stylesheets/default.sass */
 div#flash_alert {
   float: left;
   margin-bottom: 5px;
@@ -59,7 +83,7 @@ div#flash_alert {
   background-image: linear-gradient(top, #ff3333 0%, #993333 100%);
 }
 
-/* line 43, ../../app/stylesheets/default.sass */
+/* line 51, ../../app/stylesheets/default.sass */
 div#container {
   border: 2px solid black;
   -moz-border-radius: 10px;
@@ -73,12 +97,12 @@ div#container {
   background-image: linear-gradient(top, #ffffff 0%, #cccccc 100%);
 }
 
-/* line 48, ../../app/stylesheets/default.sass */
+/* line 56, ../../app/stylesheets/default.sass */
 div#user_nav {
   float: right;
 }
 
-/* line 51, ../../app/stylesheets/default.sass */
+/* line 59, ../../app/stylesheets/default.sass */
 a, span#links {
   text-decoration: none;
   color: #4b7399;
@@ -86,64 +110,128 @@ a, span#links {
   padding: 0 1px 0 1px;
   font-size: 85%;
 }
-/* line 57, ../../app/stylesheets/default.sass */
+/* line 65, ../../app/stylesheets/default.sass */
 a:hover, span#links:hover {
   color: white;
   text-shadow: 1px 1px 1px #4b7399;
   padding: 0 1px 0 1p;
 }
 
-/* line 62, ../../app/stylesheets/default.sass */
+/* line 70, ../../app/stylesheets/default.sass */
 span#authors a {
   font-size: 100%;
 }
-/* line 64, ../../app/stylesheets/default.sass */
+/* line 72, ../../app/stylesheets/default.sass */
 span#authors span.exception {
   color: #4b7399;
   text-shadow: 1px 1px 1px black;
 }
 
-/* line 68, ../../app/stylesheets/default.sass */
+/* line 76, ../../app/stylesheets/default.sass */
 p#author a, p#keywords a {
   font-size: 100%;
 }
 
-/* line 70, ../../app/stylesheets/default.sass */
+/* line 78, ../../app/stylesheets/default.sass */
 div#bottom_links {
   margin-top: 10px;
 }
 
-/* line 73, ../../app/stylesheets/default.sass */
+/* line 81, ../../app/stylesheets/default.sass */
 h1 {
   font-size: 200%;
   text-shadow: 1px 1px 1px black;
 }
 
-/* line 77, ../../app/stylesheets/default.sass */
+/* line 85, ../../app/stylesheets/default.sass */
 form.formtastic li, ul li {
   list-style-type: none;
 }
 
-/* line 79, ../../app/stylesheets/default.sass */
+/* line 87, ../../app/stylesheets/default.sass */
 ol {
   padding-left: 20px;
   font-weight: bold;
 }
-/* line 83, ../../app/stylesheets/default.sass */
+/* line 91, ../../app/stylesheets/default.sass */
 ol li div {
   font-weight: normal;
 }
 
-/* line 86, ../../app/stylesheets/default.sass */
+/* line 94, ../../app/stylesheets/default.sass */
 ul li:hover {
   background: white;
 }
 
-/* line 91, ../../app/stylesheets/default.sass */
+/* line 99, ../../app/stylesheets/default.sass */
 table tr:hover {
   background: white;
 }
-/* line 93, ../../app/stylesheets/default.sass */
+/* line 101, ../../app/stylesheets/default.sass */
 table tr td {
   padding: 0px 2px;
+}
+
+/* line 104, ../../app/stylesheets/default.sass */
+input.submit {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 1.2em;
+  padding: 0.3em 1em;
+  border-width: 1px;
+  background-color: #333333;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #878787), color-stop(10%, #595959), color-stop(50%, #2b2b2b), color-stop(50%, #242424), color-stop(100%, #3d3d3d));
+  background-image: -moz-linear-gradient(top, #878787 0%, #595959 10%, #2b2b2b 50%, #242424 50%, #3d3d3d 100%);
+  background-image: linear-gradient(top, #878787 0%, #595959 10%, #2b2b2b 50%, #242424 50%, #3d3d3d 100%);
+  border-color: #0d0d0d;
+  text-shadow: black 0px 1px 1px;
+  -moz-box-shadow: rgba(255, 255, 255, 0.2) 0 0 0.1em 1px inset;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 0 0.1em 1px inset;
+  -o-box-shadow: rgba(255, 255, 255, 0.2) 0 0 0.1em 1px inset;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 0 0.1em 1px inset;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  -o-background-clip: padding-box;
+  -ms-background-clip: padding-box;
+  -khtml-background-clip: padding-box;
+  background-clip: padding-box;
+}
+/* line 116, ../../../../../.rvm/gems/ruby-1.9.2-head/gems/fancy-buttons-1.0.6/lib/stylesheets/_fancy-buttons.sass */
+input.submit, input.submit:visited {
+  color: white;
+}
+/* line 31, ../../../../../.rvm/gems/ruby-1.9.2-head/gems/fancy-buttons-1.0.6/lib/stylesheets/_fancy-buttons.sass */
+input.submit:hover, input.submit:focus {
+  background-color: #2b2b2b;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #808080), color-stop(10%, #525252), color-stop(50%, #242424), color-stop(50%, #1c1c1c), color-stop(100%, #363636));
+  background-image: -moz-linear-gradient(top, #808080 0%, #525252 10%, #242424 50%, #1c1c1c 50%, #363636 100%);
+  background-image: linear-gradient(top, #808080 0%, #525252 10%, #242424 50%, #1c1c1c 50%, #363636 100%);
+  border-color: #050505;
+  text-shadow: black 0px 1px 1px;
+}
+/* line 116, ../../../../../.rvm/gems/ruby-1.9.2-head/gems/fancy-buttons-1.0.6/lib/stylesheets/_fancy-buttons.sass */
+input.submit:hover, input.submit:hover:visited, input.submit:focus, input.submit:focus:visited {
+  color: white;
+}
+/* line 36, ../../../../../.rvm/gems/ruby-1.9.2-head/gems/fancy-buttons-1.0.6/lib/stylesheets/_fancy-buttons.sass */
+input.submit:active {
+  background-color: #242424;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #242424), color-stop(30%, #292929), color-stop(50%, #1f1f1f), color-stop(50%, #171717), color-stop(100%, #383838));
+  background-image: -moz-linear-gradient(top, #242424 0%, #292929 30%, #1f1f1f 50%, #171717 50%, #383838 100%);
+  background-image: linear-gradient(top, #242424 0%, #292929 30%, #1f1f1f 50%, #171717 50%, #383838 100%);
+  border-color: black;
+  text-shadow: black 0px -1px -1px;
+  -moz-box-shadow: #0d0d0d 0 0.08em 0.1em 1px inset;
+  -webkit-box-shadow: #0d0d0d 0 0.08em 0.1em 1px inset;
+  -o-box-shadow: #0d0d0d 0 0.08em 0.1em 1px inset;
+  box-shadow: #0d0d0d 0 0.08em 0.1em 1px inset;
+}
+/* line 116, ../../../../../.rvm/gems/ruby-1.9.2-head/gems/fancy-buttons-1.0.6/lib/stylesheets/_fancy-buttons.sass */
+input.submit:active, input.submit:active:visited {
+  color: white;
 }
