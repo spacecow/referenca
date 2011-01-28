@@ -1,3 +1,8 @@
+// focus on the first text input field in the first field on the page
+$(function(){
+  $(":text:visible:enabled:first").focus();
+});
+
 function add_fields(link, association, content){
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_"+association,"g")

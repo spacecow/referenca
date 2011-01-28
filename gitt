@@ -1,4 +1,4 @@
 #!/bin/sh
+/home/johan/ruby/dooby/bin/dooby done
 t now | ./timetrap_parser
 t out
-/home/johan/ruby/dooby/bin/dooby done

@@ -5,8 +5,6 @@ a86821: !ruby/object:Dooby::Task
   todo: make sure not onke the pdf filename is correct but also that a file with that name is saved correctly :done
 "040550": !ruby/object:Dooby::Task 
   todo: "styled #flash"
-d4348f: !ruby/object:Dooby::Task 
-  todo: default focus on first existing field
 2ff61d: !ruby/object:Dooby::Task 
   todo: relation checking when deleting
 b2b3fb: !ruby/object:Dooby::Task 
@@ -33,5 +31,7 @@ d6d4e8: !ruby/object:Dooby::Task
   todo: username and groupname clash
 7f1295: !ruby/object:Dooby::Task 
   todo: cannot go to an article's show page if it is private and you dont have the ownership :done
-9ec9cb: !ruby/object:Dooby::Task 
-  todo: you can only choose your own groups when making an article private :doing
+2cfaa7: !ruby/object:Dooby::Task 
+  todo: you can only choose your own groups when making an article private :done
+f94960: !ruby/object:Dooby::Task 
+  todo: default focus on first existing field :done
