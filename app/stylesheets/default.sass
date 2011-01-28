@@ -5,6 +5,18 @@ $global_bg: #4B7399
 $link_fg: $global_bg
 $main_bg: #fff
 
+$alert_dark: #933
+$alert_light: #f33
+$notice_dark: #396
+$notice_light: #4CC417
+
+@mixin custom_gradient($light, $dark, $corner: 10px)
+  color: white
+  font-weight: bold
+  padding: 5px
+  +border-radius($corner)
+  +linear-gradient(color-stops($light, $dark))
+
 div#site_nav
   float: left
   border: 1px solid black
@@ -14,6 +26,19 @@ div#site_nav
   margin-bottom: 5px
   a
     font-size: 100%
+
+div#flash_notice
+  float: left
+  margin-bottom: 5px
+  padding: 3px 10px
+  border: 1px solid white
+  +custom_gradient($notice_light,$notice_dark)
+div#flash_alert
+  float: left
+  margin-bottom: 5px
+  padding: 3px 10px
+  border: 1px solid white
+  +custom_gradient($alert_light,$alert_dark)
 
 div#container
   border: 2px solid black
