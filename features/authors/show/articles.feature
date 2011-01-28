@@ -68,11 +68,10 @@ Examples:
 
 @private
 Scenario Outline: Articles that are private cannot be seen by other ppl
-Given an article exists with private: true, title: "A secret title", year: "2002"
-And author "lifter" is one of that article's authors
-And a user "secret" exists
+Given a user "secret" exists with group "secret"
 And a user "normal" exists
-And user "secret" is one of that article's users
+And an article exists with group: group "secret", title: "A secret title", year: "2002"
+And author "lifter" is one of that article's authors
 And I am logged in as user "<username>"
 When I go to author "lifter"'s page
 Then I should <secret_view> "A secret title" within the first listing

@@ -1,4 +1,3 @@
-
 Feature:
 Background:
 Given an article "main" exists with title: "Default title", summarize: "Not very interesting.", journal: "IEICE", volume: 5, no: 2, start_page: 100, end_page: 120
@@ -7,6 +6,30 @@ And the article is one of author "dover"'s articles
 And a keyword "ann" exists with name: "ANN"
 And a keyword "agent" exists with name: "agent programming"
 And the article is one of keyword "ann" & keyword "agent"'s articles
+
+@private
+Scenario Outline: Guests cannot see private articles
+Given a user "secret" exists with group "secret"
+And an article "private" exists with group: <group>
+When I go to article "private"'s page
+Then I should be on <redirect> page
+Examples:
+| group          | redirect       |
+| group "secret" | the login      |
+| nil            | that article's |
+
+@private
+Scenario Outline: Cannot see an article that's private and user has no ownership
+Given a user "normal" exists
+And a user "private" exists with group "private"
+And an article "private" exists with group: group "private"
+And I am logged in as user "<user>"
+When I go to article "private"'s page
+Then I should be on <redirect> page
+Examples:
+| user    | redirect       |
+| private | that article's |
+| normal  | the login      |
 
 Scenario: Basic layout of article show page
 When I go to that article's page

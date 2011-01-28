@@ -6,7 +6,8 @@ And an article "other" exists
 
 @private
 Scenario Outline: A reference to a private article should not be shown unless its the user's
-Given an article "private" exists with private: true
+Given a user "secret" exists with group "secret"
+Given an article "private" exists with group: group "secret"
 And article "<main1>" references article "<ref1>"
 And article "<main2>" references article "<ref2>"
 When I go to article "main"'s page

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation
 
-  has_many :ownerships, :dependent => :destroy
-  has_many :articles, :through => :ownerships
+  has_many :memberships, :dependent => :destroy
+  has_many :groups, :through => :memberships
   
   attr_accessor :password
   before_save :prepare_password

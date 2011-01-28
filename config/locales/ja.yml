@@ -29,6 +29,9 @@ ja:
     update: "%{obj}更新"
     view: "すべての%{obj}"
 
+  alert:
+    access_denied: "アクセスが拒否されました。"
+
   message:
     not_you?: "違います？"
     sure?: "本当に削除してよろしいですか"

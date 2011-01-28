@@ -11,8 +11,6 @@ d4348f: !ruby/object:Dooby::Task
   todo: relation checking when deleting
 b2b3fb: !ruby/object:Dooby::Task 
   todo: only user with ownership can make the article private
-efcf43: !ruby/object:Dooby::Task 
-  todo: cannot go to an article's how page if it is private and you dont have the ownership
 77ecf0: !ruby/object:Dooby::Task 
   todo: no of article listing consistent
 9e96ca: !ruby/object:Dooby::Task 
@@ -27,5 +25,11 @@ d6d4e8: !ruby/object:Dooby::Task
   todo: View Authors and View Articles should be displayed on the top :done
 367d70: !ruby/object:Dooby::Task 
   todo: being able to delete references
-91b19b: !ruby/object:Dooby::Task 
-  todo: private articles should not be visible in references
+6d0bf9: !ruby/object:Dooby::Task 
+  todo: private articles should not be visible in references :done
+1923e3: !ruby/object:Dooby::Task 
+  todo: cannot go to an article's show page if it is private and you dont have the ownership :doing
+"314204": !ruby/object:Dooby::Task 
+  todo: a private title can exists double
+034bb4: !ruby/object:Dooby::Task 
+  todo: username and groupname clash

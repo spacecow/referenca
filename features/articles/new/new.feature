@@ -24,12 +24,3 @@ And 1 articles should exist
 And 1 authors should exist
 And 1 authorships should exist with article: that article, author: that author
 And I should be on that article's page
-
-Scenario: An ownership should be created when creating an article
-When I go to the new article page
-And I fill in "Title" with "A secret title"
-And I fill in "Year" with "1984"
-And I press "Create Article"
-Then an article should exist
-Then an ownership should exist with article: that article, user: that user 
-And 1 ownerships should exist

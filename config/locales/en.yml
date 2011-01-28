@@ -35,6 +35,9 @@ en:
     update: "Update %{obj}"
     view: "View %{obj}"
 
+  alert:
+    access_denied: "Access denied."
+
   message:
     not_you?: "Not you?"
     sure?: "Are you sure?"

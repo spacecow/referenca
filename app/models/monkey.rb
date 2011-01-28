@@ -4,8 +4,8 @@ class Array
   end
 
   def public_or_privately_owned(user,assoc=nil)
-    return reject{|e| e.private && !e.users.include?(user)} if assoc==nil
-    reject{|e| e.send(assoc).private && !e.send(assoc).users.include?(user)}
+    return reject{|e| e.group && !e.group.users.include?(user)} if assoc==nil
+    reject{|e| e.send(assoc).group && !e.send(assoc).group.users.include?(user)}
   end
 
   def public_or_privately_owned_reference(user)

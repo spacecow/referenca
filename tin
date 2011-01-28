@@ -1,0 +1,5 @@
+#!/home/johan/.rvm/rubies/ruby-1.9.2-head/bin/ruby
+mess = %x[dooby l :doing].split(')').last[0..-17].strip
+unless mess =~ /Nothing found/
+  %x[t in "#{mess}"]
+end

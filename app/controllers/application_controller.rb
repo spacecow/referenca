@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = "You must first log in or sign up before accessing this page."
+    flash[:alert] = current_user ?
+    t('alert.access_denied') :
+    "You must first log in or sign up before accessing this page." 
     redirect_to login_url
   end
 

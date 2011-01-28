@@ -1,2 +1,4 @@
 #!/bin/sh
 t now | ./timetrap_parser
+t out
+d done

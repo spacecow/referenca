@@ -13,6 +13,12 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    if @article.group
+      if !current_user.groups.include?(@article.group)
+        flash[:alert] = t('alert.access_denied')
+        redirect_to login_path and return
+      end
+    end
     @references = @article.references.
       order('no asc').
       public_or_privately_owned_reference(current_user)
@@ -30,7 +36,6 @@ class ArticlesController < ApplicationController
     @article = Article.new(params[:article])
     @article.author_cache = author_cache(params[:article][:authorships_attributes])
     if @article.save
-      @article.users << current_user
       flash[:notice] = "Successfully created article."
       redirect_to @article
     else

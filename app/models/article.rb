@@ -11,10 +11,9 @@ class Article < ActiveRecord::Base
   has_many :keywords, :through => :articles_keywords
   accepts_nested_attributes_for :articles_keywords, :reject_if => lambda {|a| a[:keyword_id].blank?}, :allow_destroy => true
 
-  has_many :ownerships, :dependent => :destroy
-  has_many :users, :through => :ownerships
+  belongs_to :group
   
-  attr_accessible :title, :authorships_attributes, :references_attributes, :articles_keywords_attributes, :summarize, :journal, :volume, :start_page, :end_page, :pdf, :paper, :year, :no, :pdf_cache, :private
+  attr_accessible :title, :authorships_attributes, :references_attributes, :articles_keywords_attributes, :summarize, :journal, :volume, :start_page, :end_page, :pdf, :paper, :year, :no, :pdf_cache, :group_id
   attr_accessor :author_cache
   
   mount_uploader :pdf, PdfUploader
