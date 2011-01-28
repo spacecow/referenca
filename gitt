@@ -1,3 +1,2 @@
 #!/bin/sh
 t now | ./timetrap_parser
-echo "hej"
