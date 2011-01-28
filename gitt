@@ -1,2 +1,2 @@
 #!/bin/sh
-t now | ./timetrap_parser
+echo t now | ./timetrap_parser
