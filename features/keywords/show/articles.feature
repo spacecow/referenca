@@ -35,8 +35,8 @@ And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 And author "lifter" is one of article "2003"'s authors
 And author "dover" is one of article "2001"'s authors
 When I go to keyword "ann"'s page
-Then I should see "Dover" listed first
-And I should see "Lifter" listed second
+Then I should see "Dover" within the first listing
+And I should see "Lifter" within the second listing
 
 Scenario: Authors should be displayed in order after author and then YEAR
 Given an article "2003" exists with year: "2003"
@@ -44,8 +44,8 @@ And keyword "ann" is one of article "2001" & article "2003"'s keywords
 And an author: "lifter" exists with first_name: "Shop", last_name: "Lifter"
 And author "lifter" is one of article "2001" & article "2003"'s authors
 When I go to keyword "ann"'s page
-Then I should see "2003" listed first
-And I should see "2001" listed second
+Then I should see "2003" within the first listing
+And I should see "2001" within the second listing
 
 Scenario: After editing an article, one should return to the author page
 Given a keyword "ann" is one of article "2001"'s keywords

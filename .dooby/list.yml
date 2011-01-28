@@ -25,3 +25,7 @@ d6d4e8: !ruby/object:Dooby::Task
   todo: ordered keywords in alphabetical order on their index page :done
 "889101": !ruby/object:Dooby::Task 
   todo: View Authors and View Articles should be displayed on the top :done
+367d70: !ruby/object:Dooby::Task 
+  todo: being able to delete references
+91b19b: !ruby/object:Dooby::Task 
+  todo: private articles should not be visible in references

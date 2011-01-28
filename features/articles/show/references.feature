@@ -1,8 +1,21 @@
 Feature:
 Background:
 Given an article "main" exists
-And an article "reference" exists
+And an article "reference" exists with title: "Reference"
 And an article "other" exists
+
+@private
+Scenario Outline: A reference to a private article should not be shown unless its the user's
+Given an article "private" exists with private: true
+And article "<main1>" references article "<ref1>"
+And article "<main2>" references article "<ref2>"
+When I go to article "main"'s page
+Then I should see "Reference" within the first listing
+But I should see no second listing
+Examples:
+| main1   | main2     | ref1    | ref2      |
+| main    | main      | private | reference |
+| private | reference | main    | main      |
 
 Scenario Outline: If the article references nothing, references should not be displayed
 Given a reference exists with article: article "<article>", referenced_article: article "reference"

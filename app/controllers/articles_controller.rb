@@ -13,8 +13,11 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @references = @article.references.order('no asc')
-    @references_from = Reference.where(:referenced_article_id => @article.id)
+    @references = @article.references.
+      order('no asc').
+      public_or_privately_owned_reference(current_user)
+    @references_from = Reference.where(:referenced_article_id => @article.id).
+      public_or_privately_owned_referenced(current_user)
   end
 
   def new

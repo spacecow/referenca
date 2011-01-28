@@ -30,8 +30,8 @@ Given author "lifter" is one of that article's authors
 And an article exists with year: "2003"
 And author "lifter" is one of that article's authors
 When I go to author "lifter"'s page
-Then I should see "2003" listed first
-And I should see "2001" listed second
+Then I should see "2003" within the first listing
+And I should see "2001" within the second listing
 
 Scenario: After editing an article, one should return to the author page
 Given author "lifter" is one of that article's authors

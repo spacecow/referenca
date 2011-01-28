@@ -1,3 +1,13 @@
+Given /^#{capture_model} references #{capture_model}$/ do |main,ref|
+  Given %(a reference exists with article: #{main}, referenced_article: #{ref})
+end
+
+Given /^#{capture_model} references #{capture_model} & #{capture_model}$/ do |main,ref1,ref2|
+  Given %(#{main} references #{ref1})
+  And %(#{main} references #{ref2})
+end
+
+
 When /^I select "([^"]*)" as (second) reference$/ do |text,order|
   When %(I select "#{text}" from "article_references_attributes_1_referenced_article_id")
 end

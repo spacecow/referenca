@@ -1,0 +1,5 @@
+#!/home/johan/.rvm/rubies/ruby-1.9.2-head/bin/ruby
+mess = STDIN.read.split("(").last[0..-3]
+unless mess == "*coding: not runnin"
+  %x[git commit -am "#{mess}"]
+end
