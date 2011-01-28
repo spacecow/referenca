@@ -1,2 +1,3 @@
 #!/bin/sh
-echo t now | ./timetrap_parser
+t now | ./timetrap_parser
+echo "hej"
