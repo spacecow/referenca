@@ -39,3 +39,7 @@ f94960: !ruby/object:Dooby::Task
   todo: style buttons :done
 e5ab94: !ruby/object:Dooby::Task 
   todo: saving the file in a private folder :done
+e56fcd: !ruby/object:Dooby::Task 
+  todo: only owners or group memebers can edit an article if it is private
+edb73a: !ruby/object:Dooby::Task 
+  todo: download can only be done by owner or group :done

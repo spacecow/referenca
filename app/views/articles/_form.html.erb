@@ -1,5 +1,6 @@
 <div class="form"><%= semantic_form_for @article, :html => {
   :multipart => true } do |f| %>
+  <%= f.error_messages %>
   <%= hidden_field_tag :back, params[:back] %>
   <%= f.input :title %>
   <li id="article_author_input" class="error">

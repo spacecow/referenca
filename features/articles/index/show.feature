@@ -2,8 +2,9 @@ Feature:
 
 @download
 Scenario: Download uploaded file
-Given I am logged in as "user"
-And an article exists
+Given a user exists
+Given I am logged in as that user
+And an article exists with owner: that user
 And I have uploaded a pdf file to that article
 When I go to the articles page
 And I click the pdf image within the first table row
@@ -90,11 +91,17 @@ Then I should be on the new article page
 Scenario Outline: Articles that are private cannot be seen by other ppl
 Given a user "secret" exists with group "secret"
 And a user "normal" exists
-And an article exists with group: group "secret", title: "A secret title"
+And a user "owner" exists
+And an article exists with group: group "secret", title: "A secret title", private: <privacy>, owner: user "owner"
 And I am logged in as user "<username>"
 When I go to the articles page
 Then I should <secret_view> "A secret title" within the first table row
 Examples:
-| username | secret_view |
-| secret   | see         |
-| normal   | not see     |
+| username | secret_view | privacy |
+| secret   | see         | true    |
+| normal   | not see     | true    |
+| owner    | see         | true    |
+| secret   | see         | false   |
+| normal   | see         | false   |
+| owner    | see         | false   |
+

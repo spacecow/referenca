@@ -1,6 +1,8 @@
 Factory.define :article do |f|
   f.sequence(:title){|n| "Default article name #{n}"}
   f.year "2000"
+  f.association :owner, :factory => :user
+  f.private false
 end
 
 Factory.define :author do |f|

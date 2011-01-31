@@ -5,7 +5,7 @@ class Ability
     can [:new,:create,:destroy], Session
     can :read, [Author,Keyword]
     can :index, Article
-    can :show, Article, :group_id => nil
+    can :show, Article, :private => false
     
     if user
       can [:create,:update,:destroy], [Article,Author,Keyword]

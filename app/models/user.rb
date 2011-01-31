@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :memberships, :dependent => :destroy
   has_many :groups, :through => :memberships
+  has_many :articles
   
   attr_accessor :password
   before_save :prepare_password

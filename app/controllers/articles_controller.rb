@@ -13,8 +13,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    if @article.group
-      if !current_user.groups.include?(@article.group)
+    if @article.private
+      if !(@article.group && current_user.groups.include?(@article.group))&&
+         !(@article.owner && @article.owner == current_user)
         flash[:alert] = t('alert.access_denied')
         redirect_to login_path and return
       end
@@ -35,6 +36,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(params[:article])
     @article.author_cache = author_cache(params[:article][:authorships_attributes])
+    @article.owner = current_user
     if @article.save
       flash[:notice] = "Successfully created article."
       redirect_to @article
@@ -88,6 +90,10 @@ class ArticlesController < ApplicationController
 
   def download
     @article = Article.find(params[:id])
+    if !group_member && !owner
+      flash[:alert] = t('alert.access_denied')
+      redirect_to login_path and return
+    end
     if File.exist?(path = @article.pdf.url)
       send_file path, :content_type => "application/pdf"
     else
@@ -106,6 +112,8 @@ class ArticlesController < ApplicationController
       end
       authors.sub(/, /," (#{@article.year}) ").chop.sub(/,$/,'').gsub(/[,\s]/,'_')
     end
+    def group_member; @article.group && current_user.groups.include?(@article.group) end
+    def owner; @article.owner && @article.owner == current_user end
     def redirect(option1,option2)
       return option2 if option1.nil?
       option1.empty? ? option2 : option1

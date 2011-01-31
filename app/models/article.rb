@@ -12,6 +12,7 @@ class Article < ActiveRecord::Base
   accepts_nested_attributes_for :articles_keywords, :reject_if => lambda {|a| a[:keyword_id].blank?}, :allow_destroy => true
 
   belongs_to :group
+  belongs_to :owner, :class_name => "User"
   
   attr_accessible :title, :authorships_attributes, :references_attributes, :articles_keywords_attributes, :summarize, :journal, :volume, :start_page, :end_page, :pdf, :paper, :year, :no, :pdf_cache, :group_id
   attr_accessor :author_cache
@@ -20,6 +21,7 @@ class Article < ActiveRecord::Base
 
   validates :title, :presence => true, :uniqueness => true
   validates :year, :presence => true
+  validates :owner, :presence => true
 
   scope :reference_order, lambda{order("authors.last_name asc").order("year desc").includes(:authors)}
 
@@ -50,13 +52,19 @@ class Article < ActiveRecord::Base
     authors.first.last_name
   end
 
+  def group_assoc(assoc); group end
+
   def no_empty?; no.nil? || no.empty? end  
   def no_file?; pdf.url.nil? end
 
+  def owner_assoc(assoc); owner end
+  
   def reference; "#{authors_for_short_reference} (#{year}) - #{title}".truncate(60) end
 
   def pdf_name; pdf.path.split('/').last end
 
+  def private_assoc(assoc); private() end
+  
   def self.search(search,sort)
     if search
       if sort.split('", "').size > 1

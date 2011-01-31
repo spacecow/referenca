@@ -81,15 +81,31 @@ Examples:
 | Edit | that article's edit |
 
 @private
-Scenario Outline: Articles that are private cannot be seen by other ppl
+Scenario Outline: Articles that are private cannot be seen by guests
+Given an article exists with title: "A secret title", private: <privacy>
+And keyword "ann" is one of that article's keywords
+When I go to keyword "ann"'s page
+Then I should <listing> "A secret title" within the first listing
+Examples:
+| privacy | listing |
+| true    | not see |
+| false   | see     |
+
+@private
+Scenario Outline: Private articles cannot be seen other than by owners or group members
 Given a user "secret" exists with group "secret"
+And a user "owner" exists
 And a user "normal" exists
-Given an article exists with group: group "secret", title: "A secret title", year: "2002"
+Given an article exists with group: group "secret", title: "A secret title", owner: user "owner", private: <privacy>
 And keyword "ann" is one of that article's keywords
 And I am logged in as user "<username>"
 When I go to keyword "ann"'s page
-Then I should <secret_view> "A secret title" within the first listing
+Then I should <listing> "A secret title" within the first listing
 Examples:
-| username | secret_view |
-| secret   | see         |
-| normal   | not see     |
+| username | listing | privacy |
+| secret   | see     | true    |
+| normal   | not see | true    |
+| owner    | see     | true    |
+| secret   | see     | false   |
+| normal   | see     | false   |
+| owner    | see     | false   |

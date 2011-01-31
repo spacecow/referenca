@@ -10,19 +10,22 @@ And the article is one of keyword "ann" & keyword "agent"'s articles
 @private
 Scenario Outline: Guests cannot see private articles
 Given a user "secret" exists with group "secret"
-And an article "private" exists with group: <group>
+And an article "private" exists with group: <group>, private: <privacy>
 When I go to article "private"'s page
 Then I should be on <redirect> page
 Examples:
-| group          | redirect       |
-| group "secret" | the login      |
-| nil            | that article's |
+| group          | redirect       | privacy |
+| group "secret" | the login      | true    |
+| nil            | the login      | true    |
+| group "secret" | that article's | false   |
+| nil            | that article's | false   |
 
 @private
-Scenario Outline: Cannot see an article that's private and user has no ownership
+Scenario Outline: Cannot see an article that's private and user has no membership/ownership
 Given a user "normal" exists
+And a user "owner" exists
 And a user "private" exists with group "private"
-And an article "private" exists with group: group "private"
+And an article "private" exists with group: group "private", private: true, owner: user "owner"
 And I am logged in as user "<user>"
 When I go to article "private"'s page
 Then I should be on <redirect> page
@@ -30,6 +33,15 @@ Examples:
 | user    | redirect       |
 | private | that article's |
 | normal  | the login      |
+| owner   | that article's |
+
+@private
+Scenario: User is both owner and group member
+Given a user exists with group "group"
+And an article exists with group: group "group", private: true, owner: that user
+And I am logged in as that user
+When I go to that article's page
+Then I should be on that article's page
 
 Scenario: Basic layout of article show page
 When I go to that article's page

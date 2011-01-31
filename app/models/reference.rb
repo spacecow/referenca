@@ -5,6 +5,10 @@ class Reference < ActiveRecord::Base
   validates :referenced_article_id, :presence => true, :uniqueness => {:scope => :article_id}
   validates :article_id, :presence => true
   validates :no, :presence => true, :uniqueness => {:scope => :article_id}
+
+  def group_assoc(assoc); send(assoc).group_assoc(assoc) end
+  def owner_assoc(assoc); send(assoc).owner_assoc(assoc) end
+  def private_assoc(assoc); send(assoc).private_assoc(assoc) end
   
   private
     def cannot_reference_itself

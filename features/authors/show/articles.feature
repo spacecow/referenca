@@ -67,15 +67,31 @@ Examples:
 | Edit | that article's edit |
 
 @private
-Scenario Outline: Articles that are private cannot be seen by other ppl
+Scenario Outline: Articles that are private cannot be seen by guests
+Given an article exists with title: "A secret title", private: <privacy>
+And author "lifter" is one of that article's authors
+When I go to author "lifter"'s page
+Then I should <listing> "A secret title" within the first listing
+Examples:
+| listing | privacy |
+| see     | false   |
+| not see | true    |
+
+@private
+Scenario Outline: Private articles cannot be seen other than by owners or group members
 Given a user "secret" exists with group "secret"
+And a user "owner" exists
 And a user "normal" exists
-And an article exists with group: group "secret", title: "A secret title", year: "2002"
+And an article exists with group: group "secret", title: "A secret title", owner: user "owner", private: <privacy>
 And author "lifter" is one of that article's authors
 And I am logged in as user "<username>"
 When I go to author "lifter"'s page
-Then I should <secret_view> "A secret title" within the first listing
+Then I should <listing> "A secret title" within the first listing
 Examples:
-| username | secret_view |
-| secret   | see         |
-| normal   | not see     |
+| username | listing | privacy |
+| secret   | see     | true    |
+| normal   | not see | true    |
+| owner    | see     | true    |
+| secret   | see     | false   |
+| normal   | see     | false   |
+| owner    | see     | false   |
