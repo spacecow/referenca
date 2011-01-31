@@ -48,7 +48,7 @@ div#flash_notice {
   float: left;
   margin-bottom: 5px;
   padding: 3px 10px;
-  border: 1px solid white;
+  border: 1px solid black;
   color: white;
   font-weight: bold;
   padding: 5px;
@@ -68,7 +68,7 @@ div#flash_alert {
   float: left;
   margin-bottom: 5px;
   padding: 3px 10px;
-  border: 1px solid white;
+  border: 1px solid black;
   color: white;
   font-weight: bold;
   padding: 5px;

@@ -16,6 +16,10 @@ end
 When /^I follow "([^"]*)" within the (\w+) table row$/ do |link,order|
   When %(I follow "#{link}" within "#{table_row(order)}")
 end
+When /^I click the (\w+) image within the (\w+) table row$/ do |ext,order|
+  find(:xpath, "//tr[position()=#{no order}]/td/a/img[@alt = '#{ext}']/parent::a").click
+end
+
 
 Then /^I should see a link "([^"]*)" within the (\w+) table row$/ do |txt,order|
   page.should have_css("#{table_row(order)} a", :text => txt)

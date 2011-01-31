@@ -36,7 +36,7 @@
   <% if @article.no_file? %>
     No
   <% else %>
-  <%= link_to(fetch_image(@article.pdf.url), @article.pdf.url) %>
+  <%= link_to(fetch_image(@article.pdf.url), download_article_path(@article)) %>
   <% end %>
 </p>
 <p>

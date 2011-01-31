@@ -86,6 +86,15 @@ class ArticlesController < ApplicationController
     redirect_to articles_url
   end
 
+  def download
+    @article = Article.find(params[:id])
+    if File.exist?(path = @article.pdf.url)
+      send_file path, :content_type => "application/pdf"
+    else
+      redirect_to login_path
+    end
+  end
+
   private
 
     def author_cache(attributes)

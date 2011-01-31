@@ -1,5 +1,14 @@
 Feature:
 
+@download
+Scenario: Download uploaded file
+Given I am logged in as "user"
+And an article exists
+And I have uploaded a pdf file to that article
+When I go to the articles page
+And I click the pdf image within the first table row
+Then I should be on that article's download page
+
 @file
 Scenario Outline: Show image file
 Given an article exist

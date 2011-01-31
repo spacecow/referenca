@@ -1,6 +1,10 @@
 Referenca::Application.routes.draw do
   resources :authors
-  resources :articles
+  resources :articles do
+    member do
+      get 'download'
+    end
+  end
   resources :references
   resources :keywords
   resources :sessions

@@ -14,12 +14,12 @@ end
 
 
 Then /^a file named: "([^"]*)" should exist for #{capture_model}$/ do |file,mdl|
-  path = "public/uploads/article/pdf/#{model(mdl).id}/"
+  path = "private/uploads/article/pdf/#{model(mdl).id}/"
   File.open(path+file).should be_true
 end
 
 Then /^a file named: "([^"]*)" should not exist for #{capture_model}$/ do |file,mdl|
-  path = "public/uploads/article/pdf/#{model(mdl).id}/"
+  path = "private/uploads/article/pdf/#{model(mdl).id}/"
   begin
     File.open(path+file)
     false.should be_true

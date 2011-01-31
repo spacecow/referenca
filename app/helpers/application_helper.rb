@@ -15,7 +15,7 @@ module ApplicationHelper
   def edit(s); t2(:edit,s) end
   def fetch_image(path)
     ext = path.split('.').last
-    image_tag("#{ext}.jpeg", :height => "20")
+    image_tag("#{ext}.jpeg", :height => "20", :alt => "#{ext}")
   end
   def lbl(s); chain(:label,s) end
   def list_dp(s); tdp2(:list,s) end

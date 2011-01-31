@@ -32,6 +32,11 @@ end
 When /^I follow "([^"]*)" within the (\w+) listing$/ do |link,order|
   When %(I follow "#{link}" within "#{link_no(no order)}")
 end
+When /^I click the (\w+) image within the (\w+) listing$/ do |ext,order|
+  find(:xpath, "//li[position()=#{no order}]/a/img[@alt = '#{ext}']/parent::a").click
+end
+
+
 
 Then /^I should see a (pdf|chm) image within the (\w+) listing$/ do |ext,order|
   Then %(I should see a #{ext} image within "li:nth-child(#{no order}) img")
@@ -41,7 +46,7 @@ Then /^I should see a (pdf|chm) image within the "(\w+)" listing$/ do |ext,sect|
   Then %(I should see a #{ext} image within "li##{sect} img")
 end
 
-def listing(order); li:nth-child(no order) end
+def listing(order); "li:nth-child(#{no order})" end
 def link_no(i); "ol li:nth-child(#{i})" end
 def unlink_no(i); "ul li:nth-child(#{i})" end
 

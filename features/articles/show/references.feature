@@ -4,6 +4,15 @@ Given an article "main" exists
 And an article "reference" exists with title: "Reference"
 And an article "other" exists
 
+@download
+Scenario: Download a referenced article
+Given an article "main" references article "reference"
+And I am logged in as "user"
+And I have uploaded a pdf file to article: "reference"
+When I go to article "main"'s page
+And I click the pdf image within the first listing
+Then I should be on article: "reference"'s download page
+
 @private
 Scenario Outline: A reference to a private article should not be shown unless its the user's
 Given a user "secret" exists with group "secret"
