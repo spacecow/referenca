@@ -3,8 +3,9 @@ Background:
 Given a user "normal" exists
 
 Scenario Outline: Show image file
-Given an article exists
-And I am logged in as user "normal"
+Given a user "owner" exists
+And an article exists with owner: user "owner"
+And I am logged in as user "owner"
 And I have uploaded a <ext> file to that article
 When I go to that article's edit page
 Then I should see a <ext> image within the "file" listing
@@ -27,16 +28,18 @@ Examples:
 | I do nothing              | I do nothing             |
 | I fill in "Title" with "" | I press "Update Article" |
 
-Scenario Outline: Private options should only be shown owners or group members
+Scenario Outline: Private&file upload&group options should only be shown owners or group members
 Given a user "owner" exists
 And a user "secret" exists with group "secret"
 And an article exists with owner: user "owner", group: group "secret"
 And I am logged in as user "<user>"
 When I go to that article's edit page
 Then I should see <listing> article private input listing
+And I should see <listing> article pdf input listing
+And I should see <listing> "li#file" listing
+And I should see <listing> article group input listing
 Examples:
 | user   | listing |
 | normal | no      |
 | owner  | a       |
 | secret | a       |
-

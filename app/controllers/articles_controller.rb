@@ -66,7 +66,11 @@ class ArticlesController < ApplicationController
       params[:article][:pdf] = @article.pdf
     end
     @article.author_cache = author_cache(params[:article][:authorships_attributes])    
-    params[:article].delete(:private) if !owner && !group_member
+    if !owner && !group_member
+      params[:article].delete(:private)
+      params[:article].delete(:pdf)
+      params[:article].delete(:group)
+    end
     if @article.update_attributes(params[:article])
       flash[:notice] = "Successfully updated article."
       redirect_to redirect(params[:back], @article)

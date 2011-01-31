@@ -95,13 +95,13 @@ And a user "owner" exists
 And an article exists with group: group "secret", title: "A secret title", private: <privacy>, owner: user "owner"
 And I am logged in as user "<username>"
 When I go to the articles page
-Then I should <secret_view> "A secret title" within the first table row
+Then I should <listing> "A secret title" within the first table row
 Examples:
-| username | secret_view | privacy |
-| secret   | see         | true    |
-| normal   | not see     | true    |
-| owner    | see         | true    |
-| secret   | see         | false   |
-| normal   | see         | false   |
-| owner    | see         | false   |
+| username | listing | privacy |
+| secret   | see     | true    |
+| normal   | not see | true    |
+| owner    | see     | true    |
+| secret   | see     | false   |
+| normal   | see     | false   |
+| owner    | see     | false   |
 

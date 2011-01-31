@@ -16,21 +16,29 @@ Then /^I should see no link "([^"]*)" within the (\w+) listing$/ do |lnk,order|
   page.should have_no_css("li:nth-child(#{no order}) a", :text => lnk)
 end
 
+Then /^I should see a "([^"]*)" listing$/ do |id|
+  page.should have_css("#{id}")  
+end
+Then /^I should see no "([^"]*)" listing$/ do |id|
+  page.should have_no_css("#{id}")  
+end
 Then /^I should see a (\w+) listing$/ do |order|
-  page.should have_css("li:nth-child(#{no order})")
+  Then %(I should see a "#{listing order}" listing)
 end
 Then /^I should see no (\w+) listing$/ do |order|
-  page.should have_no_css("li:nth-child(#{no order})")
+  Then %(I should see no "#{listing order}" listing)
 end
+Then /^I should see (?:a|an) (\w+) (\w+) input listing$/ do |mdl,attr|
+  Then %(I should see a "li##{mdl}_#{attr}_input" listing)
+end
+Then /^I should see no (\w+) (\w+) input listing$/ do |mdl,attr|
+  Then %(I should see no "li##{mdl}_#{attr}_input" listing)
+end
+
 Then /^I should see no listing$/ do
   page.should have_no_css("li")
 end
-Then /^I should see (?:a|an) (\w+) (\w+) input listing$/ do |mdl,attr|
-  page.should have_css("li##{mdl}_#{attr}_input")
-end
-Then /^I should see no (\w+) (\w+) input listing$/ do |mdl,attr|
-  page.should have_no_css("li##{mdl}_#{attr}_input")
-end
+
 
 
 #-----------------LINKS

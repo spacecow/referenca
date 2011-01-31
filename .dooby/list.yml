@@ -45,7 +45,9 @@ edb73a: !ruby/object:Dooby::Task
   todo: private included in article form :done
 fb2b13: !ruby/object:Dooby::Task 
   todo: only owners or group memebers can edit an article if it is private :done
-c517db: !ruby/object:Dooby::Task 
-  todo: only users with ownership or group membership can upload files
 e0e870: !ruby/object:Dooby::Task 
   todo: only user with ownership or membership can make the article private :done
+b96093: !ruby/object:Dooby::Task 
+  todo: rename PDF to File
+9d735c: !ruby/object:Dooby::Task 
+  todo: only users with ownership or group membership can upload files :done
