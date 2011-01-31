@@ -45,3 +45,5 @@ edb73a: !ruby/object:Dooby::Task
   todo: download can only be done by owner or group :done
 80bdac: !ruby/object:Dooby::Task 
   todo: " :done"
+5e9e57: !ruby/object:Dooby::Task 
+  todo: private included in article form :done
