@@ -1,0 +1,11 @@
+<%= f.input :private %>
+<div class="clear"></div>
+<li id="file">
+  <% if @article.pdf? %>
+  <%= fetch_image(@article.pdf.url) %>
+  <%= @article.pdf_name %>
+  <% end %>
+</li>
+<%= f.input :pdf, :as => :file %>
+<%= f.hidden_field :pdf_cache %>
+<%= f.input :group, :collection => (Group.where('memberships.user_id' => current_user.id).includes(:memberships).all | [@article.group]).compact %>

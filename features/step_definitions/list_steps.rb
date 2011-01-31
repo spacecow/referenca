@@ -55,6 +55,9 @@ end
 Then /^I should see a (pdf|chm) image within the (\w+) listing$/ do |ext,order|
   Then %(I should see a #{ext} image within "li:nth-child(#{no order}) img")
 end
+Then /^I should see no (pdf|chm) image within the (\w+) listing$/ do |ext,order|
+  page.should have_no_css("#{listing order} img")
+end
 
 Then /^I should see a (pdf|chm) image within the "(\w+)" listing$/ do |ext,sect|
   Then %(I should see a #{ext} image within "li##{sect} img")

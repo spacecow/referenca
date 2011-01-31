@@ -32,5 +32,8 @@ end
 Then /^I should see a (pdf|chm) image within the (\w+) table row$/ do |ext,order|
   Then %(I should see a #{ext} image within "#{table_row(order)} img")
 end
+Then /^I should see no (pdf|chm) image within the (\w+) table row$/ do |ext,order|
+  page.should have_no_css("#{table_row(order)} img")
+end
 
 def table_row(order); "table tr:nth-child(#{no order})" end

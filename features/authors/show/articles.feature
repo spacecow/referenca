@@ -4,6 +4,25 @@ Given an author: "lifter" exists with first_name: "Shop", last_name: "Lifter"
 And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 And an article exists with year: "2001"
 
+@file
+Scenario Outline: Only an article's owners or group members can see a file image
+Given a user "owner" exists
+And a user "normal" exists
+And a user "secret" exists with group "secret"
+And an article exists with group: group "secret", owner: user "owner"
+And author "lifter" is one of that article's authors
+And I am logged in as user "owner"
+And I have uploaded a pdf file to that article
+And I go to the logout page
+And I am logged in as user "<user>"
+When I go to author "lifter"'s page
+Then I should see <listing> pdf image within the first listing
+Examples:
+| user   | listing |
+| owner  | a       |
+| normal | no      |
+| secret | a       |
+
 Scenario Outline: If no articles are connected, no articles should be shown
 Given author "<author>" is one of that article's authors
 When I go to author "lifter"'s page

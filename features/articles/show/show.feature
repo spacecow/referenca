@@ -55,30 +55,40 @@ And I should see "Issue: 2"
 And I should see "Pages: 100-120"
 
 @file
-Scenario Outline: Show image file
-Given I am logged in as "admin"
-And I have uploaded a <ext> file to that article
-When I go to that article's page
-Then I should see a <ext> image within the file subsection
+Scenario Outline: Image file is shown to owners or group members
+Given a user "owner" exists
+And a user "normal" exists
+And a user "secret" exists with group "secret"
+And an article "owner" exists with owner: user "owner", group: group "secret"
+And I am logged in as user "owner"
+And I have uploaded a <ext> file to article: "owner"
+And I go to the logout page
+And I am logged in as user "<user>"
+When I go to article "owner"'s page
+Then I should <listing> image within the file subsection
 Examples:
-| ext |
-| pdf |
-| chm |
+| ext | user   | listing    |
+| pdf | owner  | see a pdf  |
+| chm | owner  | see a chm  |
+| pdf | normal | see no pdf |
+| chm | secret | see a chm  |
 
 @file @references
-Scenario Outline: Show image file in references
-Given I am logged in as "admin"
-And I have uploaded a <ext> file to that article
+Scenario Outline: Image file in references is only shown to owners or group members
+Given a user "owner" exists
+And an article "owner" exists with owner: user "owner"
+And I am logged in as user "owner"
+And I have uploaded a <ext> file to article: "owner"
 And an article "reference" exists
-Given a reference exists with article: article "<first>", referenced_article: article "<second>"
+And article "<first>" references article "<second>"
 When I go to article "reference"'s page
 Then I should see a <ext> image within the first listing
 Examples:
 | ext | first     | second    |
-| pdf | main      | reference |
-| chm | main      | reference |
-| pdf | reference | main      |
-| chm | reference | main      |
+| pdf | owner     | reference |
+| chm | owner     | reference |
+| pdf | reference | owner     |
+| chm | reference | owner     |
 
 
 Scenario Outline: Links from the artice show page

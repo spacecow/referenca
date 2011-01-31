@@ -1,8 +1,9 @@
 Feature:
 
 Scenario: Files cannot be downloaded by guests
-Given I am logged in as "user"
-And an article exists
+Given a user "user" exists
+Given I am logged in as user "user"
+And an article exists with owner: user "user"
 And I have uploaded a pdf file to that article
 And I go to the logout page
 When I go to that article's download page
@@ -18,10 +19,10 @@ And I have uploaded a pdf file to that article
 And I go to the logout page
 And I am logged in as user "<user>"
 When I go to that article's download page
-Then I should <redirect> on the login page
+Then I should <redirect> on that article's download page
 Examples:
 | user   | redirect |
-| owner  | not be   |
-| secret | not be   |
-| normal | be       |
+| owner  | be       |
+| secret | be       |
+| normal | not be   |
 

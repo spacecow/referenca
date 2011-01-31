@@ -17,7 +17,12 @@
         <strong><%= i+1 %>.</strong>
         <%= render "short_reference", :article => article, :ex => nil %>
       <td/>
-      <td><%= link_to(fetch_image(article.pdf.url), download_article_path(article)) unless article.no_file? %></td>
+      <td>
+        <% if article.no_file? %>
+        <% elsif owner?(article) || group_member?(article) %>
+        <%= link_to(fetch_image(article.pdf.url), download_article_path(article)) %>
+        <% end %>
+      </td>
       <td><%= link_to t(:show), article %></td>
       <td><%= link_to t(:edit), edit_article_path(article) if can? :edit, article%></td>
       <td><%= link_to t(:del), article, :confirm => 'Are you sure?', :method => :delete if can? :destroy, article %></td>

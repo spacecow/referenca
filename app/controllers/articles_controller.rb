@@ -105,7 +105,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     if !group_member && !owner
       flash[:alert] = t('alert.access_denied')
-      redirect_to login_path and return
+      redirect_to :back and return
     end
     if File.exist?(path = @article.pdf.url)
       send_file path, :content_type => "application/pdf"

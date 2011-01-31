@@ -35,8 +35,8 @@
   <strong><%= t('formtastic.labels.pdf') %>:</strong>
   <% if @article.no_file? %>
     No
-  <% else %>
-  <%= link_to(fetch_image(@article.pdf.url), download_article_path(@article)) %>
+  <% elsif owner?(@article) || group_member?(@article) %>
+    <%= link_to(fetch_image(@article.pdf.url), download_article_path(@article)) %>
   <% end %>
 </p>
 <p>

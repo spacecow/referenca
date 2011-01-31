@@ -11,16 +11,23 @@ And I click the pdf image within the first table row
 Then I should be on that article's download page
 
 @file
-Scenario Outline: Show image file
-Given an article exist
-And I am logged in as "admin"
+Scenario Outline: Show image file to owners or group members
+Given a user "owner" exists
+And a user "normal" exists
+And a user "secret" exists with group "secret"
+And an article exist with group: group "secret", owner: user "owner"
+And I am logged in as user "owner"
 And I have uploaded a <ext> file to that article
+And I go to the logout page
+And I am logged in as user "<user>"
 When I go to the articles page
-Then I should see a <ext> image within the first table row
+Then I should see <listing> image within the first table row
 Examples:
-| ext |
-| pdf |
-| chm |
+| ext | user   | listing |
+| pdf | owner  | a pdf   |
+| chm | owner  | a chm   |
+| pdf | normal | no pdf  |
+| chm | secret | a chm   |
 
 Scenario: Articles should be displayed in order after AUTHOR
 Given an article "2" exists

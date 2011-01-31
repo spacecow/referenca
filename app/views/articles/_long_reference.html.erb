@@ -14,6 +14,9 @@
 pp. <%= "#{attribute(article.start_page,
          'START-PAGE')}-#{attribute(article.end_page, 'END-PAGE')}," %>
 <%= "(#{article.year})" %>
-<%= link_to(fetch_image(article.pdf.url), download_article_path(article)) unless article.no_file? %>
+<% if article.no_file? %>
+<% elsif owner?(article) || group_member?(article) %>
+  <%= link_to(fetch_image(article.pdf.url), download_article_path(article)) %>
+<% end %>
 <%= link_to t(:show), article %>
 <%= link_to t(:edit), edit_article_path(article, :back => request.fullpath ) if can? :edit, article %>

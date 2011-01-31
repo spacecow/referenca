@@ -41,11 +41,12 @@ class PdfUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   def filename
-    #"something.jpg" if original_filename
-    unless model.pdf.url.nil?
-      if !model.pdf.url.blank?
-        ext = original_filename.split('.').last
-        "#{model.author_cache}_-_#{model.title.gsub(/\s+/,'_')}"+".#{ext}"
+    if original_filename
+      unless model.pdf.url.nil?
+        if !model.pdf.url.blank?
+          ext = original_filename.split('.').last
+          "#{model.author_cache}_-_#{model.title.gsub(/\s+/,'_')}"+".#{ext}"
+        end
       end
     end
   end

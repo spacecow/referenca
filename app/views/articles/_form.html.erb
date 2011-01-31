@@ -24,22 +24,11 @@
   <%= f.input :no, :label => :issue, :input_html => {:class => :number} %>
   <%= f.input :start_page, :input_html => {:class => :number} %>
   <%= f.input :end_page, :input_html => {:class => :number} %>
-  <% if owner?(@article) || group_member?(@article) %>
-    <li id="file">
-    <% if @article.pdf? %>
-      <%= fetch_image(@article.pdf.url) %>
-      <%= @article.pdf_name %>
-    <% end %>
-    </li>
-  <% end %>
-  <%= f.input :pdf, :as => :file if owner?(@article) || group_member?(@article) %>
-  <%= f.hidden_field :pdf_cache %>
   <%= f.input :paper, :label => t(:print) %>
   <div class="clear"></div>
-  <%= f.input :private if owner?(@article) || group_member?(@article) %>
-  <div class="clear"></div>
-  <%= f.input :group, :collection => Group.where('memberships.user_id' => current_user.id).includes(:memberships) if owner?(@article) || group_member?(@article) %>
-  <div class="clear"></div>
+  <% if owner?(@article) || group_member?(@article) || @article.new_record?%>
+    <%= render "articles/private_fields", :f => f %>
+  <% end %>
   <%= f.semantic_fields_for :references do |ref| %>
     <%= ref.input :referenced_article_id, :label => t(:reference),
   :as => :select, :collection => @articles %>

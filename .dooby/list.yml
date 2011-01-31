@@ -51,3 +51,7 @@ b96093: !ruby/object:Dooby::Task
   todo: rename PDF to File
 9d735c: !ruby/object:Dooby::Task 
   todo: only users with ownership or group membership can upload files :done
+2388c7: !ruby/object:Dooby::Task 
+  todo: cannot delete other users articles
+1146bf: !ruby/object:Dooby::Task 
+  todo: article download only visible to owner or group members :done

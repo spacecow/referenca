@@ -29,9 +29,13 @@ end
 Then /^I should see a (pdf|chm) image within the (\w+) subsection$/ do |ext,sect|
   Then %(I should see a #{ext} image within "p##{sect} img")
 end
+Then /^I should see no (pdf|chm) image within the (\w+) subsection$/ do |ext,sect|
+  page.should have_no_css("p##{sect} img")
+end
 
 Then /^I should see a (pdf|chm) image within "([^"]*)"$/ do |ext,scp|
   with_scope(scp) do
     page.native.attributes["src"].value.should match("#{ext}.jpeg")
   end
 end
+

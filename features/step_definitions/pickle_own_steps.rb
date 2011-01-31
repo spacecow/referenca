@@ -14,8 +14,8 @@ Given(/^#{capture_model} exists?(?: with #{capture_fields})?$/) do |name, fields
   end
 end
 
-Given(/^#{capture_model} exists with group "([^"]*)"$/) do |name, group|
-  mdl = create_model(name)
+Given(/^#{capture_model} exists with(?: #{capture_fields} and)? group "([^"]*)"$/) do |name,fields,group|
+  mdl = create_model(name,fields)
   if mdl.class == User
     Given %(a group "#{group}" exists with title: "#{mdl.username}")
     mdl.groups << model("group \"#{group}\"")
