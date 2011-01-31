@@ -34,7 +34,7 @@
   <%= f.hidden_field :pdf_cache %>
   <%= f.input :paper, :label => t(:print) %>
   <div class="clear"></div>
-  <%= f.input :private %>
+  <%= f.input :private if owner?(@article) || group_member?(@article) %>
   <div class="clear"></div>
   <%= f.input :group, :collection => Group.where('memberships.user_id' => current_user.id).includes(:memberships) %>
   <div class="clear"></div>

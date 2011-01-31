@@ -48,16 +48,25 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    if @article.private && !group_member && !owner
+      flash[:alert] = t('alert.access_denied')
+      redirect_to login_path and return
+    end
     @keyword = Keyword.new
     init_rendered_form
   end
 
   def update
     @article = Article.find(params[:id])
+    if @article.private && !group_member && !owner
+      flash[:alert] = t('alert.access_denied')
+      redirect_to login_path and return
+    end    
     if !@article.pdf.url.nil? && params[:article][:pdf].blank?
       params[:article][:pdf] = @article.pdf
     end
     @article.author_cache = author_cache(params[:article][:authorships_attributes])    
+    params[:article].delete(:private) if !owner && !group_member
     if @article.update_attributes(params[:article])
       flash[:notice] = "Successfully updated article."
       redirect_to redirect(params[:back], @article)

@@ -25,6 +25,12 @@ end
 Then /^I should see no listing$/ do
   page.should have_no_css("li")
 end
+Then /^I should see (?:a|an) (\w+) (\w+) input listing$/ do |mdl,attr|
+  page.should have_css("li##{mdl}_#{attr}_input")
+end
+Then /^I should see no (\w+) (\w+) input listing$/ do |mdl,attr|
+  page.should have_no_css("li##{mdl}_#{attr}_input")
+end
 
 
 #-----------------LINKS

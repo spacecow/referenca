@@ -10,6 +10,9 @@ Factory.define :author do |f|
   f.sequence(:last_name){|n| "Default last name #{n}"}  
 end
 
+Factory.define :group do |f|
+end
+
 Factory.define :keyword do |f|
   f.name "Default keyword"
 end

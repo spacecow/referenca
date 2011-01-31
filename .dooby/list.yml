@@ -5,8 +5,6 @@ a86821: !ruby/object:Dooby::Task
   todo: make sure not onke the pdf filename is correct but also that a file with that name is saved correctly :done
 2ff61d: !ruby/object:Dooby::Task 
   todo: relation checking when deleting
-b2b3fb: !ruby/object:Dooby::Task 
-  todo: only user with ownership can make the article private
 77ecf0: !ruby/object:Dooby::Task 
   todo: no of article listing consistent
 9e96ca: !ruby/object:Dooby::Task 
@@ -39,11 +37,15 @@ f94960: !ruby/object:Dooby::Task
   todo: style buttons :done
 e5ab94: !ruby/object:Dooby::Task 
   todo: saving the file in a private folder :done
-e56fcd: !ruby/object:Dooby::Task 
-  todo: only owners or group memebers can edit an article if it is private
 edb73a: !ruby/object:Dooby::Task 
   todo: download can only be done by owner or group :done
 80bdac: !ruby/object:Dooby::Task 
   todo: " :done"
 5e9e57: !ruby/object:Dooby::Task 
   todo: private included in article form :done
+fb2b13: !ruby/object:Dooby::Task 
+  todo: only owners or group memebers can edit an article if it is private :done
+c517db: !ruby/object:Dooby::Task 
+  todo: only users with ownership or group membership can upload files
+e0e870: !ruby/object:Dooby::Task 
+  todo: only user with ownership or membership can make the article private :done

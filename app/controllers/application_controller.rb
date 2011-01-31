@@ -9,15 +9,16 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :set_language
-  helper_method :current_user, :english?
+  helper_method :current_user, :english?, :owner?, :group_member?
   
   def created(s); success(:created,s) end
   def deleted(s); success(:deleted,s) end
   def d(s); t(s).downcase end
   def english?; session[:language] == 'en' end
+  def group_member?(article); article.group && article.group.users.include?(current_user) end
+  def owner?(article); article.owner && article.owner == current_user end
   def success(action,mdl); t("success.#{action}",:obj=>d(mdl)) end
   def updated(s); success(:updated,s) end
-
   def toggle_language
     session[:language] = (session[:language] == 'en' ? 'ja' : 'en')
     redirect_to :back

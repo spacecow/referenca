@@ -5,6 +5,23 @@ And I am logged in as "admin"
 And an author: "ben" exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with article: that article, author: author "ben"
 
+Scenario Outline: Only owners or group members can edit an article if it is private
+Given a user "secret" exists with group "secret"
+And a user "owner" exists
+And a user "normal" exists
+And an article exists with group: group "secret", owner: user "owner", private: <privacy>
+And I am logged in as user "<user>"
+When I go to that article's edit page
+Then I should <redirect> on that article's edit page
+Examples:
+| user   | redirect | privacy |
+| secret | be       | true    |
+| owner  | be       | true    |
+| normal | not be   | true    |
+| secret | be       | false   |
+| owner  | be       | false   |
+| normal | be       | false   |
+
 Scenario: When editing an article, the no of authors should not double
 When I go to that article's edit page
 And I press "Update Article"
