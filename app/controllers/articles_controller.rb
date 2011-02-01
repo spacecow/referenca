@@ -109,7 +109,7 @@ class ArticlesController < ApplicationController
       redirect_to :back and return
     end
     if File.exist?(path = @article.pdf.url)
-      send_file path, :content_type => "application/pdf",
+      send_file path, :content_type => "application/#{@article.extension}",
       :filename => @article.filename
     else
       redirect_to login_path

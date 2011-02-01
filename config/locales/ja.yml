@@ -33,7 +33,7 @@ ja:
     access_denied: "アクセスが拒否されました。"
 
   message:
-    not_you?: "違います？"
+    not_you?: "違いますか？"
     sure?: "本当に削除してよろしいですか"
     welcome: "ようこそ%{user}。"
 
