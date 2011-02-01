@@ -46,7 +46,11 @@ class Article < ActiveRecord::Base
   end
   def authors_straight; authors.map(&:straight_name).join(", ") end
 
-  def filename; "#{authors_and_year_for_filename}_-_#{title_for_filename}" end
+  def extension; pdf.url.split('.').last end
+  
+  def filename
+    "#{authors_and_year_for_filename}_-_#{title_for_filename}.#{extension}"
+  end
   
   def first_author
     return "" if authors.empty?
