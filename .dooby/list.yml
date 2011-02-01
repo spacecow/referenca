@@ -55,5 +55,5 @@ b96093: !ruby/object:Dooby::Task
   todo: cannot delete other users articles
 1146bf: !ruby/object:Dooby::Task 
   todo: article download only visible to owner or group members :done
-87ff50: !ruby/object:Dooby::Task 
-  todo: rename the file at the time of sending instead of saving :doing
+0487b7: !ruby/object:Dooby::Task 
+  todo: rename the file at the time of sending instead of saving :done

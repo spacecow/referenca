@@ -35,7 +35,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(params[:article])
-    @article.author_cache = author_cache(params[:article][:authorships_attributes])
     @article.owner = current_user
     if @article.save
       flash[:notice] = "Successfully created article."
@@ -65,7 +64,6 @@ class ArticlesController < ApplicationController
     if !@article.pdf.url.nil? && params[:article][:pdf].blank?
       params[:article][:pdf] = @article.pdf
     end
-    @article.author_cache = author_cache(params[:article][:authorships_attributes])    
     if !owner && !group_member
       params[:article].delete(:private)
       params[:article].delete(:pdf)
@@ -108,7 +106,8 @@ class ArticlesController < ApplicationController
       redirect_to :back and return
     end
     if File.exist?(path = @article.pdf.url)
-      send_file path, :content_type => "application/pdf"
+      send_file path, :content_type => "application/pdf",
+      :filename => @article.filename
     else
       redirect_to login_path
     end
@@ -116,15 +115,6 @@ class ArticlesController < ApplicationController
 
   private
 
-    def author_cache(attributes)
-      authors = ""
-      attributes.each do |key,value|
-        if !value[:author_id].empty? && value[:_destroy] != "1"
-          authors += Author.find(value[:author_id]).straight_name+', '
-        end
-      end
-      authors.sub(/, /," (#{@article.year}) ").chop.sub(/,$/,'').gsub(/[,\s]/,'_')
-    end
     def group_member; @article.group && current_user.groups.include?(@article.group) end
     def owner; @article.owner && @article.owner == current_user end
     def redirect(option1,option2)

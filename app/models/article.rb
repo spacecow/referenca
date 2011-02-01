@@ -15,7 +15,6 @@ class Article < ActiveRecord::Base
   belongs_to :owner, :class_name => "User"
   
   attr_accessible :title, :authorships_attributes, :references_attributes, :articles_keywords_attributes, :summarize, :journal, :volume, :start_page, :end_page, :pdf, :paper, :year, :no, :pdf_cache, :group_id, :private
-  attr_accessor :author_cache
   
   mount_uploader :pdf, PdfUploader
 
@@ -47,6 +46,8 @@ class Article < ActiveRecord::Base
   end
   def authors_straight; authors.map(&:straight_name).join(", ") end
 
+  def filename; "#{authors_and_year_for_filename}_-_#{title}" end
+  
   def first_author
     return "" if authors.empty?
     authors.first.last_name
@@ -80,6 +81,8 @@ class Article < ActiveRecord::Base
       scoped
     end
   end
+
+  def title_for_filename; title..gsub(/[,\s]/,'_') end
   
   def volume_empty?; volume.nil? || volume.empty? end
 end

@@ -12,7 +12,7 @@ And I select "Dover, Ben" from "Author"
 And <extra>
 And I press "Create Article"
 Then an article should exist
-And a file named: "Ben_Dover_(2001)_-_A_cool_title.<ext>" <file> exist for that article
+And a file named: "yeah.<ext>" <file> exist for that article
 Examples:
 | extra                                          | file       | ext |
 | I attach the file "features/yeah.pdf" to "PDF" | should     | pdf |
