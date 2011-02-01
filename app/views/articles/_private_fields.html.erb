@@ -7,5 +7,4 @@
   <% end %>
 </li>
 <%= f.input :pdf, :as => :file %>
-<%= f.hidden_field :pdf_cache %>
 <%= f.input :group, :collection => (Group.where('memberships.user_id' => current_user.id).includes(:memberships).all | [@article.group]).compact %>

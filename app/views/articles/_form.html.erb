@@ -1,5 +1,5 @@
-<div class="form"><%= semantic_form_for @article, :html => {
-  :multipart => true } do |f| %>
+<div class="form">
+<%= semantic_form_for @article do |f| %>
   <%= f.error_messages %>
   <%= hidden_field_tag :back, params[:back] %>
   <%= f.input :title %>
@@ -26,9 +26,6 @@
   <%= f.input :end_page, :input_html => {:class => :number} %>
   <%= f.input :paper, :label => t(:print) %>
   <div class="clear"></div>
-  <% if owner?(@article) || group_member?(@article) || @article.new_record?%>
-    <%= render "articles/private_fields", :f => f %>
-  <% end %>
   <%= f.semantic_fields_for :references do |ref| %>
     <%= ref.input :referenced_article_id, :label => t(:reference),
   :as => :select, :collection => @articles %>
@@ -40,6 +37,19 @@
 <%= yield :article_links %>
 </div>
 <br/>
+
+<% if (owner?(@article) || group_member?(@article)) && !@article.new_record? %>
+<div id="private_fields">
+  <a name="private_fields"></a>
+  <h1><%= edit(:private_fields) %></h1>
+  <div class="form">  
+    <%= semantic_form_for @article, :url => update_private_fields_article_path(@article), :html => { :method => :put, :multipart => true } do |f| %>
+      <%= render "articles/private_fields", :f => f %>
+      <%= f.submit update(:private_fields), :class => :submit %>
+    <% end %>
+  </div>
+</div>
+<% end %>
 
 <a name="keyword"></a>
 <h1><%= new(:keyword) %></h1>

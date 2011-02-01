@@ -9,7 +9,7 @@ class Ability
     
     if user
       can [:create,:update,:destroy], [Article,Author,Keyword]
-      can [:show,:download], Article
+      can [:show,:download,:update_private_fields], Article
     end
     # Define abilities for the passed in user here. For example:
     #

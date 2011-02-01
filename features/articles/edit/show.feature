@@ -28,7 +28,8 @@ Examples:
 | I do nothing              | I do nothing             |
 | I fill in "Title" with "" | I press "Update Article" |
 
-Scenario Outline: Private&file upload&group options should only be shown owners or group members
+@private @fields
+Scenario Outline: Private fields should only be shown owners or group members
 Given a user "owner" exists
 And a user "secret" exists with group "secret"
 And an article exists with owner: user "owner", group: group "secret"

@@ -31,7 +31,7 @@ end
 Given /^I have uploaded "([^"]*)" to #{capture_model}$/ do |file,mdl|
   Given %(I go to #{mdl}'s edit page)
   And %(I attach the file "#{file}" to "PDF")
-  And %(I press "Update Article")
+  And %(I press "Update Private Fields")
 end
 
 Given /^I have uploaded a (\w+) file to #{capture_model}$/ do |ext,mdl|

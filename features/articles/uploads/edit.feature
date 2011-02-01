@@ -10,7 +10,7 @@ And I am logged in as user "admin"
 Scenario Outline: The article should create a pdf file only if a pdf file is attached
 When I go to that article's edit page
 And <extra>
-And I press "Update Article"
+And I press "Update Private Fields"
 Then an article should exist
 And a file named: "yeah.pdf" <file> exist for that article
 Examples:
@@ -23,11 +23,11 @@ Scenario Outline: The article should create a pdf file only if a pdf file is att
 Given an author: "lifter" exists with first_name: "Shop", last_name: "Lifter"
 When I go to that article's edit page
 And I attach the file "features/yeah.pdf" to "PDF"
-And I press "Update Article"
+And I press "Update Private Fields"
 And I go to that article's edit page
 And I select "Lifter, Shop" as second author
 And <extra>
-And I press "Update Article"
+And I press "Update Private Fields"
 Then an article should exist
 And a file named: "yeah.pdf" should exist for that article
 Examples:

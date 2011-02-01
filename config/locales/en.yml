@@ -12,6 +12,7 @@ en:
   pages: "Pages"
   print: "Print"
   private: "Private"
+  private_fields: "Private Fields"
   search: "Search"
   show: "Show"
   sign_in: "Sign in"

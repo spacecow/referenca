@@ -3,6 +3,7 @@ Referenca::Application.routes.draw do
   resources :articles do
     member do
       get 'download'
+      put 'update_private_fields'
     end
   end
   resources :references

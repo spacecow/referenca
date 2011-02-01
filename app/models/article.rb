@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
   belongs_to :group
   belongs_to :owner, :class_name => "User"
   
-  attr_accessible :title, :authorships_attributes, :references_attributes, :articles_keywords_attributes, :summarize, :journal, :volume, :start_page, :end_page, :pdf, :paper, :year, :no, :pdf_cache, :group_id, :private
+  attr_accessible :title, :authorships_attributes, :references_attributes, :articles_keywords_attributes, :summarize, :journal, :volume, :start_page, :end_page, :paper, :year, :no
   
   mount_uploader :pdf, PdfUploader
 

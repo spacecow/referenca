@@ -5,7 +5,7 @@
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= select_tag :sort, options_for_select([[t('formtastic.labels.title'),'title'],[t(:author),['first_name','middle_names','last_name']],[t('formtastic.labels.year'),'year'],[t(:keyword),'keywords.name']], @sort) %>
-    <%= submit_tag t(:search), :name => nil %>
+    <%= submit_tag t(:search), :name => nil, :class => :commit %>
   </p>
 <% end %>
 <br />

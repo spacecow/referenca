@@ -21,32 +21,28 @@ describe ArticlesController do
       session[:user_id] = @user.id      
     end
 
-    it "without ownership or membership cannot make an article private" do
+    it "without ownership or membership cannot change private fields" do
       article = Factory.create(:article)
-      put(:update, :id => article.id,
-          :article => {
-            :private => true,
-            :authorships_attributes => {"0" => {"author_id" => ""}}})
+      request.env["HTTP_REFERER"] = articles_path
+      put(:update_private_fields, :id => article.id,
+          :article => { :private => true })
       Article.find(article.id).private.should eq false
     end
-    
-    it "with ownership can make an article private" do
+
+    it "with ownership can change private fields" do
       article = Factory.create(:article,:owner => @user)
-      put(:update, :id => article.id,
-          :article => {
-            :private => true,
-            :authorships_attributes => {"0" => {"author_id" => ""}}})
+      put(:update_private_fields, :id => article.id,
+          :article => { :private => true })
+
       Article.find(article.id).private.should eq true      
     end
 
-    it "with group membership can make an article private" do
+    it "with group membership can change private fields" do
       group = Factory.create(:group)
       @user.groups << group
       article = Factory.create(:article,:group => group)
-      put(:update, :id => article.id,
-          :article => {
-            :private => true,
-            :authorships_attributes => {"0" => {"author_id" => ""}}})
+      put(:update_private_fields, :id => article.id,
+          :article => { :private => true })
       Article.find(article.id).private.should eq true      
     end    
   end

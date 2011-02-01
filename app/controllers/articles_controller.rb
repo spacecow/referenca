@@ -113,6 +113,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def update_private_fields
+    @article = Article.find(params[:id])
+    if !group_member && !owner
+      flash[:alert] = t('alert.access_denied')
+      redirect_to :back and return
+    end
+    @article.private  = params[:article][:private]
+    @article.pdf      = params[:article][:pdf]
+    @article.group_id = params[:article][:group_id]
+    @article.save
+    redirect_to @article
+  end
+
   private
 
     def group_member; @article.group && current_user.groups.include?(@article.group) end
