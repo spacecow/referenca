@@ -82,7 +82,7 @@ class Article < ActiveRecord::Base
     end
   end
 
-  def title_for_filename; title..gsub(/[,\s]/,'_') end
+  def title_for_filename; title.gsub(/[,\s]/,'_') end
   
   def volume_empty?; volume.nil? || volume.empty? end
 end
