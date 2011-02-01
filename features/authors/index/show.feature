@@ -22,10 +22,10 @@ Examples:
 
 Scenario: Links for a guest
 When I go to the authors page
-Then I should see a link "Show" within the first table row
-But I should see no link "Edit" within the first table row
-And I should see no link "Del" within the first table row
-And I should see no link "New Author" at the bottom of the page
+Then I should see a "Show" link within the first table row
+But I should see no "Edit" link within the first table row
+And I should see no "Del" link within the first table row
+And I should see no "New Author" link at the bottom of the page
 
 Scenario: Links on the bottom of the page for a user
 Given I am logged in as "admin"

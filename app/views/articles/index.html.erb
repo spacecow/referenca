@@ -23,9 +23,9 @@
         <%= link_to(fetch_image(article.pdf.url), download_article_path(article)) %>
         <% end %>
       </td>
-      <td><%= link_to t(:show), article %></td>
-      <td><%= link_to t(:edit), edit_article_path(article) if can? :edit, article%></td>
-      <td><%= link_to t(:del), article, :confirm => 'Are you sure?', :method => :delete if can? :destroy, article %></td>
+      <td><%= link_to t(:show), article if can? :show, article %></td>
+      <td><%= link_to t(:edit), edit_article_path(article) if can? :edit, article %></td>
+      <td><%= link_to t(:del), article, :confirm => 'Are you sure?', :method => :delete if ownership? article %></td>
     </tr>
   <% end %>
 </table>

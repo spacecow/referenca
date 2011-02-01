@@ -51,11 +51,11 @@ b96093: !ruby/object:Dooby::Task
   todo: rename PDF to File
 9d735c: !ruby/object:Dooby::Task 
   todo: only users with ownership or group membership can upload files :done
-2388c7: !ruby/object:Dooby::Task 
-  todo: cannot delete other users articles
 1146bf: !ruby/object:Dooby::Task 
   todo: article download only visible to owner or group members :done
 0487b7: !ruby/object:Dooby::Task 
   todo: rename the file at the time of sending instead of saving :done
 3294d1: !ruby/object:Dooby::Task 
   todo: make the private fields not a part of update/create :done
+851a9c: !ruby/object:Dooby::Task 
+  todo: cannot delete other users articles :done

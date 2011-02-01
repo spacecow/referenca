@@ -7,6 +7,29 @@ And a keyword "ann" exists with name: "ANN"
 And a keyword "agent" exists with name: "agent programming"
 And the article is one of keyword "ann" & keyword "agent"'s articles
 
+@links
+Scenario: There are no links at the bottom of the page for guest
+When I go to article "main"'s page
+Then I should see no links at the bottom of the page
+
+@links
+Scenario Outline:
+Given a user "owner" exists
+And a user "normal" exists
+And a user "secret" exists with group "secret"
+And an article exists with group: group "secret", owner: user "owner", private: <privacy>
+And I am logged in as user "<user>"
+When I go to that article's page
+Then I should see an "Edit" link at the bottom of the page
+And I should see <del> "Delete" link at the bottom of the page
+Examples:
+| user   | del | privacy |
+| secret | a   | true    |
+| owner  | a   | true    |
+| secret | a   | false   |
+| normal | no  | false   |
+| owner  | a   | false   |
+
 @private
 Scenario Outline: Guests cannot see private articles
 Given a user "secret" exists with group "secret"
@@ -25,15 +48,18 @@ Scenario Outline: Cannot see an article that's private and user has no membershi
 Given a user "normal" exists
 And a user "owner" exists
 And a user "private" exists with group "private"
-And an article "private" exists with group: group "private", private: true, owner: user "owner"
+And an article "private" exists with group: group "private", private: <privacy>, owner: user "owner"
 And I am logged in as user "<user>"
 When I go to article "private"'s page
 Then I should be on <redirect> page
 Examples:
-| user    | redirect       |
-| private | that article's |
-| normal  | the login      |
-| owner   | that article's |
+| user    | redirect       | privacy |
+| private | that article's | true    |
+| normal  | the login      | true    |
+| owner   | that article's | true    |
+| private | that article's | false   |
+| normal  | that article's | false   |
+| owner   | that article's | false   |
 
 @private
 Scenario: User is both owner and group member
@@ -90,7 +116,7 @@ Examples:
 | pdf | reference | owner     |
 | chm | reference | owner     |
 
-
+@links
 Scenario Outline: Links from the artice show page
 When I go to that article's page
 And I follow "<link>"
@@ -100,3 +126,4 @@ Examples:
 | Ben Dover         | author "dover"'s  |
 | ANN               | keyword "ann"'s   |
 | agent programming | keyword "agent"'s |
+

@@ -21,11 +21,11 @@ When /^I click the (\w+) image within the (\w+) table row$/ do |ext,order|
 end
 
 
-Then /^I should see a link "([^"]*)" within the (\w+) table row$/ do |txt,order|
+Then /^I should see (?:a|an) "([^"]*)" link within the (\w+) table row$/ do |txt,order|
   page.should have_css("#{table_row(order)} a", :text => txt)
 end
 
-Then /^I should see no link "([^"]*)" within the (\w+) table row$/ do |txt,order|
+Then /^I should see no "([^"]*)" link within the (\w+) table row$/ do |txt,order|
   page.should have_no_css("#{table_row(order)} a", :text => txt)
 end
 

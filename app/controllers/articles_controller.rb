@@ -14,8 +14,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     if @article.private
-      if !(@article.group && current_user.groups.include?(@article.group))&&
-         !(@article.owner && @article.owner == current_user)
+      if !ownership?(@article)
         flash[:alert] = t('alert.access_denied')
         redirect_to login_path and return
       end
@@ -47,7 +46,7 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
-    if @article.private && !group_member && !owner
+    if @article.private && !ownership?(@article)
       flash[:alert] = t('alert.access_denied')
       redirect_to login_path and return
     end
@@ -57,14 +56,14 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    if @article.private && !group_member && !owner
+    if @article.private && !ownership?(@article)
       flash[:alert] = t('alert.access_denied')
       redirect_to login_path and return
     end    
     if !@article.pdf.url.nil? && params[:article][:pdf].blank?
       params[:article][:pdf] = @article.pdf
     end
-    if !owner && !group_member
+    if !ownership?(@article)
       params[:article].delete(:private)
       params[:article].delete(:pdf)
       params[:article].delete(:group)
@@ -94,6 +93,10 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
+    if !ownership?(@article)
+      flash[:alert] = t('alert.access_denied')
+      redirect_to login_path and return
+    end        
     @article.destroy
     flash[:notice] = "Successfully destroyed article."
     redirect_to articles_url
@@ -101,7 +104,7 @@ class ArticlesController < ApplicationController
 
   def download
     @article = Article.find(params[:id])
-    if !group_member && !owner
+    if !ownership?(@article)
       flash[:alert] = t('alert.access_denied')
       redirect_to :back and return
     end
@@ -115,7 +118,7 @@ class ArticlesController < ApplicationController
 
   def update_private_fields
     @article = Article.find(params[:id])
-    if !group_member && !owner
+    if !group_member?(@article) && !owner?(@article)
       flash[:alert] = t('alert.access_denied')
       redirect_to :back and return
     end
@@ -127,9 +130,6 @@ class ArticlesController < ApplicationController
   end
 
   private
-
-    def group_member; @article.group && current_user.groups.include?(@article.group) end
-    def owner; @article.owner && @article.owner == current_user end
     def redirect(option1,option2)
       return option2 if option1.nil?
       option1.empty? ? option2 : option1

@@ -50,6 +50,7 @@ When I go to the articles page
 Then I should see "2010" within the first table row
 And I should see "2007" within the second table row
 
+@links @authors
 Scenario Outline: Author links on the articles index page
 Given an article exists
 And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
@@ -64,27 +65,31 @@ Examples:
 | Ben Dover   | dover  |
 | Shop Lifter | lifter |
 
+@links
 Scenario: A guest only have read access to articles
 Given an article exists
 When I go to the articles page
-Then I should see a link "Show" within the first table row
-But I should see no link "Edit" within the first table row
-And I should see no link "Del" within the first table row
-And I should see no link "New Article" at the bottom of the page
+Then I should see a "Show" link within the first table row
+But I should see no "Edit" link within the first table row
+And I should see no "Del" link within the first table row
+And I should see no "New Article" link at the bottom of the page
 
+@links
 Scenario Outline: Links within an article for a user
-Given an article exists
-And a user exists
-And I am logged in as that user
+Given a user "owner" exists
+And a user "normal" exists
+And a user "secret" exists with group "secret"
+And an article exists with owner: user "owner", group: group "secret"
+And I am logged in as user "<user>"
 When I go to the articles page
-And I follow "<link>" within the first table row
-Then I should be on <redirect> page
-And <no> articles should exist
+Then I should see a "Show" link within the first table row
+And I should see an "Edit" link within the first table row
+And I should see <del> "Del" link within the first table row
 Examples:
-| link | redirect            | no |
-| Show | that article's      |  1 |
-| Edit | that article's edit |  1 |
-| Del  | the articles        |  0 |
+| user   | del |
+| owner  | a   |
+| normal | no  |
+| secret | a   |
 
 Scenario: Links at the bottom of the page for user
 Given an article exists

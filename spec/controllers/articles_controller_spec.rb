@@ -21,29 +21,52 @@ describe ArticlesController do
       session[:user_id] = @user.id      
     end
 
-    it "without ownership or membership cannot change private fields" do
-      article = Factory.create(:article)
-      request.env["HTTP_REFERER"] = articles_path
-      put(:update_private_fields, :id => article.id,
-          :article => { :private => true })
-      Article.find(article.id).private.should eq false
+    describe "that is not owner or without membership" do
+      before(:each) do
+        @article = Factory.create(:article)
+      end
+      it "cannot change private fields" do
+        request.env["HTTP_REFERER"] = articles_path
+        put(:update_private_fields, :id => @article.id,
+            :article => { :private => true })
+        Article.find(@article.id).private.should eq false
+      end
+      it "cannot delete the article" do
+        delete(:destroy, :id => @article.id)
+        Article.exists?(@article.id).should be_true
+      end
     end
 
-    it "with ownership can change private fields" do
-      article = Factory.create(:article,:owner => @user)
-      put(:update_private_fields, :id => article.id,
-          :article => { :private => true })
-
-      Article.find(article.id).private.should eq true      
+    describe "that is owner" do
+      before(:each) do
+        @article = Factory.create(:article,:owner => @user)
+      end
+      it "can change private fields" do
+        put(:update_private_fields, :id => @article.id,
+            :article => { :private => true })
+        Article.find(@article.id).private.should eq true
+      end
+      it "can delete the article" do
+        delete(:destroy, :id => @article.id)
+        Article.exists?(@article.id).should be_false
+      end
     end
 
-    it "with group membership can change private fields" do
-      group = Factory.create(:group)
-      @user.groups << group
-      article = Factory.create(:article,:group => group)
-      put(:update_private_fields, :id => article.id,
-          :article => { :private => true })
-      Article.find(article.id).private.should eq true      
+    describe "with group membership" do
+      before(:each) do
+        group = Factory.create(:group)
+        @user.groups << group
+        @article = Factory.create(:article,:group => group)
+      end
+      it "can change private fields" do
+        put(:update_private_fields, :id => @article.id,
+            :article => { :private => true })
+        Article.find(@article.id).private.should eq true
+      end
+      it "can delete the article" do
+        delete(:destroy, :id => @article.id)
+        Article.exists?(@article.id).should be_false
+      end
     end    
   end
   

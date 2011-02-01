@@ -4,8 +4,8 @@ Given an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 
 Scenario: Links at the bottom of the page for guest
 When I go to author "dover"'s page
-Then I should see no link "Edit" at the bottom of the page
-And I should see no link "Delete" at the bottom of the page
+Then I should see no "Edit" link at the bottom of the page
+And I should see no "Delete" link at the bottom of the page
 
 Scenario Outline: Links at the bottom of the page for user
 Given I am logged in as "admin"
