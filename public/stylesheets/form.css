@@ -101,3 +101,24 @@ form li#article_private_input label input {
 form input.submit {
   margin: 5px 0 0 160px;
 }
+
+/* line 78, ../../app/stylesheets/form.sass */
+div#facts {
+  float: left;
+  margin-right: 100px;
+}
+
+/* line 82, ../../app/stylesheets/form.sass */
+div#invitation {
+  float: left;
+}
+/* line 84, ../../app/stylesheets/form.sass */
+div#invitation li.error {
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(0%, #ffbbbb), color-stop(100%, #ff0000));
+  background-image: -moz-linear-gradient(left, #ffbbbb 0%, #ff0000 100%);
+  background-image: linear-gradient(left, #ffbbbb 0%, #ff0000 100%);
+}
+/* line 86, ../../app/stylesheets/form.sass */
+div#invitation li.error p.inline-errors {
+  margin-left: 0;
+}

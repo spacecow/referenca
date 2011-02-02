@@ -10,6 +10,7 @@ class Ability
     if user
       can [:create,:update,:destroy], [Article,Author,Keyword]
       can [:show,:download,:update_private_fields], Article
+#      can :download, Article, :groups => { :visible => true }
 
       can [:index,:new,:create], Group
       can :show, Group, :memberships => {:roles_mask => 1..2, :user_id => user.id}

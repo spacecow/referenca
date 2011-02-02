@@ -1,6 +1,8 @@
 <% title @group.title %>
 
 <div class="form">
+
+<div id="facts">
 <p>
   <strong><%= t(:leader) %>:</strong>
   <%= @group.leaders %>
@@ -9,13 +11,23 @@
   <strong><%= pl(:member) %>:</strong>
   <%= @group.members %>
 </p>
+</div>
 
-<%= form_tag invite_memberships_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :invite %>
+<div id="invitation">
+<%= form_tag @membership do %>
+<ul>
+  <li id="membership_user_id_input" class="error">
+    <p class="inline-errors"><%= @membership.errors[:user_id].last %></p>
+  </li>
+  <li>
+    <%= text_field_tag :invite, params[:invite] %>
+    <%= hidden_field_tag :group_id, @group.id %>
     <%= submit_tag t(:invite), :class => :commit %>
-  </p>
+  </li>
+</ul>
 <% end %>
+</div>
+<div class="clear"></div>
 
 <div id="bottom_links">
   <%= link_to t(:edit), edit_group_path(@group) if can? :edit, @group %> 

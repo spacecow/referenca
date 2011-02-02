@@ -63,3 +63,5 @@ b96093: !ruby/object:Dooby::Task
   todo: make groups :done
 32367e: !ruby/object:Dooby::Task 
   todo: new group with testing :done
+60f26f: !ruby/object:Dooby::Task 
+  todo: invitations to a group :done
