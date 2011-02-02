@@ -1,0 +1,14 @@
+<% title your_p(:group) %>
+
+<div class="form">
+<table id="groups">
+<% @memberships.each do |membership| %>
+  <%= render membership.group, :roles => membership.roles.map(&:capitalize).join(', ') %>
+<% end %>
+</table>
+
+<div id="bottom_links">
+  <%= link_to new(:group), new_group_path if can? :new, Group %>
+</div>
+
+</div>

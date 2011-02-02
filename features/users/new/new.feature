@@ -24,7 +24,7 @@ And 1 users should exist
 And I should be on the articles page
 And I should see "Welcome dover."
 
-Scenario: When a user is created, he becomes member of a group with his name
+Scenario: When a user is created, he becomes the leader of a group with his name
 When I go to the new user page
 And I fill in "Username" with "dover"
 And I fill in "Email" with "dover@example.com"
@@ -34,5 +34,5 @@ And I press "Sign up"
 Then a group should exist with title: "dover"
 And 1 groups should exist
 And a user should exist
-And a membership should exist with user: that user, group: that group
+And a membership should exist with user: that user, group: that group, roles_mask: 1
 And 1 memberships should exist

@@ -1,4 +1,6 @@
 Referenca::Application.routes.draw do
+  get "groups/index"
+
   resources :authors
   resources :articles do
     member do
@@ -10,6 +12,7 @@ Referenca::Application.routes.draw do
   resources :keywords
   resources :sessions
   resources :users
+  resources :groups
   
   match 'signup' => 'users#new', :as => :signup
   match 'logout' => 'sessions#destroy', :as => :logout

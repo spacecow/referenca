@@ -1,3 +1,11 @@
+Then(/^I should see table "([^"]*)"$/) do |lbl, table|
+  table.diff! table(tableish("table##{lbl} tr", 'td'))
+  #  scope = get_scope(lbl)
+#  html_table = table_at("##{lbl}").to_a
+#  html_table.map! { |r| r.map! { |c| c.gsub(/<.+?>/, '') } }
+#  table.diff!(html_table)
+end
+
 Then /^I should see "([^"]*)" within the (\w+) table row$/ do |txt,order|
   page.should have_css("#{table_row(order)}", :text => txt)
 end
@@ -9,7 +17,7 @@ end
 Then /^I should see a (\w*) row$/ do |order|
   page.should have_css("#{table_row(order)}")
 end
-Then /^I should see no (\w*) row$/ do |order|
+Then /^I should see no (\w*) table row$/ do |order|
   page.should have_no_css("#{table_row(order)}")
 end
 

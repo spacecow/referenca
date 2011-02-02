@@ -98,7 +98,7 @@ class ArticlesController < ApplicationController
       redirect_to login_path and return
     end        
     @article.destroy
-    flash[:notice] = "Successfully destroyed article."
+    flash[:notice] = deleted(:article)
     redirect_to articles_url
   end
 

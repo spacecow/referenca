@@ -17,6 +17,9 @@ Factory.define :keyword do |f|
   f.name "Default keyword"
 end
 
+Factory.define :membership do |f|
+end
+
 Factory.define :reference do |f|
   f.sequence(:no){|n| n}
 end

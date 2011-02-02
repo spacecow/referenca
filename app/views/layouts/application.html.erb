@@ -25,6 +25,9 @@
         <%= link_to view(:article), articles_path %>
         | <%= link_to view(:author), authors_path %>
         | <%= link_to view(:keyword), keywords_path %>
+        <% if can? :index, Group %>
+        | <%= link_to view(:group), groups_path %>
+        <% end %>
         | <%= link_to english? ? "日本ご" : "English", toggle_language_path %>
       </div>
       <div id="user_nav">

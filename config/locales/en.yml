@@ -21,6 +21,7 @@ en:
 
   article: "Article"
   author: "Author"
+  group: "Group"
   keyword: "Keyword"
   reference: "Reference"
   referenced_from: "Referenced from"
@@ -35,6 +36,7 @@ en:
     show: "Show %{obj}"
     update: "Update %{obj}"
     view: "View %{obj}"
+    your: "Your %{obj}"
 
   alert:
     access_denied: "Access denied."

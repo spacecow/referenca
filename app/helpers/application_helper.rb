@@ -32,4 +32,5 @@ module ApplicationHelper
   def tp2(s1,s2); t(lbl(s1), :obj => pl(s2)) end
   def update(s); t2(:update,s) end
   def view(s); tp2(:view,s) end
+  def your_p(s); tp2(:your,s) end
 end

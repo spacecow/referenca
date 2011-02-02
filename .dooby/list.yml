@@ -59,3 +59,5 @@ b96093: !ruby/object:Dooby::Task
   todo: make the private fields not a part of update/create :done
 851a9c: !ruby/object:Dooby::Task 
   todo: cannot delete other users articles :done
+58fe76: !ruby/object:Dooby::Task 
+  todo: make groups :done

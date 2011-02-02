@@ -10,7 +10,16 @@ class Ability
     if user
       can [:create,:update,:destroy], [Article,Author,Keyword]
       can [:show,:download,:update_private_fields], Article
+
+      can [:index,:new,:create], Group
+      can :show, Group, :memberships => {:roles_mask => 1..2, :user_id => user.id}
+      can [:edit,:update,:destroy], Group, :memberships => {:roles_mask => 1, :user_id => user.id}
     end
+
+# can :update, Project, ["priority < ?", 3] do |project|
+#   project.priority < 3
+# end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
