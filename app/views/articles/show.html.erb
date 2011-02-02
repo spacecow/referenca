@@ -35,7 +35,6 @@
   <strong><%= t('formtastic.labels.pdf') %>:</strong>
   <% if @article.no_file? %>
     No
-  <%# elsif owner?(@article) || group_member?(@article) %>
   <% elsif can? :download, @article %>
     <%= link_to(fetch_image(@article.pdf.url), download_article_path(@article)) %>
   <% end %>
@@ -79,7 +78,7 @@
 
 <div id="bottom_links">
   <%= link_to t(:edit), edit_article_path(@article) if can? :edit, @article%>
-  <% if ownership? @article %>
+  <% if can? :delete, @article %>
   | <%= link_to t(:delete), @article, :confirm => 'Are you sure?', :method => :delete %>
   <% end %>
 </div>

@@ -7,8 +7,8 @@ And an authorship exists with article: that article, author: author "ben"
 
 @group
 Scenario:
-Given a user "owner" exists with username: "owner"
-And a user "secret" exists with username: "secret" and group "secret"
+Given a user "owner" exists with group "owner"
+And a user "secret" exists with group "secret"
 And an article exists with group: group "secret", owner: user "owner"
 And I am logged in as user "owner"
 When I go to that article's edit page

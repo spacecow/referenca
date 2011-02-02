@@ -39,9 +39,7 @@ Then I should be on <redirect> page
 Examples:
 | group          | redirect       | privacy |
 | group "secret" | the login      | true    |
-| nil            | the login      | true    |
 | group "secret" | that article's | false   |
-| nil            | that article's | false   |
 
 @private
 Scenario Outline: Cannot see an article that's private and user has no membership/ownership

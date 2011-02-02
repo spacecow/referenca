@@ -10,8 +10,8 @@ When I go to the articles page
 And I fill in "search" with "<search>"
 And I select "Keyword" from "sort"
 And I press "Search"
-Then I should see a first row
-But I should see no second row
+Then I should see a first table row
+But I should see no second table row
 And I should see "<result>"
 Examples:
 | search | result      |

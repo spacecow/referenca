@@ -9,8 +9,10 @@ class Ability
     
     if user
       can [:create,:update,:destroy], [Article,Author,Keyword]
-      can [:show,:download,:update_private_fields], Article
-#      can :download, Article, :groups => { :visible => true }
+      can [:show,:update_private_fields], Article
+      can :download, Article, :group => {:memberships => {:roles_mask => 1..2, :user_id => user.id}}
+      can :delete, Article, :group => {:memberships => {:roles_mask => 1, :user_id => user.id}}
+      can [:delete,:download], Article, :owner_id => user.id
 
       can [:index,:new,:create], Group
       can :show, Group, :memberships => {:roles_mask => 1..2, :user_id => user.id}

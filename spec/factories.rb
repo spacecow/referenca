@@ -3,6 +3,7 @@ Factory.define :article do |f|
   f.year "2000"
   f.association :owner, :factory => :user
   f.private false
+  f.association :group, :factory => :group
 end
 
 Factory.define :author do |f|
@@ -11,6 +12,7 @@ Factory.define :author do |f|
 end
 
 Factory.define :group do |f|
+  f.sequence(:title){|n| "Default group title #{n}"}
 end
 
 Factory.define :keyword do |f|

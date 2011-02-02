@@ -34,10 +34,10 @@ Then /^I should see no links at the bottom of the page$/ do
 end
 
 Then /^I should see a (pdf|chm) image within the (\w+) subsection$/ do |ext,sect|
-  Then %(I should see a #{ext} image within "p##{sect} img")
+  Then %(I should see a #{ext} image within "##{sect} img")
 end
 Then /^I should see no (pdf|chm) image within the (\w+) subsection$/ do |ext,sect|
-  page.should have_no_css("p##{sect} img")
+  page.should have_no_css("##{sect} img")
 end
 
 Then /^I should see a (pdf|chm) image within "([^"]*)"$/ do |ext,scp|

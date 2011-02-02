@@ -1,8 +1,8 @@
 @private
 Feature:
 Background:
-Given a user "owner" exists with username: "owner"
-And an article exists with owner: user "owner"
+Given a user "owner" exists with group "owner"
+And an article exists with owner: user "owner", group: group "owner"
 And I am logged in as user "owner"
 
 Scenario: Updating group

@@ -1,6 +1,7 @@
 Feature:
 Background:
-Given I am logged in as "user"
+Given a user exists with group "user"
+Given I am logged in as that user
 
 Scenario: Create a group
 When I go to the new group page

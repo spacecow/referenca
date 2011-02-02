@@ -1,10 +1,32 @@
 require 'spec_helper'
 
+def controller_actions(controller)
+  Rails.application.routes.routes.inject({}) do |hash, route|
+    hash[route.requirements[:action]] = route.verb.downcase if route.requirements[:controller] == controller && !route.verb.nil?
+    hash
+  end
+end
+
 describe ArticlesController do
+  articles_controller_actions = controller_actions("articles")
+  login = "http://test.host/login"
+
   before(:each) do
-    @article = Factory.create(:article)
+    @article = Factory(:article)
   end
 
+  describe "a user is not logged in" do    
+    articles_controller_actions.each do |action,request|
+      if %w(show index).include?(action)
+      else
+        it "should not reach the #{action} page" do
+          send("#{request}", "#{action}", :id => @article.id)
+          response.redirect_url.should eq(login)
+        end
+      end
+    end
+  end
+  
   describe "author" do
     it "should not be able to appear more than once for an article" do
       author = create_author("Ben","Dover")

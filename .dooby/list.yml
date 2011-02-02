@@ -65,3 +65,5 @@ b96093: !ruby/object:Dooby::Task
   todo: new group with testing :done
 60f26f: !ruby/object:Dooby::Task 
   todo: invitations to a group :done
+4c4d02: !ruby/object:Dooby::Task 
+  todo: download authorization to ability :done

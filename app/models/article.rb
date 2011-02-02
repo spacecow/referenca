@@ -21,9 +21,10 @@ class Article < ActiveRecord::Base
   validates :title, :presence => true, :uniqueness => true
   validates :year, :presence => true
   validates :owner, :presence => true
+  validates :group, :presence => true
 
   scope :reference_order, lambda{order("authors.last_name asc").order("year desc").includes(:authors)}
-
+  
   def authors_and_year_for_filename
     authors_and_year_for_long_reference.gsub(/[,\s]/,'_')
   end

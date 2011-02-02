@@ -1,7 +1,10 @@
 Feature:
 Background:
 Given an author exists with first_name: "Ben", last_name: "Dover"
-And a user exists
+#And a group "default" exists with title: "default"
+#And a user exists with username: "default"
+#And group "default" is one of that user's groups
+And a user exists with group "default"
 And I am logged in as that user
 
 @authorship
@@ -34,3 +37,11 @@ And I fill in "Year" with "2001"
 And I select "Dover, Ben" from "Author"
 And I press "Create Article"
 Then an article should exist with owner: that user
+
+@group
+Scenario: Group is set when creating a new article
+When I go to the new article page
+And I fill in "Title" with "Some cool title"
+And I fill in "Year" with "2001"
+And I press "Create Article"
+Then an article should exist with group: group "default"

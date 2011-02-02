@@ -14,7 +14,7 @@ Then /^I should not see "([^"]*)" within the (\w+) table row$/ do |txt,order|
   page.should have_no_css("#{table_row(order)}", :text => txt)
 end
 
-Then /^I should see a (\w*) row$/ do |order|
+Then /^I should see a (\w*) table row$/ do |order|
   page.should have_css("#{table_row(order)}")
 end
 Then /^I should see no (\w*) table row$/ do |order|

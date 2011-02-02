@@ -7,17 +7,9 @@ Given /^#{capture_model} is one of #{capture_model} & #{capture_model}'s (\w+)$/
   And %(#{owned} is one of #{owner2}'s #{assoc})  
 end
 
-Given(/^#{capture_model} exists?(?: with #{capture_fields})?$/) do |name, fields|
-  mdl = create_model(name, fields)
-  if mdl.class == User
-    mdl.groups << Group.new(:title => mdl.username)
-  end
+Given(/^#{capture_model} exists with (?: username: "([^"]*)" and)?group "([^"]*)"$/) do |name,field,group|
+  Given %(a group "#{group}" exists with title: "#{group}") unless (name =~ /user/).nil?
+  mdl = create_model(name,"username: \"#{group}\"")
+  mdl.groups << model("group \"#{group}\"")
 end
 
-Given(/^#{capture_model} exists with(?: #{capture_fields} and)? group "([^"]*)"$/) do |name,fields,group|
-  mdl = create_model(name,fields)
-  if mdl.class == User
-    Given %(a group "#{group}" exists with title: "#{mdl.username}")
-    mdl.groups << model("group \"#{group}\"")
-  end
-end
