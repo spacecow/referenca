@@ -1,0 +1,13 @@
+<% title edit(:group) %>
+
+<div class="form">
+  
+<%= render 'form', :button_label => update(:group) %>
+
+<div id="bottom_links">
+  <%= link_to t(:show), @group %>
+  <%= link_to t(:delete), @group, :confirm => sure?, :method => :delete %>
+</div>
+
+</div>
+

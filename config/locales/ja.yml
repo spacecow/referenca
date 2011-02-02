@@ -6,9 +6,13 @@ ja:
 
   article: "論文"
   author: "著者"
+  group: "グループ"
+  invite: "紹介"
   keyword: "キーワード"
+  leader: "リーダー"
   log_in: "ログイン"
   log_out: "ログアウト"
+  member: "メンバー"
   or: "か"
   pages: "ページ"
   print: "プリント"

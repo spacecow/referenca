@@ -1,4 +1,6 @@
 Referenca::Application.routes.draw do
+  get "memberships/invite"
+
   get "groups/index"
 
   resources :authors
@@ -12,6 +14,11 @@ Referenca::Application.routes.draw do
   resources :keywords
   resources :sessions
   resources :users
+  resources :memberships do
+    collection do
+      get 'invite'
+    end
+  end
   resources :groups
   
   match 'signup' => 'users#new', :as => :signup

@@ -12,14 +12,23 @@ class GroupsController < ApplicationController
   end
 
   def create
-    redirect_to @group
+    if @group.save
+      current_user.groups << @group
+      redirect_to groups_path, :notice => created(:group)
+    else
+      render :new
+    end
   end
   
-  def edit    
+  def edit
   end
 
   def update
-    redirect_to @group
+    if @group.update_attributes(params[:group])
+      redirect_to @group, :notice => updated(:group)
+    else
+      render :edit
+    end
   end
   
   def destroy

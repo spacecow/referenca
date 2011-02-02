@@ -1,0 +1,26 @@
+<% title @group.title %>
+
+<div class="form">
+<p>
+  <strong><%= t(:leader) %>:</strong>
+  <%= @group.leaders %>
+</p>
+<p>
+  <strong><%= pl(:member) %>:</strong>
+  <%= @group.members %>
+</p>
+
+<%= form_tag invite_memberships_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :invite %>
+    <%= submit_tag t(:invite), :class => :commit %>
+  </p>
+<% end %>
+
+<div id="bottom_links">
+  <%= link_to t(:edit), edit_group_path(@group) if can? :edit, @group %> 
+  <% if can? :destroy, @group %>
+    | <%= link_to t(:delete), @group, :confirm => sure?, :method => :delete %>
+  <% end %>
+</div>
+</div>

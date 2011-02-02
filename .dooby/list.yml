@@ -61,3 +61,5 @@ b96093: !ruby/object:Dooby::Task
   todo: cannot delete other users articles :done
 58fe76: !ruby/object:Dooby::Task 
   todo: make groups :done
+32367e: !ruby/object:Dooby::Task 
+  todo: new group with testing :done

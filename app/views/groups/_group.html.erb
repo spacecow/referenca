@@ -6,6 +6,6 @@
     <td><%= link_to t(:edit), edit_group_path(group) %></td>
   <% end %>
   <% if can? :destroy, group %>
-    <td><%= link_to t(:del), group, :confirm => t('message.sure?'), :method => :delete %></td>  
+    <td><%= link_to t(:del), group, :confirm => sure?, :method => :delete %></td>  
   <% end %>
 </tr>

@@ -6,6 +6,7 @@ class Membership < ActiveRecord::Base
 
   ROLES = %w(leader member)
 
+  def role?(role); roles.include? role.to_s end
   def roles
     ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
   end  
