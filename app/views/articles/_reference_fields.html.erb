@@ -1,0 +1,8 @@
+<li>
+  <%= f.label :referenced_article_id, t(:reference) %>
+  <%= f.select :referenced_article_id, @articles, :include_blank => true %>
+  <%= f.check_box :_destroy %>
+  <%= f.label :_destroy, remove(:reference) %>
+</li>
+<%= f.input :note, :input_html => { :class => :reference } %>
+<%= f.input :no, :label => :number %>

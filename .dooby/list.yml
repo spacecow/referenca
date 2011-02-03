@@ -79,7 +79,9 @@ c2e3c3: !ruby/object:Dooby::Task
   todo: check uniqueness of author names :done
 2b4235: !ruby/object:Dooby::Task 
   todo: a name check in form for article's non-private fields :done
-74a2a9: !ruby/object:Dooby::Task 
-  todo: being able to delete&add references
 360cf8: !ruby/object:Dooby::Task 
   todo: no is not necessary for reference :done
+01227f: !ruby/object:Dooby::Task 
+  todo: sort references after no, author, year, title
+d40aa8: !ruby/object:Dooby::Task 
+  todo: being able to delete&add references :done

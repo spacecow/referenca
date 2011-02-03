@@ -11,5 +11,5 @@ Scenario: A reference cannot be chosen a second time for the same article
 When I go to article: "main"'s edit page
 And I select "Dover (2000) - Sexy" as second reference
 And I press "Update Article"
-Then I should see an article references_attributes_1_referenced_article_id error "has already been taken"
+Then I should see an article reference error "Dover (2000) - Sexy has already been taken"
 

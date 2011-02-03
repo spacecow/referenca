@@ -51,7 +51,9 @@
   <ul>
   <% @references.each do |reference| %>
     <li>
-      <strong><%= reference.no %>.</strong>
+      <% if reference.no  %>
+        <strong><%= reference.no %>.</strong>
+      <% end %>
       <i><%= "\"#{reference.note}\"" %></i> - 
       <%= render "long_reference", :article => reference.referenced_article, :ex => nil %>
     </li>
@@ -67,7 +69,9 @@
   <ul>
   <% @references_from.each do |reference| %>
   <li>
-    <strong><%= reference.no %>.</strong>
+    <% if reference.no %>
+      <strong><%= reference.no %>.</strong>
+    <% end %>
     <i><%= "\"#{reference.note}\"" %></i> - 
     <%= render "long_reference", :article => reference.article, :ex => nil %>
   </li>

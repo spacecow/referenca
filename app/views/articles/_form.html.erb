@@ -27,11 +27,14 @@
   <%= f.input :end_page, :input_html => {:class => :number} %>
   <%= f.input :paper, :label => t(:print) %>
   <div class="clear"></div>
+  <li id="article_reference_input" class="error">
+    <p class="inline-errors"><%= @article.errors['references.referenced_article_id'].first %></p>
+  </li>
   <%= f.semantic_fields_for :references do |ref| %>
-    <%= ref.input :referenced_article_id, :label => t(:reference),
-  :as => :select, :collection => @articles %>
-    <%= ref.input :note, :input_html => { :class => :reference } %>
-    <%= ref.input :no, :label => :number %>
+    <%= render 'articles/reference_fields', :f => ref %>
+  <% end %>
+  <% unless @article.new_record? %>
+    <li><%= link_to_add_fields add(:reference), f, :references %></li>
   <% end %>
   <%= f.submit button_label, :class => :submit %>
 <% end %>

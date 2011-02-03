@@ -19,6 +19,7 @@ end
 When /^I check the (\w+) "([^"]*)"$/ do |order,lbl|
   mdl = "authorships" if lbl == "Remove Author"
   mdl = "articles_keywords" if lbl == "Remove Keyword"
+  mdl = "references" if lbl == "Remove Reference"
   When %(I check "article_#{mdl}_attributes_#{zero_no order}__destroy")
 end
 

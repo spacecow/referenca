@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
-  has_many :references
+  has_many :references, :dependent => :destroy
   has_many :referenced_articles, :through => :references
-  accepts_nested_attributes_for :references, :reject_if => lambda {|a| a[:referenced_article_id].blank?}
+  accepts_nested_attributes_for :references, :reject_if => lambda {|a| a[:referenced_article_id].blank?}, :allow_destroy => true
   
   has_many :authorships, :dependent => :destroy
   has_many :authors, :through => :authorships
