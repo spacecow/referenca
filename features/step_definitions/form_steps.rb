@@ -9,15 +9,11 @@ Then /^"([^"]*)" should be selected for "([^"]*)"$/ do |value, field|
 end
 
 Then /^I should see (?:a|an) (\w+) (\w+) error "([^"]*)"$/ do |mdl,attr,txt|
-  with_scope("li##{mdl}_#{attr}_input p.inline-errors") do
-    page.text.should eq txt
-  end
+  page.should have_css("li##{mdl}_#{attr}_input p.inline-errors", :text => txt)
 end
 
 Then /^I should see no (\w+) (\w+) error$/ do |mdl,attr|
-  with_scope("li##{mdl}_#{attr}_input p.inline-errors") do
-    page.text.should eq ""
-  end
+  page.should have_no_css("li##{mdl}_#{attr}_input p.inline-errors")
 end
 
 When /^I check the (\w+) "([^"]*)"$/ do |order,lbl|

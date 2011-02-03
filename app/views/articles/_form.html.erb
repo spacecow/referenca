@@ -2,9 +2,11 @@
 <%= semantic_form_for @article do |f| %>
   <%= hidden_field_tag :back, params[:back] %>
   <%= f.input :title %>
+  <% unless @article.errors['authorships.author_id'].empty? %>
   <li id="article_author_input" class="error">
     <p class="inline-errors"><%= @article.errors['authorships.author_id'].first %></p>
   </li>
+  <% end %>
   <%= f.semantic_fields_for :authorships do |ref| %>
     <%= render 'articles/authorship_fields', :f => ref %>
   <% end %>

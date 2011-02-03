@@ -43,14 +43,16 @@ When I go to article: "main"'s edit page
 Then "Reference" should have options "BLANK, Dover (2001) - A cool title"
 
 Scenario: View for referenced article
-Given an article "reference" exists with title: "A cool title", year: "2001"
+Given I am logged in as that user
+And an article "reference" exists with title: "A cool title", year: "2001"
 And an author "dover" exists with first_name: "Ben", last_name: "Dover"
-And an authorship exists with article: article "reference", author: author "dover"
-And a reference exists with article: article "main", referenced_article: article "reference"
+And article "reference" is one of author "dover"'s articles
+And article "main" references article "reference"
 When I go to article: "main"'s edit page
 Then "Dover (2001) - A cool title" should be selected for "Reference"
 
 Scenario: References should be ordered after AUTHOR and year
+Given I am logged in as that user
 And an article "ref2" exists with title: "Cooler title", year: "2010"
 Given an article "ref1" exists with title: "A cool title", year: "2001"
 And an author "dover" exists with first_name: "Ben", last_name: "Dover"
@@ -61,7 +63,8 @@ When I go to article: "main"'s edit page
 Then "Reference" should have options "BLANK, Dover (2001) - A cool title, Lifter (2010) - Cooler title"
 
 Scenario: References should be ordered after author and YEAR
-Given an article "ref1" exists with title: "A cool title", year: "2001"
+Given I am logged in as that user
+And an article "ref1" exists with title: "A cool title", year: "2001"
 And an article "ref2" exists with title: "Cooler title", year: "2010"
 And an author "dover" exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with article: article "ref1", author: author "dover"

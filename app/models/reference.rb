@@ -4,7 +4,6 @@ class Reference < ActiveRecord::Base
   validate :cannot_reference_itself
   validates :referenced_article_id, :presence => true, :uniqueness => {:scope => :article_id}
   validates :article_id, :presence => true
-  validates :no, :presence => true, :uniqueness => {:scope => :article_id}
 
   def group_assoc(assoc); send(assoc).group_assoc(assoc) end
   def owner_assoc(assoc); send(assoc).owner_assoc(assoc) end

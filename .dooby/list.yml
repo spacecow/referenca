@@ -17,8 +17,6 @@ d6d4e8: !ruby/object:Dooby::Task
   todo: ordered keywords in alphabetical order on their index page :done
 "889101": !ruby/object:Dooby::Task 
   todo: View Authors and View Articles should be displayed on the top :done
-367d70: !ruby/object:Dooby::Task 
-  todo: being able to delete references
 6d0bf9: !ruby/object:Dooby::Task 
   todo: private articles should not be visible in references :done
 "314204": !ruby/object:Dooby::Task 
@@ -77,9 +75,11 @@ c2e3c3: !ruby/object:Dooby::Task
   todo: check flash for download in test :done
 114b4f: !ruby/object:Dooby::Task 
   todo: cannot see private articles in form references :done
-af7fb7: !ruby/object:Dooby::Task 
-  todo: no is not necessary for reference
 89820b: !ruby/object:Dooby::Task 
   todo: check uniqueness of author names :done
 2b4235: !ruby/object:Dooby::Task 
   todo: a name check in form for article's non-private fields :done
+74a2a9: !ruby/object:Dooby::Task 
+  todo: being able to delete&add references
+360cf8: !ruby/object:Dooby::Task 
+  todo: no is not necessary for reference :done
