@@ -1,9 +1,22 @@
 Feature:
 Background:
 Given an article "main" exists with title: "Main article"
-And I am logged in as "admin"
+And a user "admin" exists with group "admin"
+
+@invisible
+Scenario Outline: Private articles the user have no ownership of should not be seen as references
+Given a user "owner" exists
+And a user "normal" exists
+And a user "secret" exists with group "secret"
+And an article "private" exist with group: group "secret", private: <privacy>, owner: user "owner"
+
+When I go to article "main"'s edit page
+Examples:
+| privacy |
+| false   |
 
 Scenario Outline: An article cannot reference itself
+Given I am logged in as that user
 When I go to article: "main"'s edit page
 And <command1>
 And <command2>
@@ -14,7 +27,8 @@ Examples:
 | I fill in "Title" with "" | I press "Update Article" |
 
 Scenario: View for reference options
-Given an article "reference" exists with title: "A cool title", year: "2001"
+Given I am logged in as that user
+And an article "reference" exists with title: "A cool title", year: "2001"
 And an author "dover" exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with article: article "reference", author: author "dover"
 When I go to article: "main"'s edit page
