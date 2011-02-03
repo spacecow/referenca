@@ -8,7 +8,7 @@ def controller_actions(controller)
 end
 
 describe GroupsController do
-  pages_controller_actions = controller_actions("groups")
+  groups_controller_actions = controller_actions("groups")
   login = "http://test.host/login"
   
   before(:each) do
@@ -16,7 +16,7 @@ describe GroupsController do
   end
 
   describe "a user is not logged in" do    
-    pages_controller_actions.each do |action,request|
+    groups_controller_actions.each do |action,request|
       it "should not reach the #{action} page" do
         send("#{request}", "#{action}", :id => @group.id)
         response.redirect_url.should eq(login)
@@ -31,7 +31,7 @@ describe GroupsController do
     end
     
     describe "without membership" do
-      pages_controller_actions.each do |action,request|
+      groups_controller_actions.each do |action,request|
         if %w(index new create).include?(action)
           it "should reach the #{action} page" do
             send("#{request}", "#{action}", :id => @group.id)
@@ -52,7 +52,7 @@ describe GroupsController do
         @user.memberships << @membership
       end
 
-      pages_controller_actions.each do |action,request|
+      groups_controller_actions.each do |action,request|
         it "should reach the #{action} page" do
           send("#{request}", "#{action}", :id => @group.id)
           response.redirect_url.should_not eq(login)
@@ -66,7 +66,7 @@ describe GroupsController do
         @user.memberships << @membership
       end
 
-      pages_controller_actions.each do |action,request|
+      groups_controller_actions.each do |action,request|
         if %w(edit update destroy).include?(action)
           it "should not reach the #{action} page" do
             send("#{request}", "#{action}", :id => @group.id)
@@ -79,6 +79,6 @@ describe GroupsController do
           end
         end
       end          
-    end    
+    end       
   end
 end

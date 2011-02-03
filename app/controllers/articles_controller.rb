@@ -13,12 +13,6 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    if @article.private
-      if !ownership?(@article)
-        flash[:alert] = t('alert.access_denied')
-        redirect_to login_path and return
-      end
-    end
     @references = @article.references.
       order('no asc').
       public_or_privately_owned_reference(current_user)
@@ -47,27 +41,14 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
-    if @article.private && !ownership?(@article)
-      flash[:alert] = t('alert.access_denied')
-      redirect_to login_path and return
-    end
     @keyword = Keyword.new
     init_rendered_form
   end
 
   def update
     @article = Article.find(params[:id])
-    if @article.private && !ownership?(@article)
-      flash[:alert] = t('alert.access_denied')
-      redirect_to login_path and return
-    end    
     if !@article.pdf.url.nil? && params[:article][:pdf].blank?
       params[:article][:pdf] = @article.pdf
-    end
-    if !ownership?(@article)
-      params[:article].delete(:private)
-      params[:article].delete(:pdf)
-      params[:article].delete(:group)
     end
     if @article.update_attributes(params[:article])
       flash[:notice] = "Successfully updated article."
@@ -93,11 +74,6 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    if !ownership?(@article)
-      flash[:alert] = t('alert.access_denied')
-      redirect_to login_path and return
-    end        
     @article.destroy
     flash[:notice] = deleted(:article)
     redirect_to articles_url
@@ -105,24 +81,16 @@ class ArticlesController < ApplicationController
 
   def download
     @article = Article.find(params[:id])
-    if !ownership?(@article)
-      flash[:alert] = t('alert.access_denied')
-      redirect_to :back and return
-    end
-    if File.exist?(path = @article.pdf.url)
+    if @article.pdf.url && File.exist?(path = @article.pdf.url)
       send_file path, :content_type => "application/#{@article.extension}",
       :filename => @article.filename
     else
-      redirect_to login_path
+      redirect_to :back, :alert => "File does not exist."
     end
   end
 
   def update_private_fields
     @article = Article.find(params[:id])
-    if !group_member?(@article) && !owner?(@article)
-      flash[:alert] = t('alert.access_denied')
-      redirect_to :back and return
-    end
     @article.private  = params[:article][:private]
     @article.pdf      = params[:article][:pdf]
     @article.group_id = params[:article][:group_id]

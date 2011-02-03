@@ -67,3 +67,7 @@ b96093: !ruby/object:Dooby::Task
   todo: invitations to a group :done
 4c4d02: !ruby/object:Dooby::Task 
   todo: download authorization to ability :done
+d3ee5b: !ruby/object:Dooby::Task 
+  todo: test download separate
+cc9f94: !ruby/object:Dooby::Task 
+  todo: testing article routing with rspec :done
