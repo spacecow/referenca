@@ -42,9 +42,14 @@ describe ArticlesController do
 
       articles_controller_actions.each do |action,req|
         it "should reach the #{action} page" do
-          request.env["HTTP_REFERER"] = articles_path if action == "download"
-          send("#{req}", "#{action}", :id => @article.id, :article=>{})
-          response.redirect_url.should_not eq(login)
+          if action == "download"
+            request.env["HTTP_REFERER"] = articles_path
+            send("#{req}", "#{action}", :id => @article.id, :article=>{})
+            flash[:alert].should eq "File does not exist."
+          else
+            send("#{req}", "#{action}", :id => @article.id, :article=>{})            
+            response.redirect_url.should_not eq(login)
+          end
         end
       end      
     end
@@ -81,9 +86,14 @@ describe ArticlesController do
         articles_controller_actions.each do |action,req|
           if %w(index show new create edit update download).include?(action)
             it "should reach the #{action} page" do
-              request.env["HTTP_REFERER"] = articles_path if action == "download"
-              send("#{req}", "#{action}", :id => @article.id)
-              response.redirect_url.should_not eq(login)
+              if action == "download"
+                request.env["HTTP_REFERER"] = articles_path
+                send("#{req}", "#{action}", :id => @article.id)
+                flash[:alert].should eq "File does not exist."
+              else
+                send("#{req}", "#{action}", :id => @article.id)
+                response.redirect_url.should_not eq(login)
+              end
             end
           else
             it "should not reach the #{action} page" do
@@ -103,9 +113,14 @@ describe ArticlesController do
 
         articles_controller_actions.each do |action,req|
           it "should reach the #{action} page" do
-            request.env["HTTP_REFERER"] = articles_path if action == "download"
-            send("#{req}", "#{action}", :id => @article.id, :article=>{})
-            response.redirect_url.should_not eq(login)
+            if action == "download"
+              request.env["HTTP_REFERER"] = articles_path
+              send("#{req}", "#{action}", :id => @article.id, :article=>{})
+              flash[:alert].should eq "File does not exist."
+            else
+              send("#{req}", "#{action}", :id => @article.id, :article=>{})
+              response.redirect_url.should_not eq(login)
+            end
           end
         end
       end            
@@ -143,9 +158,14 @@ describe ArticlesController do
 
       articles_controller_actions.each do |action,req|
         it "should reach the #{action} page" do
-          request.env["HTTP_REFERER"] = articles_path if action == "download"
-          send("#{req}", "#{action}", :id => @article.id, :article=>{})
-          response.redirect_url.should_not eq(login)
+          if action == "download"
+            request.env["HTTP_REFERER"] = articles_path
+            send("#{req}", "#{action}", :id => @article.id, :article=>{})
+            flash[:alert].should eq "File does not exist."
+          else
+            send("#{req}", "#{action}", :id => @article.id, :article=>{})
+            response.redirect_url.should_not eq(login)
+          end
         end
       end      
     end
@@ -182,9 +202,14 @@ describe ArticlesController do
         articles_controller_actions.each do |action,req|
           if %w(index show new create edit update download).include?(action)
             it "should reach the #{action} page" do
-              request.env["HTTP_REFERER"] = articles_path if action == "download"
-              send("#{req}", "#{action}", :id => @article.id)
-              response.redirect_url.should_not eq(login)
+              if action == "download"
+                request.env["HTTP_REFERER"] = articles_path
+                send("#{req}", "#{action}", :id => @article.id)
+                flash[:alert].should eq "File does not exist."
+              else
+                send("#{req}", "#{action}", :id => @article.id)
+                response.redirect_url.should_not eq(login)
+              end
             end
           else
             it "should not reach the #{action} page" do
@@ -204,9 +229,14 @@ describe ArticlesController do
 
         articles_controller_actions.each do |action,req|
           it "should reach the #{action} page" do
-            request.env["HTTP_REFERER"] = articles_path if action == "download"
-            send("#{req}", "#{action}", :id => @article.id, :article=>{})
-            response.redirect_url.should_not eq(login)
+            if action == "download"
+              request.env["HTTP_REFERER"] = articles_path
+              send("#{req}", "#{action}", :id => @article.id, :article=>{})
+              flash[:alert].should eq "File does not exist."
+            else
+              send("#{req}", "#{action}", :id => @article.id, :article=>{})
+              response.redirect_url.should_not eq(login)
+            end
           end
         end
       end      

@@ -75,7 +75,7 @@ cc9f94: !ruby/object:Dooby::Task
   todo: an article's group cannot be changed to blank :done
 136ae0: !ruby/object:Dooby::Task 
   todo: cannot see private articles in form references
-692da9: !ruby/object:Dooby::Task 
-  todo: check flash for download in test
 "680237": !ruby/object:Dooby::Task 
   todo: updating article abilities in views :done
+c2e3c3: !ruby/object:Dooby::Task 
+  todo: check flash for download in test :done
