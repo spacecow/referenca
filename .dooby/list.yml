@@ -73,3 +73,9 @@ cc9f94: !ruby/object:Dooby::Task
   todo: testing article routing with rspec :done
 9383eb: !ruby/object:Dooby::Task 
   todo: an article's group cannot be changed to blank :done
+136ae0: !ruby/object:Dooby::Task 
+  todo: cannot see private articles in form references
+692da9: !ruby/object:Dooby::Task 
+  todo: check flash for download in test
+"680237": !ruby/object:Dooby::Task 
+  todo: updating article abilities in views :done

@@ -14,8 +14,7 @@
 pp. <%= "#{attribute(article.start_page,
          'START-PAGE')}-#{attribute(article.end_page, 'END-PAGE')}," %>
 <%= "(#{article.year})" %>
-<% if article.no_file? %>
-<% elsif owner?(article) || group_member?(article) %>
+<% if article.file? && can?(:download, article) %>
   <%= link_to(fetch_image(article.pdf.url), download_article_path(article)) %>
 <% end %>
 <%= link_to t(:show), article %>

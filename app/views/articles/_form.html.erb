@@ -37,7 +37,7 @@
 </div>
 <br/>
 
-<% if (owner?(@article) || group_member?(@article)) && !@article.new_record? %>
+<% if !@article.new_record? && can?(:update_private_fields, @article) %>
 <div id="private_fields">
   <a name="private_fields"></a>
   <h1><%= edit(:private_fields) %></h1>

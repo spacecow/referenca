@@ -49,6 +49,7 @@ class Article < ActiveRecord::Base
 
   def extension; pdf.url.split('.').last end
   
+  def file?; !no_file? end
   def filename
     "#{authors_and_year_for_filename}_-_#{title_for_filename}.#{extension}"
   end
