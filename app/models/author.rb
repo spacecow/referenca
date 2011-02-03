@@ -4,8 +4,8 @@ class Author < ActiveRecord::Base
   has_many :authorships, :dependent => :destroy
   has_many :articles, :through => :authorships
   
-  validates :first_name, :presence => true, :uniqueness => true
-  validates :last_name, :presence => true, :uniqueness => true
+  validates :first_name, :presence => true, :uniqueness => {:scope => [:middle_names, :last_name]}
+  validates :last_name, :presence => true
 
   def straight_name
     name = first_name
