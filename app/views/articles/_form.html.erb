@@ -64,7 +64,7 @@
   window.location = window.location.href + "#keyword";
 <% elsif !@author.errors.empty? %>
   window.location = window.location.href + "#author";
-<% elsif !@article.errors.empty? %>
+<% elsif !@article.errors[:pdf].empty? %>
   window.location = window.location.href + "#private_fields";
 <% end %>
 </script>

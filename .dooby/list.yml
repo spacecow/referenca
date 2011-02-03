@@ -77,9 +77,9 @@ c2e3c3: !ruby/object:Dooby::Task
   todo: check flash for download in test :done
 114b4f: !ruby/object:Dooby::Task 
   todo: cannot see private articles in form references :done
-fabc6a: !ruby/object:Dooby::Task 
-  todo: a name check in form for article's non-private fields
 af7fb7: !ruby/object:Dooby::Task 
   todo: no is not necessary for reference
 89820b: !ruby/object:Dooby::Task 
   todo: check uniqueness of author names :done
+2b4235: !ruby/object:Dooby::Task 
+  todo: a name check in form for article's non-private fields :done
