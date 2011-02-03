@@ -42,24 +42,6 @@ Examples:
 | group "secret" | that article's | false   |
 
 @private
-Scenario Outline: Cannot see an article that's private and user has no membership/ownership
-Given a user "normal" exists
-And a user "owner" exists
-And a user "private" exists with group "private"
-And an article "private" exists with group: group "private", private: <privacy>, owner: user "owner"
-And I am logged in as user "<user>"
-When I go to article "private"'s page
-Then I should be on <redirect> page
-Examples:
-| user    | redirect       | privacy |
-| private | that article's | true    |
-| normal  | the login      | true    |
-| owner   | that article's | true    |
-| private | that article's | false   |
-| normal  | that article's | false   |
-| owner   | that article's | false   |
-
-@private
 Scenario: User is both owner and group member
 Given a user exists with group "group"
 And an article exists with group: group "group", private: true, owner: that user

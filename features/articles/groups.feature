@@ -16,4 +16,10 @@ And an article should exist with group: that group
 Scenario: A user can only see his own groups when making an article private
 Given a group exists with title: "other"
 When I go to that article's edit page
-Then "Group" should have options "BLANK, owner"
+Then "Group" should have options "owner"
+
+# Scenario: An article can not leave group blank
+# When I go to that article's edit page
+# And I select "" from "Group"
+# And I press "Update Private Fields"
+# Then an article should exist with group: group "owner"

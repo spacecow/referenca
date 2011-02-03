@@ -94,8 +94,12 @@ class ArticlesController < ApplicationController
     @article.private  = params[:article][:private]
     @article.pdf      = params[:article][:pdf]
     @article.group_id = params[:article][:group_id]
-    @article.save
-    redirect_to @article
+    if @article.save
+      redirect_to @article
+    else
+      init_rendered_form
+      render :edit
+    end
   end
 
   private

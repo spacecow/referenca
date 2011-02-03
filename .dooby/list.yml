@@ -71,3 +71,5 @@ d3ee5b: !ruby/object:Dooby::Task
   todo: test download separate
 cc9f94: !ruby/object:Dooby::Task 
   todo: testing article routing with rspec :done
+9383eb: !ruby/object:Dooby::Task 
+  todo: an article's group cannot be changed to blank :done

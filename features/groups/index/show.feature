@@ -1,6 +1,6 @@
 Feature:
 Background:
-Given a user exists with username: "cool" and group "coolness"
+Given a user exists with username: "cool" and group "cool"
 And I am logged in as that user
 
 Scenario: Only one's own groups are listed

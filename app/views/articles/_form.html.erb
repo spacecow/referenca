@@ -1,6 +1,5 @@
 <div class="form">
 <%= semantic_form_for @article do |f| %>
-  <%= f.error_messages %>
   <%= hidden_field_tag :back, params[:back] %>
   <%= f.input :title %>
   <li id="article_author_input" class="error">
@@ -65,5 +64,7 @@
   window.location = window.location.href + "#keyword";
 <% elsif !@author.errors.empty? %>
   window.location = window.location.href + "#author";
+<% elsif !@article.errors.empty? %>
+  window.location = window.location.href + "#private_fields";
 <% end %>
 </script>

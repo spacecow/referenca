@@ -5,15 +5,6 @@ And I am logged in as "admin"
 And an author: "ben" exists with first_name: "Ben", last_name: "Dover"
 And an authorship exists with article: that article, author: author "ben"
 
-@group
-Scenario:
-Given a user "owner" exists with group "owner"
-And a user "secret" exists with group "secret"
-And an article exists with group: group "secret", owner: user "owner"
-And I am logged in as user "owner"
-When I go to that article's edit page
-Then "Group" should have options "BLANK, owner, secret"
-
 Scenario Outline: Only owners or group members can edit an article if it is private
 Given a user "secret" exists with group "secret"
 And a user "owner" exists

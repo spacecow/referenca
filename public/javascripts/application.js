@@ -1,6 +1,8 @@
 // focus on the first text input field in the first field on the page
 $(function(){
-  $(":text:visible:enabled:first").focus();
+  if($(".error").text() == "") {
+    $(":text:visible:enabled:first").focus();
+  }
 });
 
 function add_fields(link, association, content){
