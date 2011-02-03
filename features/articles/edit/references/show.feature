@@ -8,12 +8,20 @@ Scenario Outline: Private articles the user have no ownership of should not be s
 Given a user "owner" exists
 And a user "normal" exists
 And a user "secret" exists with group "secret"
-And an article "private" exist with group: group "secret", private: <privacy>, owner: user "owner"
-
-When I go to article "main"'s edit page
+And an article "private" exist with group: group "secret", private: <privacy>, owner: user "owner", title: "yeah", year: "2002"
+And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
+And author "dover" is one of article "private"'s authors
+And I am logged in as user "<user>"
+When I go to article: "main"'s edit page
+Then "Reference" should have options "<options>"
 Examples:
-| privacy |
-| false   |
+| privacy | user   | options                    |
+| false   | owner  | BLANK, Dover (2002) - yeah |
+| true    | owner  | BLANK, Dover (2002) - yeah |
+| false   | secret | BLANK, Dover (2002) - yeah |
+| true    | secret | BLANK, Dover (2002) - yeah |
+| false   | normal | BLANK, Dover (2002) - yeah |
+| true    | normal | BLANK                      |
 
 Scenario Outline: An article cannot reference itself
 Given I am logged in as that user

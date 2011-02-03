@@ -19,6 +19,7 @@ module InitArticleForm
     def load_articles
       @articles = Article.all.
         reject{|e| e==@article}.
+        public_or_privately_owned(current_user).
         sort_by_author_first_name_then_year.
         map{|e| [e.reference, e.id]}
     end
