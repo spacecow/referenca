@@ -13,20 +13,21 @@
 </p>
 </div>
 
+<% if can? :invite_to, @group %>
 <div id="invitation">
-<%= form_tag @membership do %>
+<%= form_tag invite_to_group_path(@group) do %>
 <ul>
   <li id="membership_user_id_input" class="error">
     <p class="inline-errors"><%= @membership.errors[:user_id].last %></p>
   </li>
   <li>
     <%= text_field_tag :invite, params[:invite] %>
-    <%= hidden_field_tag :group_id, @group.id %>
     <%= submit_tag t(:invite), :class => :commit %>
   </li>
 </ul>
 <% end %>
 </div>
+<% end %>
 <div class="clear"></div>
 
 <div id="bottom_links">

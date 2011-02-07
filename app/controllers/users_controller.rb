@@ -7,7 +7,9 @@ class UsersController < ApplicationController
     @user = User.create(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      @user.groups << Group.new(:title => @user.username)
+      group = Group.create(:title => @user.username)
+      membership = Membership.new(:group_id => group.id, :roles_mask => 1)
+      @user.memberships << membership
       redirect_to articles_path, :notice => created(:a_new_user)
     else
       render :new

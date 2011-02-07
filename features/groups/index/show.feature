@@ -9,9 +9,10 @@ When I go to the groups page
 Then I should see "cool" within the first table row
 But I should see no second table row
 
+@order
 Scenario: Groups are listed alphabetically
 Given a group exists with title: "abc"
-And that group is one of that user's groups
+And a membership exists with group: that group, user: that user, roles_mask: 1
 When I go to the groups page
 Then I should see table "groups"
 | abc  | Leader | Show | Edit | Del |

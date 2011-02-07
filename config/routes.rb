@@ -12,8 +12,11 @@ Referenca::Application.routes.draw do
   resources :keywords
   resources :sessions
   resources :users
-  resources :memberships
-  resources :groups
+  resources :groups do
+    member do
+      post 'invite_to'
+    end
+  end
   
   match 'signup' => 'users#new', :as => :signup
   match 'logout' => 'sessions#destroy', :as => :logout

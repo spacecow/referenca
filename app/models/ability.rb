@@ -17,7 +17,7 @@ class Ability
 
       can [:index,:new,:create], Group
       can :show, Group, :memberships => {:roles_mask => 1..2, :user_id => user.id}
-      can [:edit,:update,:destroy], Group, :memberships => {:roles_mask => 1, :user_id => user.id}
+      can [:edit,:update,:destroy,:invite_to], Group, :memberships => {:roles_mask => 1, :user_id => user.id}
     end
 
 # can :update, Project, ["priority < ?", 3] do |project|

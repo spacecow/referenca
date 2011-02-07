@@ -14,7 +14,7 @@ Given a user "secret" exists with group "secret"
 And a user "owner" exists
 And a user "normal" exists
 And an article exists with group: group "secret", owner: user "owner"
-And I am logged in as user "secret"
+And I am logged in as user "owner"
 And I have uploaded a pdf file to that article
 And I go to the logout page
 And I am logged in as user "<user>"

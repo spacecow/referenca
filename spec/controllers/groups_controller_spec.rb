@@ -67,7 +67,7 @@ describe GroupsController do
       end
 
       groups_controller_actions.each do |action,request|
-        if %w(edit update destroy).include?(action)
+        if %w(edit update destroy invite_to).include?(action)
           it "should not reach the #{action} page" do
             send("#{request}", "#{action}", :id => @group.id)
             response.redirect_url.should eq(login)

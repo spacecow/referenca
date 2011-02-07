@@ -25,10 +25,10 @@ Examples:
 | be        |
 | ben@hello |
 
-Scenario: A user cannot be member twice
+Scenario: A user cannot become a member twice
 Given a user "ben" exists with username: "ben", email: "ben@hello.com"
-And user "ben" is one of that group's users
-When I go to that group's page
+And a membership exists with group: group "test", user: user "ben", roles_mask: 2
+When I go to group "test"'s page
 And I fill in "invite" with "ben"
 And I press "Invite"
 Then 2 memberships should exist

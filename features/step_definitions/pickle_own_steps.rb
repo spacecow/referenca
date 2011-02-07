@@ -8,8 +8,12 @@ Given /^#{capture_model} is one of #{capture_model} & #{capture_model}'s (\w+)$/
 end
 
 Given(/^#{capture_model} exists with (?:username: "([^"]*)" and )?group "([^"]*)"$/) do |name,field,group|
-  Given %(a group "#{group}" exists with title: "#{group}") unless (name =~ /user/).nil?
   mdl = create_model(name,"username: \"#{group}\"")
-  mdl.groups << model("group \"#{group}\"")
+  unless (name =~ /user/).nil?
+    Given %(a group "#{group}" exists with title: "#{group}")
+    group = model("group \"#{group}\"")
+    And %(a membership "#{group}" exists with group_id: #{group.id}, roles_mask: 1)
+    mdl.memberships << model("membership \"#{group}\"")
+  end
 end
 

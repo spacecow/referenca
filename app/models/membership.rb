@@ -3,8 +3,10 @@ class Membership < ActiveRecord::Base
   belongs_to :group
 
   validates :user_id, :uniqueness => {:scope => :group_id}
+  validates :group_id, :presence => true
+  validates :roles_mask, :presence => true
   
-  before_create :set_role
+  before_save :set_role
 
   ROLES = %w(leader member)
 
@@ -20,6 +22,6 @@ class Membership < ActiveRecord::Base
     end
   
     def set_role
-      self.roles = ["leader"] if self.roles.empty?
+      #self.roles = ["leader"] if self.roles.empty?
     end  
 end

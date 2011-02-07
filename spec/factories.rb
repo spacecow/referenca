@@ -20,6 +20,7 @@ Factory.define :keyword do |f|
 end
 
 Factory.define :membership do |f|
+  f.roles_mask 1
 end
 
 Factory.define :reference do |f|
