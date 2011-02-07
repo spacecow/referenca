@@ -63,7 +63,8 @@ class Article < ActiveRecord::Base
 
   def no_empty?; no.nil? || no.empty? end  
   def no_file?; pdf.url.nil? end
-
+  def no_journal?; journal.nil? || journal.blank? end
+  
   def owner_assoc(assoc); owner end
   
   def reference; "#{authors_for_short_reference} (#{year}) - #{title}".truncate(60) end

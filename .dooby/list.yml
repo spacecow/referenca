@@ -85,7 +85,7 @@ c2e3c3: !ruby/object:Dooby::Task
   todo: sort references after no, author, year, title
 d40aa8: !ruby/object:Dooby::Task 
   todo: being able to delete&add references :done
-9f0d55: !ruby/object:Dooby::Task 
-  todo: long_reference should 'feel' if it is a book
 11dc8c: !ruby/object:Dooby::Task 
   todo: you cannot invite users to a group if you arent the leader :done
+e9da15: !ruby/object:Dooby::Task 
+  todo: long_reference should 'feel' if it is a book :done

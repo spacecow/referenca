@@ -8,7 +8,7 @@
 <% end %>
 <span id="authors"><%= raw authors.sub(/,/, " (#{article.year})") %></span></span>
 <i><%= article.title %></i>.
-<%= attribute(article.journal, "JOURNAL") %>,
+<%= attribute(article.journal, "JOURNAL")+", " unless article.no_journal? %>
 <%= "vol. #{article.volume}, " unless article.volume_empty? %>
 <%= "no. #{article.no}, " unless article.no_empty? %>
 pp. <%= "#{attribute(article.start_page,
