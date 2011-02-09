@@ -4,7 +4,7 @@ rerun_opts = rerun.to_s.strip.empty? ? "--format #{ENV['CUCUMBER_FORMAT'] || 'pr
 std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} --strict --tags ~@wip"
 %>
 autotest-all: --color --require features --require lib --format progress features
-autotest: --color --require features --require lib features 
+autotest: --color --require features --require lib features
 default: <%= std_opts %> features -r features/step_definitions -r features/support
 wip: --drb --tags @wip:3 --wip features
 rerun: --drb <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags ~@wip

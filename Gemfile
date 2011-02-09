@@ -19,7 +19,7 @@ gem "fancy-buttons"
 
 group :development do
   gem "nifty-generators"
-  gem "rspec-rails", "~> 2.4"
+  gem "rspec-rails"
 end
 
 group :test do
@@ -31,6 +31,7 @@ group :test do
   gem 'ZenTest', "4.4.0"
   gem 'launchy'
   gem 'factory_girl'
+  gem 'gherkin'
 end
 
 

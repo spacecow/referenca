@@ -12,9 +12,11 @@ Then /^I should see (?:a|an) (\w+) (\w+) error "([^"]*)"$/ do |mdl,attr,txt|
   page.should have_css("li##{mdl}_#{attr}_input p.inline-errors", :text => txt)
 end
 
-Then /^I should see no (\w+) (\w+) error$/ do |mdl,attr|
+Then /^I should see no (\w+) (\w+) error(?: "([^"]*)")?$/ do |mdl,attr,txt|
   page.should have_no_css("li##{mdl}_#{attr}_input p.inline-errors")
 end
+
+
 
 When /^I check the (\w+) "([^"]*)"$/ do |order,lbl|
   mdl = "authorships" if lbl == "Remove Author"
