@@ -13,8 +13,9 @@ class Author < ActiveRecord::Base
   end
   
   def reversed_name
-    name = "#{last_name}, #{first_name}"
-    name += " #{middle_names}" unless middle_names.nil?
+    name = "#{last_name}"
+    name += ", #{first_name}" unless first_name.blank?
+    name += " #{middle_names}" unless middle_names.blank?
     name
   end
 

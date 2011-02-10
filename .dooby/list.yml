@@ -93,3 +93,5 @@ e9da15: !ruby/object:Dooby::Task
   todo: live search
 "140759": !ruby/object:Dooby::Task 
   todo: make only author last name needable :done
+9db4df: !ruby/object:Dooby::Task 
+  todo: display of reference when only last name exists :done

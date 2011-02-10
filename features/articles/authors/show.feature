@@ -1,9 +1,10 @@
 Feature:
-
-Scenario Outline: Keywords should be loaded after rendering error page
+Background:
 Given an article exists
 And I am logged in as "admin"
-And an author: "dover" exists with first_name: "Ben", last_name: "Dover"
+
+Scenario Outline: Authors should be loaded after rendering error page
+Given an author: "dover" exists with first_name: "Ben", last_name: "Dover"
 When I go to <path> page
 And I fill in "<lbl>" with ""
 And I press "<button>"
@@ -16,3 +17,13 @@ Examples:
 | that article's edit | Name       | Create Keyword |
 | the new article     | Title      | Create Article |
 | that article's edit | Title      | Update Article |
+
+Scenario Outline: Display of author
+Given an author exists with first_name: "<first_name>", middle_names: "<middle_names>", last_name: "Dover"
+When I go to the new article page
+Then "Author" should have options "BLANK, <options>"
+Examples:
+| first_name | options       | middle_names |
+| Ben        | Dover, Ben S. | S.           |
+|            | Dover         |              |
+| Ben        | Dover, Ben    |              |
