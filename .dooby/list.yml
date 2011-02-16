@@ -89,9 +89,9 @@ d40aa8: !ruby/object:Dooby::Task
   todo: you cannot invite users to a group if you arent the leader :done
 e9da15: !ruby/object:Dooby::Task 
   todo: long_reference should 'feel' if it is a book :done
-041fab: !ruby/object:Dooby::Task 
-  todo: live search
 "140759": !ruby/object:Dooby::Task 
   todo: make only author last name needable :done
 9db4df: !ruby/object:Dooby::Task 
   todo: display of reference when only last name exists :done
+72774b: !ruby/object:Dooby::Task 
+  todo: live search :done

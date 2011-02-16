@@ -1,0 +1,16 @@
+<tr>
+  <td id="authors">
+    <strong><%= i+1 %>.</strong>
+    <%= render "short_reference", :article => article, :ex => nil %>
+  <td/>
+  <td>
+    <% if article.no_file? %>
+    <% elsif can? :download, article %>
+    <%= link_to(fetch_image(article.pdf.url), download_article_path(article)) %>
+    <% end %>
+  </td>
+  <td><%= link_to t(:show), article if can? :show, article %></td>
+  <td><%= link_to t(:edit), edit_article_path(article) if can? :edit, article %></td>
+  <td><%= link_to t(:del), article, :confirm => sure?, :method => :delete if can? :destroy, article %></td>
+</tr>
+
