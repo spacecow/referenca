@@ -39,7 +39,7 @@ ja:
   message:
     not_you?: "違いますか？"
     sure?: "本当に削除してよろしいですか"
-    welcome: "ようこそ%{user}。"
+    welcome: "ようこそ%{user}さん。"
 
   formtastic:
     labels:

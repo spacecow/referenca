@@ -20,6 +20,8 @@
   <% end %>
   <li><%= link_to_add_fields add(:keyword), f, :articles_keywords %></li>
   <%= f.input :journal %>
+  <%= f.input :publisher %>
+  <%= f.input :edition %>
   <%= f.input :year, :input_html => {:class => :number} %>
   <%= f.input :volume, :input_html => {:class => :number} %>
   <%= f.input :no, :label => :issue, :input_html => {:class => :number} %>
@@ -46,7 +48,7 @@
 <div id="private_fields">
   <a name="private_fields"></a>
   <h1><%= edit(:private_fields) %></h1>
-  <div class="form">  
+  <div class="form">
     <%= semantic_form_for @article, :url => update_private_fields_article_path(@article), :html => { :method => :put, :multipart => true } do |f| %>
       <%= render "articles/private_fields", :f => f %>
       <%= f.submit update(:private_fields), :class => :submit %>

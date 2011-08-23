@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110202005041) do
+ActiveRecord::Schema.define(:version => 20110823012129) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20110202005041) do
     t.integer  "group_id"
     t.integer  "owner_id"
     t.boolean  "private"
+    t.string   "publisher"
+    t.string   "edition"
   end
 
   create_table "articles_keywords", :force => true do |t|

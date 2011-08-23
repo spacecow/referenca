@@ -47,11 +47,15 @@ class Article < ActiveRecord::Base
   end
   def authors_straight; authors.map(&:straight_name).join(", ") end
 
+  def edition_for_filename
+    edition.present? ? "_#{edition}" : ""
+  end
+
   def extension; pdf.url.split('.').last end
   
   def file?; !no_file? end
   def filename
-    "#{authors_and_year_for_filename}_-_#{title_for_filename}.#{extension}"
+    "#{publisher_for_filename}#{authors_and_year_for_filename}_-_#{title_for_filename}#{edition_for_filename}.#{extension}"
   end
   
   def first_author
@@ -73,6 +77,10 @@ class Article < ActiveRecord::Base
 
   def private_assoc(assoc); private() end
   
+  def publisher_for_filename
+    publisher.present? ? "#{publisher}_" : ""
+  end
+
   def self.search(search,sort)
     if search
       if sort.split('", "').size > 1
