@@ -20,8 +20,8 @@
   <% end %>
   <li><%= link_to_add_fields add(:keyword), f, :articles_keywords %></li>
   <%= f.input :journal %>
-  <%= f.input :publisher %>
-  <%= f.input :edition %>
+  <%= f.input :publisher, :input_html => {:class => :number} %>
+  <%= f.input :edition, :input_html => {:class => :number} %>
   <%= f.input :year, :input_html => {:class => :number} %>
   <%= f.input :volume, :input_html => {:class => :number} %>
   <%= f.input :no, :label => :issue, :input_html => {:class => :number} %>
